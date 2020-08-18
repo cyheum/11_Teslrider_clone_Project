@@ -1,0 +1,52 @@
+@import "../../Styles/common.scss";
+
+.Order {
+  section {
+    padding: 76px 0 79px;
+    main {
+      position: relative;
+      display: flex;
+
+      .wrapCarImg {
+        height: 100%;
+        width: 100%;
+        @include center(center);
+
+        .carImg {
+          width: 100%;
+          height: 100%;
+        }
+
+        .carDescription {
+          position: absolute;
+          bottom: 13em;
+          @include center(center);
+
+          ul {
+            display: flex;
+
+            li {
+              height: 69px;
+              width: 240px;
+              @include center(center);
+              flex-flow: column;
+              border-right: 1px solid #dfdfdf;
+
+              &:last-child {
+                border: none;
+              }
+
+              .carDescriptiontopText {
+                font-size: 45px;
+              }
+              .carDescriptionbottomText {
+                font-size: 15px;
+                color: gray;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

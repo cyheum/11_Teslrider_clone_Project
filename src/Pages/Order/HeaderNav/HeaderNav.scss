@@ -1,0 +1,34 @@
+@import "../../../Styles/common.scss";
+
+.HeaderNav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  @include center(space-between);
+  border-bottom: 1px solid #e2e2e2;
+  padding: 0 7px;
+
+  .logo {
+    max-width: 320px;
+    padding: 0 180px 0 40px;
+  }
+
+  ol {
+    @include center(space-around);
+    width: 100%;
+    padding: 0 50px;
+
+    li {
+      @include center(center);
+      max-width: 225px;
+      height: 76px;
+      font-size: 14px;
+      color: gray;
+    }
+  }
+
+  span {
+    padding: 0 15px 0 300px;
+    font-size: 19px;
+  }
+}

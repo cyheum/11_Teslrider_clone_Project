@@ -1,0 +1,58 @@
+@import "../../../Styles/common.scss";
+footer {
+  width: 100%;
+  padding: 3px 7px;
+  position: fixed;
+  bottom: 0;
+  @include center(space-between);
+  background-color: #333333;
+
+  .wrapTotalPrice {
+    @include center(center);
+    color: white;
+
+    .charge {
+      font-size: 17px;
+      padding: 0 60px 0 50px;
+    }
+
+    .totalPrice {
+      @include center(center);
+      border-left: 1px solid gray;
+      border-right: 1px solid gray;
+      padding: 0 40px;
+      margin: 5px 0;
+
+      .wrapPrice {
+        padding: 10px;
+        font-size: 22px;
+
+        div {
+          font-size: 13px;
+        }
+      }
+
+      span {
+        padding: 10px;
+        font-size: 15px;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.wrapNextBtn {
+  width: 360px;
+  margin: 0 20px;
+
+  .nextBtn {
+    background-color: #3e6ae1;
+    color: white;
+    font-size: 12px;
+    border-radius: 20px;
+    border: none;
+    margin: 8px 0;
+    padding: 13px 40px;
+    width: 100%;
+  }
+}

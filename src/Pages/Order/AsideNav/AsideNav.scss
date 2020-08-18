@@ -1,0 +1,16 @@
+.AsideNav {
+  min-width: 435px;
+
+  .wrapDescription {
+    height: 100%;
+    width: 435px;
+    position: fixed;
+    right: 0;
+    border-left: 1px solid #e2e2e2;
+    overflow: auto;
+
+    div {
+      padding: 50px;
+    }
+  }
+}
