@@ -1,0 +1,85 @@
+@import "../../../../Styles/common.scss";
+
+.ChoiceAutopilot {
+  padding: 50px;
+
+  .wrapMainTitle {
+    margin-bottom: 30px;
+    div {
+      @include center(center);
+      justify-content: flex-start;
+      .mainTitle {
+        font-size: 20px;
+
+        &::after {
+          content: "";
+          display: inline-block;
+          margin: 0 10px;
+          background-color: black;
+          height: 16px;
+          width: 1px;
+        }
+      }
+    }
+    span {
+      font-size: 14px;
+    }
+
+    ul {
+      margin: 5px 0;
+    }
+  }
+  .mainTitle {
+    font-size: 20px;
+  }
+  ul {
+    padding-left: 30px;
+    margin-bottom: 20px;
+
+    li {
+      font-size: 14px;
+      line-height: 160%;
+      list-style: disc;
+      color: gray;
+      margin-bottom: 10px;
+    }
+  }
+
+  .subTitle {
+    font-size: 14px;
+    margin: 10px 0 20px;
+  }
+
+  button {
+    @include center(space-between);
+    width: 100%;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 30em;
+    padding: 17px 22px;
+    margin-bottom: 20px;
+
+    div {
+      @include center(center);
+      font-size: 14px;
+
+      input {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+      }
+    }
+  }
+  .addDescription {
+    max-width: 270px;
+    font-size: 13px;
+    line-height: 200%;
+    color: gray;
+    margin-bottom: 20px;
+  }
+
+  .lastDescription {
+    color: gray;
+    font-size: 12px;
+  }
+}

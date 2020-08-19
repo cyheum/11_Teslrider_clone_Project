@@ -1,0 +1,15 @@
+@import "../../../Styles/common.scss";
+
+.Interior {
+  @include center(center);
+  height: calc(100vh - 166px);
+  width: 100%;
+  overflow: hidden;
+
+  div {
+    width: 100%;
+    .insideCarImg {
+      min-width: 100%;
+    }
+  }
+}

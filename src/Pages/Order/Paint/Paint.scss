@@ -1,0 +1,14 @@
+@import "../../../Styles/common.scss";
+
+.Paint {
+  @include center(center);
+  height: calc(100vh - 166px);
+  width: 100%;
+
+  div {
+    .carImg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

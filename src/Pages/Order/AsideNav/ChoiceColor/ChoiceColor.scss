@@ -1,0 +1,47 @@
+@import "../../../../Styles/common.scss";
+
+.ChoiceColor {
+  padding: 50px;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+
+  .choiceContainer {
+    padding: 10px 0;
+    border-bottom: 1px solid #e2e2e2;
+
+    &:last-child {
+      margin-top: 10px;
+      border: none;
+    }
+
+    .headText {
+      font-size: 20px;
+    }
+
+    .wrapChoiceColorButton {
+      display: flex;
+
+      .choiceColorButton {
+        width: 50px;
+        height: 50px;
+        margin: 6px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .colorDescription {
+      @include center(space-between);
+      margin: 10px 0;
+
+      span {
+        font-size: 15px;
+      }
+    }
+  }
+}

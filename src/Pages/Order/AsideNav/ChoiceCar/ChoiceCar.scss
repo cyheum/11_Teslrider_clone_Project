@@ -1,0 +1,40 @@
+@import "../../../../Styles/common.scss";
+
+.ChoiceCar {
+  padding: 50px;
+
+  .headText {
+    font-size: 20px;
+  }
+
+  .descriptionText {
+    font-size: 13px;
+    line-height: 200%;
+    color: gray;
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+  .wrapButton {
+    @include center(center);
+    flex-flow: column;
+
+    button {
+      width: 100%;
+      @include center(space-between);
+      border-radius: 50em;
+      padding: 15px;
+      margin-top: 10px;
+
+      &:last-child {
+        margin-bottom: 40px;
+      }
+
+      span {
+        font-size: 18px;
+      }
+    }
+  }
+}

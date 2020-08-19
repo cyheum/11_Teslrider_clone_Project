@@ -3,10 +3,12 @@
 .HeaderNav {
   position: fixed;
   top: 0;
+  z-index: 20;
   width: 100%;
   @include center(space-between);
   border-bottom: 1px solid #e2e2e2;
   padding: 0 7px;
+  background-color: white;
 
   .logo {
     max-width: 320px;
