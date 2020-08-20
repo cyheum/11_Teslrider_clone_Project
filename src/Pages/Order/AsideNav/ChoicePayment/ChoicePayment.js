@@ -17,6 +17,7 @@ export default class ChoicePayment extends Component {
       ],
     };
   }
+
   render() {
     const { userCustomData } = this.state;
     return (
