@@ -1,0 +1,15 @@
+.knowingTesla {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+
+  .virtualTeslaVideo {
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -100;
+  }
+}
