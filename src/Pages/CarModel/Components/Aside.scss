@@ -1,0 +1,108 @@
+@import '../../../Styles/common.scss';
+
+.Aside{
+  width: 400px;
+  height: 100%;
+  padding: 0 40px 0 24px;
+  flex-shrink: 0;
+
+  .asideContainer {
+    height: 100%;
+  }
+
+  .asideHeader {
+    padding: 16px 0 0;
+  }
+
+  header {
+    margin-top: 34px;
+  }
+
+  .upperHeader {
+    font-size: 1.7rem;
+  }
+
+  .lowerHeader {
+    font-size: 2.8rem;
+  }
+
+  .asideContents {
+    position: relative;
+    height: 89%;
+    padding-top: 16px;
+  }
+
+  .asideContentText {
+    padding-bottom: 14px;
+    font-size: 1.4rem;
+  }
+
+  .asideLowBtn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 50px;
+    width:100%;
+  }
+
+  .asideLowLeft {
+    @include center(center);
+  }
+
+  .asideLowLeftBtnWrap {
+    margin-right: 10px;
+    border: 3px solid black;
+    border-radius: 50%;
+  }
+
+  .asideLowLeftBtn {
+    background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid Meet' width='100' height='100'%3e%3cpath d='M54.7 30.7h-9.6v14.4H30.7v9.6h14.4v14.5l9.6-.1V54.7h14.4l.1-9.6H54.7'/%3e%3c/svg%3e") no-repeat center;
+    background-size: 100%;
+    height: 35px;
+    width: 35px;
+  }
+
+  .asideLowright {
+    margin-left: 13px;
+  }
+
+  .orderBtn{
+    @include center(center);
+    height: 42px;
+    width: 100%;
+    color: black;
+    border: 3px solid #171a20;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    min-width: auto;
+    padding: 10px 32px;
+    white-space: nowrap;
+    width: auto;
+    margin: 8px;
+  }
+
+  .orderBtnText {
+    font-size: 1.2rem;
+  }
+
+  .asideLowLeftBtnWrap:hover {
+    transition: background-color .4s;
+    background-color: black;
+
+    .asideLowLeftBtn {
+      transition: color .4s;
+      filter: invert(100%);
+    }
+  }
+
+  .orderBtn:hover {
+    transition: background-color .4s;
+    background-color: black;
+    .orderBtnText {
+      transition: color .4s;
+      color: white;
+    }
+  }
+}

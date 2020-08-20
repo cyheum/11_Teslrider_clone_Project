@@ -1,0 +1,61 @@
+@import '../../../Styles/common.scss';
+
+.OverflowContents{
+  @include center(center);
+  width: 100%;
+  height: 100%;
+
+  .overflowContentsCenter, .overflowContentsLeft, .overflowContentsright {
+    @include center(center);
+    width: 100%;
+  }
+
+  .overflowContentsLeft {
+    height: 62%;
+  }
+
+  .overflowItemContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+
+  .overflowItemContainer li {
+    height: 100%;
+    padding: 40px 0;
+  }
+
+  .overflowItems {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 270px;
+  }
+
+  .overflowItemsHeader {
+    display: flex;
+    margin-bottom: 7px;
+    font-size: 2.8rem;
+    font-weight: 600;
+  }
+
+  .overflowItemscontent{
+    font-size: 1.2rem;
+  }
+
+  .overflowItemsHeader span {
+    width: 85px;
+    padding: 0 5px;
+    font-size: 1.4rem;
+    font-weight: normal;
+  }
+
+  .overflowItemsHeaderLast {
+    width: 40px;
+    height: 40px;
+    background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/0244c34f-2054-4549-9aff-a055db265926/bvlatuR/std/0x0/autopilot)no-repeat center / 100%;
+  }
+}

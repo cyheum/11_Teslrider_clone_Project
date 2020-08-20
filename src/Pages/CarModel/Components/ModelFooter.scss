@@ -1,0 +1,101 @@
+@import '../../../Styles/common.scss';
+
+.ModelFooter {
+  @include center(center);
+  width: 100%;
+  height: 250px;
+  padding: 0 24px;
+
+  .footerContainer {
+    @include center(center);
+    width: 975px;
+    height: 100%;
+    margin: 0 auto;
+    animation: fadein .5s ease-in-out forwards;
+  }
+
+  .footerLeft {
+    width: 60%;
+    height: 100%;
+    padding: 50px 0 0 0;
+  }
+
+  .leftHeaderName {
+    font-size: 1.7rem;
+  }
+
+  .leftHeaderContent {
+    font-size: 2.8rem;
+  }
+
+  .leftContents {
+    display: flex;
+    margin-top: 16px;
+  }
+
+  .footerRight {
+    width: 100%;
+    height: 100%;
+    padding: 0 48px;
+    padding-top: 50px;
+    font-size: 1.4rem;
+  }
+
+  .leftFooterMore {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+
+  .footerIconWrap {
+    margin-right: 10px;
+    border: 3px solid black;
+    border-radius: 50%;
+  }
+
+  .footerMoreIcon {
+    width: 35px;
+    height: 35px;
+    background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid Meet' width='100' height='100'%3e%3cpath d='M54.7 30.7h-9.6v14.4H30.7v9.6h14.4v14.5l9.6-.1V54.7h14.4l.1-9.6H54.7'/%3e%3c/svg%3e")no-repeat center / 100%;
+  }
+
+  .asideFooterBtn {
+    width: 152px;
+    margin-left: 13px;
+  }
+
+  .orderBtn {
+    @include center(center);
+    width: 100%;
+    min-width: auto;
+    height: 42px;
+    margin: 8px;
+    padding: 10px 32px;
+    color: black;
+    font-size: 1.2rem;
+    border: 3px solid #171a20;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+  }
+
+  .orderBtn:hover {
+    transition: background-color .4s;
+    background-color: black;
+    .orderBtnText {
+      transition: color .4s;
+      color: white;
+    }
+  }
+
+  .footerIconWrap:hover {
+    transition: background-color .4s;
+    background-color: black;
+  }
+
+  .footerMoreIcon:hover {
+    transition: color .4s;
+    filter: invert(100%);
+  }
+}

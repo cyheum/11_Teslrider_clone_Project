@@ -1,0 +1,56 @@
+@import '../Styles/common.scss';
+
+.SideNav {
+  .sideNavContainer{
+    position: fixed;
+    top: calc(50% - 126px);
+    left: 0;
+    display: block;
+    width: 100px;
+    margin-top: -78px;
+    z-index: 5;
+  }
+
+  .sideNavItem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 23px;
+    cursor: pointer;
+    margin-top: 5px;
+    padding-bottom: 0;
+  }
+
+  .sideNavTab{
+    width: 1px;
+    height: 100%;
+    margin-left: 13px;
+    opacity: 1;
+    background-color: #838e97;
+  }
+
+  .sideNavItem:hover {
+    animation: fadeinSide 1s ease-in-out;
+
+    .sideNavTab {
+      width: 2px;
+      background-color: black;
+    }
+
+    .sideNavLabel {
+      display: inline;
+    }
+  }
+
+  .sideNavLabel:first-child{
+    font-weight: 600;
+  }
+
+  .sideNavLabel {
+    display: none;
+    margin-left: 8px;
+    font-size:1.2rem;
+    font-weight: 400;
+  }
+}
