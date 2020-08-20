@@ -1,0 +1,32 @@
+@import "../../../../Styles/common.scss";
+
+.ChoicePayment {
+  padding: 10px 20px 50px;
+
+  .wrapUserCustomCar {
+    img {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    div {
+      font-size: 30px;
+      font-weight: 400;
+      text-align: center;
+    }
+  }
+
+  .subTitle {
+    font-size: 17px;
+    color: gray;
+    border-bottom: 1px solid gray;
+    padding: 12px 0;
+  }
+
+  .detailUserChoiceContainer {
+    .detailUserChoice {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

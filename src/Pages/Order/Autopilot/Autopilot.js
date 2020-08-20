@@ -19,7 +19,7 @@ export default class Autopilot extends Component {
             className="autoPilotVideo"
             src="https://www.tesla.com/ns_videos/models/autonomy/hero.mp4"
             title="autopilot"
-            autoplay="autoplay"
+            autoplay=""
             loop
           />
         </div>

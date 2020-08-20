@@ -32,18 +32,20 @@
       }
       .checkBoxList {
         display: flex;
+        align-items: center;
 
         .checkBox {
           display: flex;
           align-items: center;
-          font-size: 16px;
+          font-size: 14px;
           margin-right: 25px;
+
           div {
             width: 20px;
             height: 20px;
             border-radius: 50%;
             border: 1px solid black;
-            margin-right: 20px;
+            margin: 0 20px 2px 0;
           }
         }
       }
@@ -51,7 +53,7 @@
 
     .wrapInputUserInfo {
       width: 100%;
-      height: 300px;
+      height: 260px;
       display: flex;
       flex-flow: column-reverse wrap;
 
@@ -69,11 +71,180 @@
           width: 100%;
           padding: 10px 20px;
           border-radius: 30em;
-          border: none;
+          border: 1px solid white;
           font-size: 13px;
 
           &:focus {
             border: 1px solid gray;
+          }
+        }
+      }
+    }
+
+    .agreeBtnContainer {
+      margin-top: 15px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid gray;
+
+      &:last-child {
+        border: none;
+      }
+
+      .wrapAgreeCheckBox {
+        @include center(center);
+        justify-content: flex-start;
+        margin: 30px 0 30px;
+
+        .agreeCheckBox {
+          width: 25px;
+          height: 25px;
+          border: 1px solid gray;
+          border-radius: 3px;
+          margin-right: 20px;
+        }
+
+        div {
+          font-size: 1.5rem;
+          color: gray;
+        }
+      }
+    }
+
+    .paymentInfoTitle {
+      margin-bottom: 40px;
+      div {
+        &:first-child {
+          font-size: 1.7rem;
+          color: black;
+          margin: 20px 0;
+        }
+
+        &:last-child {
+          font-size: 1.4rem;
+          color: gray;
+        }
+      }
+    }
+
+    .userCreditCardInfo {
+      margin-bottom: 40px;
+      .titleAboutSection {
+        font-size: 25px;
+        margin-bottom: 10px;
+      }
+
+      .inputUserCardInfoContainer {
+        width: 100%;
+        padding-right: 5px;
+
+        div {
+          font-size: 15px;
+          padding: 15px 20px;
+          color: gray;
+        }
+
+        input {
+          width: 100%;
+          padding: 10px 20px;
+          border-radius: 30em;
+          border: 1px solid white;
+          font-size: 13px;
+
+          &:focus {
+            border: 1px solid gray;
+          }
+        }
+      }
+
+      .wrapUserExpirationCardInfo {
+        width: 100%;
+        display: flex;
+
+        .inputUserExpirationCardInfoContainer {
+          width: 100%;
+
+          &:first-child {
+            padding-right: 20px;
+          }
+          div {
+            font-size: 15px;
+            padding: 15px 20px;
+            color: gray;
+          }
+
+          input {
+            width: 100%;
+            padding: 10px 20px;
+            border-radius: 30em;
+            border: 1px solid white;
+            font-size: 13px;
+
+            &:focus {
+              border: 1px solid gray;
+            }
+          }
+        }
+      }
+    }
+
+    .userAdressContainer {
+      margin-bottom: 20px;
+
+      .titleAboutSection {
+        font-size: 25px;
+        margin-bottom: 10px;
+      }
+
+      .inputUserAdressContainer {
+        width: 100%;
+        padding-right: 5px;
+
+        div {
+          font-size: 15px;
+          padding: 15px 20px;
+          color: gray;
+        }
+
+        input {
+          width: 100%;
+          padding: 10px 20px;
+          border-radius: 30em;
+          border: 1px solid white;
+          font-size: 13px;
+
+          &:focus {
+            border: 1px solid gray;
+          }
+        }
+      }
+
+      .wrapUserDetailAdressInfo {
+        width: 100%;
+        display: flex;
+
+        .inputUserDetailAdressInfoContainer {
+          width: 100%;
+          padding-right: 20px;
+
+          &:last-child {
+            padding-right: 0;
+          }
+          div {
+            font-size: 15px;
+            padding: 15px 20px;
+            color: gray;
+          }
+
+          input {
+            width: 100%;
+            padding: 10px 20px;
+            border-radius: 30em;
+            border: 1px solid white;
+            font-size: 13px;
+
+            &:focus {
+              border: 1px solid gray;
+            }
           }
         }
       }

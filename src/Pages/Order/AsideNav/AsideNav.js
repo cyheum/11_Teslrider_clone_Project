@@ -4,6 +4,7 @@ import ChoiceCar from "./ChoiceCar/ChoiceCar";
 import ChoiceColor from "./ChoiceColor/ChoiceColor";
 import ChoiceInterior from "./ChoiceInterior/ChoiceInterior";
 import ChoiceAutopilot from "./ChoiceAutopilot/ChoiceAutopilot";
+import ChoicePayment from "./ChoicePayment/ChoicePayment";
 
 export default class AsideNav extends Component {
   render() {
@@ -13,7 +14,8 @@ export default class AsideNav extends Component {
           {/* <ChoiceCar /> */}
           {/* <ChoiceColor /> */}
           {/* <ChoiceInterior /> */}
-          <ChoiceAutopilot />
+          {/* <ChoiceAutopilot /> */}
+          <ChoicePayment />
         </div>
       </aside>
     );
