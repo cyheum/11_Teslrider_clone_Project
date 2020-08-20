@@ -7,30 +7,58 @@
   width: 100%;
   @include center(space-between);
   border-bottom: 1px solid #e2e2e2;
-  padding: 0 7px;
+  padding: 0 10px;
   background-color: white;
+  .wrapLogo {
+    width: 15%;
+    min-width: 100px;
+    @include center(center);
 
-  .logo {
-    max-width: 320px;
-    padding: 0 180px 0 40px;
+    .logo {
+      max-width: 50%;
+    }
   }
 
   ol {
     @include center(space-around);
     width: 100%;
-    padding: 0 50px;
 
     li {
-      @include center(center);
-      max-width: 225px;
-      height: 76px;
-      font-size: 14px;
-      color: gray;
+      position: relative;
+      cursor: pointer;
+
+      &.titleNav {
+        @include center(center);
+        width: 100%;
+        max-width: 225px;
+        height: 76px;
+        font-size: 14px;
+
+        &.normal {
+          color: gray;
+        }
+
+        &.pushed {
+          color: black;
+        }
+        &.actived {
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            background-color: #2796db;
+            height: 3px;
+            width: 100%;
+          }
+        }
+      }
     }
   }
 
-  span {
-    padding: 0 15px 0 300px;
+  .choiceLanguage {
+    padding-right: 10px;
+    width: 20%;
+    text-align: right;
     font-size: 19px;
   }
 }

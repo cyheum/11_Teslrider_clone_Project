@@ -18,15 +18,23 @@
   }
 
   .wrapButton {
-    @include center(center);
-    flex-flow: column;
+    width: 100%;
+    height: auto;
 
-    button {
+    .choiceCarBtn {
       width: 100%;
       @include center(space-between);
+      border: 1px solid gray;
       border-radius: 50em;
-      padding: 15px;
+      background-color: white;
+      padding: 12px 20px;
       margin-top: 10px;
+      cursor: pointer;
+      transition: box-shadow 500ms;
+
+      &.pushed {
+        box-shadow: 0 0 0 2px #007fff;
+      }
 
       &:last-child {
         margin-bottom: 40px;

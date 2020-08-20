@@ -55,9 +55,9 @@ export default class Payment extends Component {
             </div>
           </div>
           <div className="wrapInputUserInfo">
-            {userInfoTitle.map((title) => {
+            {userInfoTitle.map((title, index) => {
               return (
-                <div className="inputUserInfoContainer">
+                <div className="inputUserInfoContainer" key={index}>
                   <div>{title}</div>
                   <input type="text" />
                 </div>
@@ -65,9 +65,9 @@ export default class Payment extends Component {
             })}
           </div>
           <div className="agreeBtnContainer">
-            {agreeList.map((text) => {
+            {agreeList.map((text, index) => {
               return (
-                <div className="wrapAgreeCheckBox">
+                <div className="wrapAgreeCheckBox" key={index}>
                   <div className="agreeCheckBox"></div>
                   <div>{text}</div>
                 </div>
@@ -85,7 +85,7 @@ export default class Payment extends Component {
             <div className="titleAboutSection">신용카드</div>
             {cardNameNum.map((title) => {
               return (
-                <div className="inputUserCardInfoContainer">
+                <div className="inputUserCardInfoContainer" key={title}>
                   <div>{title}</div>
                   <input type="text" />
                 </div>
@@ -94,7 +94,10 @@ export default class Payment extends Component {
             <div className="wrapUserExpirationCardInfo">
               {expiration.map((title) => {
                 return (
-                  <div className="inputUserExpirationCardInfoContainer">
+                  <div
+                    className="inputUserExpirationCardInfoContainer"
+                    key={title}
+                  >
                     <div>{title}</div>
                     <input type="text" />
                   </div>
@@ -106,7 +109,7 @@ export default class Payment extends Component {
             <div className="titleAboutSection">결제 정보</div>
             {mainAdress.map((title) => {
               return (
-                <div className="inputUserAdressContainer">
+                <div className="inputUserAdressContainer" key={title}>
                   <div>{title}</div>
                   <input type="text" />
                 </div>
@@ -115,7 +118,10 @@ export default class Payment extends Component {
             <div className="wrapUserDetailAdressInfo">
               {detailAdress.map((title) => {
                 return (
-                  <div className="inputUserDetailAdressInfoContainer">
+                  <div
+                    className="inputUserDetailAdressInfoContainer"
+                    key={title}
+                  >
                     <div>{title}</div>
                     <input type="text" />
                   </div>

@@ -36,6 +36,7 @@ footer {
         padding: 10px;
         font-size: 15px;
         text-decoration: underline;
+        text-underline-position: under;
       }
     }
   }
@@ -46,6 +47,7 @@ footer {
   margin: 0 20px;
 
   .nextBtn {
+    width: 100%;
     background-color: #3e6ae1;
     color: white;
     font-size: 12px;
@@ -53,6 +55,11 @@ footer {
     border: none;
     margin: 8px 0;
     padding: 13px 40px;
-    width: 100%;
+    transition: background-color 500ms;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #3457b1;
+    }
   }
 }

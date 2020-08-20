@@ -2,7 +2,25 @@ import React, { Component } from "react";
 import "./ChoiceCar.scss";
 
 export default class ChoiceCar extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isPushedAt: 0,
+      choiceCarBtn: [
+        { option: "Long Range", price: "₩107,990,000" },
+        { option: "Performance", price: "₩132,990,000" },
+      ],
+    };
+  }
+
+  handleClickChangeCarBtn = (num) => {
+    this.setState({
+      isPushedAt: num,
+    });
+  };
   render() {
+    const { isPushedAt, choiceCarBtn } = this.state;
     return (
       <div className="ChoiceCar">
         <div className="headText">차량 선택하기</div>
@@ -11,14 +29,23 @@ export default class ChoiceCar extends Component {
           프리미엄 인테리어 및 사운드 시스템이 포함됩니다.
         </div>
         <div className="wrapButton">
-          <button>
-            <span>Long Range</span>
-            <span>₩107,990,000</span>
-          </button>
-          <button>
-            <span>Performance</span>
-            <span>₩132,990,000</span>
-          </button>
+          {choiceCarBtn.map((el, index) => {
+            const { option, price } = el;
+            return (
+              <button
+                key={index}
+                className={
+                  isPushedAt === index
+                    ? "choiceCarBtn pushed"
+                    : "choiceCarBtn normal"
+                }
+                onClick={() => this.handleClickChangeCarBtn(index)}
+              >
+                <span>{option}</span>
+                <span>{price}</span>
+              </button>
+            );
+          })}
         </div>
         <div className="descriptionText">
           <span>Tesla AWD</span>에 탑재된 두 개의 독립 모터는 향상된 효율성과

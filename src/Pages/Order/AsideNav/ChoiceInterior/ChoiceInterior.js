@@ -5,6 +5,7 @@ export default class ChoiceInterior extends Component {
   constructor() {
     super();
     this.state = {
+      isPushedAt: 0,
       styleBtn: [
         "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_black.png?&version=v0028d202008130539",
         "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_white_cf.png?&version=v0028d202008130539",
@@ -50,17 +51,35 @@ export default class ChoiceInterior extends Component {
       ],
     };
   }
+
+  changeStyleClickHandler = (num) => {
+    this.setState({
+      isPushedAt: num,
+    });
+  };
+
   render() {
-    const { styleBtn, liText } = this.state;
+    const { isPushedAt, styleBtn, liText } = this.state;
     return (
       <div className="ChoiceInterior">
         <div className="choiceContainer">
           <div className="headText">프리미엄 인테리어 선택하기</div>
           <div className="wrapChoiceStyleButton">
-            {styleBtn.map((style) => {
+            {styleBtn.map((style, index) => {
               return (
-                <div className="choiceStyleButton">
-                  <img src={style} alt="stylebuttonImg" />
+                <div
+                  className={
+                    isPushedAt === index
+                      ? "choiceStyleButton pushed"
+                      : "choiceStyleButton normal"
+                  }
+                  key={index}
+                >
+                  <img
+                    onClick={() => this.changeStyleClickHandler(index)}
+                    alt="stylebuttonImg"
+                    src={style}
+                  />
                 </div>
               );
             })}
@@ -73,15 +92,19 @@ export default class ChoiceInterior extends Component {
         </div>
         <div className="subTitle">기본사항:</div>
         <ul>
-          {liText.map((text) => {
+          {liText.map((text, index) => {
             const { mainText, subText } = text;
             return (
-              <li className="mainDescription">
+              <li className="mainDescription" key={index}>
                 {mainText}
                 <ul>
                   {subText &&
-                    subText.map((subText) => {
-                      return <li className="subDescription">{subText}</li>;
+                    subText.map((subText, index) => {
+                      return (
+                        <li className="subDescription" key={index}>
+                          {subText}
+                        </li>
+                      );
                     })}
                 </ul>
               </li>

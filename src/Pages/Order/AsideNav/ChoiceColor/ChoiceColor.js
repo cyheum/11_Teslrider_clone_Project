@@ -5,6 +5,8 @@ export default class ChoiceColor extends Component {
   constructor() {
     super();
     this.state = {
+      isColorBtnPushedAt: 0,
+      isWheelBtnPushedAt: 0,
       aboutChoiceData: [
         {
           choiceBtn: [
@@ -30,20 +32,53 @@ export default class ChoiceColor extends Component {
       ],
     };
   }
+
+  handleClickChangeBtn = (index, num) => {
+    if (index === 0) {
+      this.setState({
+        isColorBtnPushedAt: num,
+      });
+    } else {
+      this.setState({
+        isWheelBtnPushedAt: num,
+      });
+    }
+  };
+
+  setButtonClassName = (index, btnIdx) => {
+    const { isColorBtnPushedAt, isWheelBtnPushedAt } = this.state;
+    if (index === 0) {
+      return isColorBtnPushedAt === btnIdx
+        ? "choiceColorButton pushed"
+        : "choiceColorButton normal";
+    } else {
+      return isWheelBtnPushedAt === btnIdx
+        ? "choiceColorButton pushed"
+        : "choiceColorButton normal";
+    }
+  };
+
   render() {
     const { aboutChoiceData } = this.state;
     return (
       <div className="ChoiceColor">
-        {aboutChoiceData.map((el) => {
+        {aboutChoiceData.map((el, index) => {
           const { choiceBtn, title, description, include } = el;
           return (
-            <div className="choiceContainer">
+            <div className="choiceContainer" key={index}>
               <div className="headText">{title}</div>
               <div className="wrapChoiceColorButton">
-                {choiceBtn.map((style) => {
+                {choiceBtn.map((style, btnIdx) => {
                   return (
-                    <div className="choiceColorButton">
-                      <img src={style} alt="colorbuttonImg" />
+                    <div
+                      className={this.setButtonClassName(index, btnIdx)}
+                      key={btnIdx}
+                    >
+                      <img
+                        onClick={() => this.handleClickChangeBtn(index, btnIdx)}
+                        alt="colorbuttonImg"
+                        src={style}
+                      />
                     </div>
                   );
                 })}

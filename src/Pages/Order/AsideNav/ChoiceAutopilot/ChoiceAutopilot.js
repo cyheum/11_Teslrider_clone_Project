@@ -31,8 +31,8 @@ export default class ChoiceAutopilot extends Component {
         </div>
         <div className="mainTitle">완전 자율 주행 기능</div>
         <ul>
-          {autopilotDescription.map((text) => (
-            <li>{text}</li>
+          {autopilotDescription.map((text, index) => (
+            <li key={index}>{text}</li>
           ))}
         </ul>
         <div className="subTitle">출시예정:</div>
