@@ -10,12 +10,13 @@
   padding: 0 10px;
   background-color: white;
   .wrapLogo {
-    width: 15%;
+    width: 28%;
     min-width: 100px;
-    @include center(center);
+    @include center(flex-start);
 
     .logo {
-      max-width: 50%;
+      max-width: 100px;
+      margin-left: 10%;
     }
   }
 
