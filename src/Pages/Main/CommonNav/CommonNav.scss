@@ -1,49 +1,43 @@
-.commonNav {
+.CommonNav {
   height: 52px;
-  position: relative;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  .navContainer {
-    height: 100%;
-    padding: 0 20px;
+  .teslaLogoContainer {
+    width: 100px;
+    height: 24px;
+
+    .TeslaLogoImg {
+      width: 100%;
+      height: 100%;
+      filter: invert(100%);
+    }
+  }
+
+  .carList {
     display: flex;
-    justify-content: space-between;
+    color: white;
+
+    li {
+      margin: 0 10px;
+      font-size: 14px;
+    }
+  }
+
+  .navLoginContainer {
+    display: flex;
     align-items: center;
-    position: relative;
 
-    .teslaLogoContainer {
-      width: 100px;
-      height: 24px;
-
-      .teslaLogo {
-        width: 100%;
-        height: 100%;
-        filter: invert(100%);
-      }
-    }
-
-    .carList {
-      display: flex;
+    .navLoginBtn {
+      margin: 0 10px;
+      font-size: 14px;
       color: white;
-
-      li {
-        margin: 0 10px;
-        font-size: 14px;
-      }
     }
 
-    .navLoginContainer {
-      display: flex;
-      align-items: center;
-
-      .navLoginBtn {
-        margin: 0 10px;
-        font-size: 14px;
-        color: white;
-      }
-
-      .fas {
-        color: white;
-      }
+    .fas {
+      color: white;
     }
   }
 }

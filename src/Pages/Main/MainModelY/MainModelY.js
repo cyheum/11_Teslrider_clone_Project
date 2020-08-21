@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SecNav from "../SecNav/SecNav";
-import SubjectAndBtn2 from "../SubjectAndBtn/SubjectAndBtn2";
+import SubjectAndBtnSimple from "../SubjectAndBtn/SubjectAndBtnSimple";
 import "./MainModelY.scss";
 
 class MainModelY extends Component {
@@ -8,18 +8,16 @@ class MainModelY extends Component {
     super();
     this.state = {
       subjectName: "Model Y",
-      BtnName: "자세히 알아보기",
+      btnName: "자세히 알아보기",
     };
   }
 
   render() {
+    const { subjectName, btnName } = this.state;
     return (
-      <div className="mainModelY">
+      <div className="MainModelY">
         <SecNav />
-        <SubjectAndBtn2
-          subjectName={this.state.subjectName}
-          BtnName={this.state.BtnName}
-        />
+        <SubjectAndBtnSimple subjectName={subjectName} btnName={btnName} />
       </div>
     );
   }

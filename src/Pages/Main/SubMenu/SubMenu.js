@@ -3,17 +3,17 @@ import "./SubMenu.scss";
 
 class SubMenu extends Component {
   render() {
+    const { handleSubMenu } = this.props;
     return (
-      <div className="submenuActive" style={{ display: this.props.Active }}>
+      <div className="SubMenu">
         <ul className="submenuListContaner">
           <li>
             <span className="submenuIconContainer">
               <span>트레이드인</span>
               <span>
-                {/* <i class="fas fa-times fa-2x" /> */}
                 <img
                   className="submenuquit"
-                  onClick={this.props.handleSubMenu}
+                  onClick={handleSubMenu}
                   src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNOTguMiAyLjdjMi40IDIuNCAyLjQgOC40IDAgMTJsLTM2IDM1LjYgMzYgMzYuMmMyLjMgMi40IDIuNCA4LjEuMiAxMC42bC0uMi4yYy0zLjYgMy42LTkuNSAzLjYtMTIgMEw1MC41IDYyIDE0LjYgOTcuM2MtMy42IDMuNi05LjUgMy42LTEyIDBDLS44IDk1LS44IDg5IDIuNyA4Ni41bDM2LjItMzYuMkwyLjcgMTQuN0MtLjggMTEtMSA1LjMgMi41IDIuOGwuMi0uMUM1LTEgMTEtMSAxNC43IDIuN2wzNS43IDM2IDM1LjktMzZjMi40LTMuNiA4LjMtMy42IDEyIDB6Ij48L3BhdGg+PC9zdmc+"
                 />
               </span>

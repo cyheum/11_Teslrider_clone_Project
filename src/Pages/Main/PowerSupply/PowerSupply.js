@@ -1,27 +1,25 @@
 import React, { Component } from "react";
-import SubjectAndBtn3 from "../SubjectAndBtn/SubjectAndBtn3";
+import SubjectAndBtnOfPower from "../SubjectAndBtn/SubjectAndBtnOfPower";
 import FooterBtnContainer from "../KnowingTesla/FooterBtnContainer";
-import "./PowerSupply.scss";
 import SecNav from "../SecNav/SecNav";
+import "./PowerSupply.scss";
+
+const powerSupplyInfo = {
+  subjectName: "모든 전력을 공급",
+  subName: "태양광과 Powerwall",
+  btnName: "자세히 알아보기",
+};
 
 class PowerSupply extends Component {
-  constructor() {
-    super();
-    this.state = {
-      subjectName: "모든 전력을 공급",
-      subName: "태양광과 Powerwall",
-      BtnName: "자세히 알아보기",
-    };
-  }
-
   render() {
+    const { subjectName, subName, btnName } = powerSupplyInfo;
     return (
-      <div className="powerSupply">
+      <div className="PowerSupply">
         <SecNav />
-        <SubjectAndBtn3
-          subjectName={this.state.subjectName}
-          subName={this.state.subName}
-          BtnName={this.state.BtnName}
+        <SubjectAndBtnOfPower
+          subjectName={subjectName}
+          subName={subName}
+          btnName={btnName}
         />
         <FooterBtnContainer />
       </div>

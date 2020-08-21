@@ -5,7 +5,7 @@ class SubjectAndBtn extends Component {
   render() {
     return (
       <>
-        <div className="mainModelNamesLine">
+        <div className="SubjectAndBtn">
           <h1 className="mainModelNames">Model 3</h1>
         </div>
         <div className="mainOrderBtnLine">

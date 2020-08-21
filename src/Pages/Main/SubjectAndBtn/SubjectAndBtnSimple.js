@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import "./SubjectAndBtn2.scss";
+import "./SubjectAndBtnSimple.scss";
 
-class SubjectAndBtn2 extends Component {
+class SubjectAndBtnSimple extends Component {
   render() {
+    const { subjectName, btnName } = this.props;
     return (
       <>
-        <div className="mainModelNamesLine">
-          <h1 className="mainModelNames">{this.props.subjectName}</h1>
+        <div className="SubjectAndBtn">
+          <h1 className="mainModelNames">{subjectName}</h1>
         </div>
         <div className="mainOrderBtnLine">
           <div className="mainOrderBtnContainer">
             <a className="mainOrderbtn" href="/" title="Model 3 주문하기">
-              {this.props.BtnName}
+              {btnName}
             </a>
           </div>
         </div>
@@ -20,4 +21,4 @@ class SubjectAndBtn2 extends Component {
   }
 }
 
-export default SubjectAndBtn2;
+export default SubjectAndBtnSimple;

@@ -3,7 +3,7 @@ import "./FooterBtn.scss";
 
 class FooterBtn extends Component {
   render() {
-    return <button className="footerBtn"></button>;
+    return <button className="FooterBtn" />;
   }
 }
 

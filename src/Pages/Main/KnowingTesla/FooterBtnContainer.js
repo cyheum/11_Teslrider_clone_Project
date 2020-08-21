@@ -5,9 +5,9 @@ import "./FooterBtnContainer.scss";
 class FooterBtnContainer extends Component {
   render() {
     return (
-      <div className="mainViewBtnsContainer">
+      <div className="FooterBtnContainer">
         <ul className="mainViewBtns">
-          <div></div>
+          <div />
           <FooterBtn />
         </ul>
       </div>
