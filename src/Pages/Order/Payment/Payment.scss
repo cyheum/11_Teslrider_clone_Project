@@ -1,5 +1,19 @@
 @import "../../../Styles/common.scss";
 
+@mixin inputStyle {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 30em;
+  border: 1px solid white;
+  font-size: 13px;
+}
+
+@mixin divStyle {
+  font-size: 15px;
+  padding: 15px 20px;
+  color: $gray;
+}
+
 .Payment {
   height: calc(100vh - 166px);
   width: 100%;
@@ -12,7 +26,7 @@
 
     span {
       font-size: 14px;
-      color: gray;
+      color: $gray;
       margin: 0 5px;
     }
   }
@@ -23,7 +37,7 @@
 
     .checkBoxContainer {
       width: 100%;
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid $gray;
       padding-bottom: 50px;
 
       .titleAboutUserInfo {
@@ -62,20 +76,14 @@
         padding-right: 5px;
 
         div {
-          font-size: 15px;
-          padding: 15px 20px;
-          color: gray;
+          @include divStyle();
         }
 
         input {
-          width: 100%;
-          padding: 10px 20px;
-          border-radius: 30em;
-          border: 1px solid white;
-          font-size: 13px;
+          @include inputStyle();
 
           &:focus {
-            border: 1px solid gray;
+            border: 1px solid $gray;
           }
         }
       }
@@ -84,34 +92,34 @@
     .agreeBtnContainer {
       margin-top: 15px;
       padding-bottom: 30px;
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid $gray;
 
       &:last-child {
         border: none;
       }
 
       .wrapAgreeCheckBox {
-        @include center(center);
-        justify-content: flex-start;
+        @include center(flex-start);
         margin: 30px 0 30px;
 
         .agreeCheckBox {
           width: 25px;
           height: 25px;
-          border: 1px solid gray;
+          border: 1px solid $gray;
           border-radius: 3px;
           margin-right: 20px;
         }
 
         div {
           font-size: 1.5rem;
-          color: gray;
+          color: $gray;
         }
       }
     }
 
     .paymentInfoTitle {
       margin-bottom: 40px;
+
       div {
         &:first-child {
           font-size: 1.7rem;
@@ -121,13 +129,14 @@
 
         &:last-child {
           font-size: 1.4rem;
-          color: gray;
+          color: $gray;
         }
       }
     }
 
     .userCreditCardInfo {
       margin-bottom: 40px;
+
       .titleAboutSection {
         font-size: 25px;
         margin-bottom: 10px;
@@ -138,20 +147,14 @@
         padding-right: 5px;
 
         div {
-          font-size: 15px;
-          padding: 15px 20px;
-          color: gray;
+          @include divStyle();
         }
 
         input {
-          width: 100%;
-          padding: 10px 20px;
-          border-radius: 30em;
-          border: 1px solid white;
-          font-size: 13px;
+          @include inputStyle();
 
           &:focus {
-            border: 1px solid gray;
+            border: 1px solid $gray;
           }
         }
       }
@@ -167,27 +170,21 @@
             padding-right: 20px;
           }
           div {
-            font-size: 15px;
-            padding: 15px 20px;
-            color: gray;
+            @include divStyle();
           }
 
           input {
-            width: 100%;
-            padding: 10px 20px;
-            border-radius: 30em;
-            border: 1px solid white;
-            font-size: 13px;
+            @include inputStyle();
 
             &:focus {
-              border: 1px solid gray;
+              border: 1px solid $gray;
             }
           }
         }
       }
     }
 
-    .userAdressContainer {
+    .userAddressContainer {
       margin-bottom: 20px;
 
       .titleAboutSection {
@@ -195,34 +192,28 @@
         margin-bottom: 10px;
       }
 
-      .inputUserAdressContainer {
+      .inputUserAddressContainer {
         width: 100%;
         padding-right: 5px;
 
         div {
-          font-size: 15px;
-          padding: 15px 20px;
-          color: gray;
+          @include divStyle();
         }
 
         input {
-          width: 100%;
-          padding: 10px 20px;
-          border-radius: 30em;
-          border: 1px solid white;
-          font-size: 13px;
+          @include inputStyle();
 
           &:focus {
-            border: 1px solid gray;
+            border: 1px solid $gray;
           }
         }
       }
 
-      .wrapUserDetailAdressInfo {
+      .wrapUserDetailAddressInfo {
         width: 100%;
         display: flex;
 
-        .inputUserDetailAdressInfoContainer {
+        .inputUserDetailAddressInfoContainer {
           width: 100%;
           padding-right: 20px;
 
@@ -230,20 +221,14 @@
             padding-right: 0;
           }
           div {
-            font-size: 15px;
-            padding: 15px 20px;
-            color: gray;
+            @include divStyle();
           }
 
           input {
-            width: 100%;
-            padding: 10px 20px;
-            border-radius: 30em;
-            border: 1px solid white;
-            font-size: 13px;
+            @include inputStyle();
 
             &:focus {
-              border: 1px solid gray;
+              border: 1px solid $gray;
             }
           }
         }

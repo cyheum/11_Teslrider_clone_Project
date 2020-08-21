@@ -1,39 +1,19 @@
 import React, { Component } from "react";
 import "./Payment.scss";
+import InputUserInfo from "./InputUserInfo/InputUserInfo";
+import AgreeCheckBox from "./AgreeCheckBox/AgreeCheckBox";
+import InputUserExpirationCardInfo from "./InputUserExpirationCardInfo/InputUserExpirationCardInfo";
+import InputUserAddress from "./InputUserAddress/InputUserAddress";
+import InputUserDetailAddressInfo from "./InputUserDetailAddressInfo/InputUserDetailAddressInfo";
 
 export default class Payment extends Component {
-  constructor() {
-    super();
-    this.state = {
-      userInfoTitle: [
-        "이메일 주소",
-        "이름 (영문)",
-        "성명 (한글)",
-        "전화번호",
-        "성(영문)",
-      ],
-      agreeList: [
-        "Tesla의 개인정보처리방침 에 따른 개인정보 수집 이용 및 국내외 사업자에 대한 개인정보 제공에 동의 합니다.",
-        "Tesla의 자동차구매계약 상세조건 및 수퍼차저 공정 이용 정책에 동의합니다",
-        "Tesla의 위치기반서비스약관 에 동의합니다.",
-      ],
-      creditCardInfo: {
-        cardNameNum: ["카드상의 이름", "카드 번호"],
-        expiration: ["만료 월", "만료 연도"],
-      },
-      userAdressInfo: {
-        mainAdress: ["청구지 주소1", "청구지 주소2"],
-        detailAdress: ["구/군/시", "우편번호", "국가"],
-      },
-    };
-  }
   render() {
     const {
       userInfoTitle,
       agreeList,
       creditCardInfo: { cardNameNum, expiration },
-      userAdressInfo: { mainAdress, detailAdress },
-    } = this.state;
+      userAddressInfo: { mainAddress, detailAddress },
+    } = paymentData;
     return (
       <div className="Payment">
         <div className="fixDesignBtn">
@@ -56,22 +36,12 @@ export default class Payment extends Component {
           </div>
           <div className="wrapInputUserInfo">
             {userInfoTitle.map((title, index) => {
-              return (
-                <div className="inputUserInfoContainer" key={index}>
-                  <div>{title}</div>
-                  <input type="text" />
-                </div>
-              );
+              return <InputUserInfo key={index} title={title} />;
             })}
           </div>
           <div className="agreeBtnContainer">
             {agreeList.map((text, index) => {
-              return (
-                <div className="wrapAgreeCheckBox" key={index}>
-                  <div className="agreeCheckBox"></div>
-                  <div>{text}</div>
-                </div>
-              );
+              return <AgreeCheckBox key={index} text={text} />;
             })}
           </div>
           <div className="paymentInfoTitle">
@@ -93,39 +63,18 @@ export default class Payment extends Component {
             })}
             <div className="wrapUserExpirationCardInfo">
               {expiration.map((title) => {
-                return (
-                  <div
-                    className="inputUserExpirationCardInfoContainer"
-                    key={title}
-                  >
-                    <div>{title}</div>
-                    <input type="text" />
-                  </div>
-                );
+                return <InputUserExpirationCardInfo key={title} />;
               })}
             </div>
           </div>
-          <div className="userAdressContainer">
+          <div className="userAddressContainer">
             <div className="titleAboutSection">결제 정보</div>
-            {mainAdress.map((title) => {
-              return (
-                <div className="inputUserAdressContainer" key={title}>
-                  <div>{title}</div>
-                  <input type="text" />
-                </div>
-              );
+            {mainAddress.map((title) => {
+              return <InputUserAddress key={title} title={title} />;
             })}
-            <div className="wrapUserDetailAdressInfo">
-              {detailAdress.map((title) => {
-                return (
-                  <div
-                    className="inputUserDetailAdressInfoContainer"
-                    key={title}
-                  >
-                    <div>{title}</div>
-                    <input type="text" />
-                  </div>
-                );
+            <div className="wrapUserDetailAddressInfo">
+              {detailAddress.map((title) => {
+                return <InputUserDetailAddressInfo key={title} title={title} />;
               })}
             </div>
           </div>
@@ -143,3 +92,26 @@ export default class Payment extends Component {
     );
   }
 }
+
+const paymentData = {
+  userInfoTitle: [
+    "이메일 주소",
+    "이름 (영문)",
+    "성명 (한글)",
+    "전화번호",
+    "성(영문)",
+  ],
+  agreeList: [
+    "Tesla의 개인정보처리방침 에 따른 개인정보 수집 이용 및 국내외 사업자에 대한 개인정보 제공에 동의 합니다.",
+    "Tesla의 자동차구매계약 상세조건 및 수퍼차저 공정 이용 정책에 동의합니다",
+    "Tesla의 위치기반서비스약관 에 동의합니다.",
+  ],
+  creditCardInfo: {
+    cardNameNum: ["카드상의 이름", "카드 번호"],
+    expiration: ["만료 월", "만료 연도"],
+  },
+  userAddressInfo: {
+    mainAddress: ["청구지 주소1", "청구지 주소2"],
+    detailAddress: ["구/군/시", "우편번호", "국가"],
+  },
+};

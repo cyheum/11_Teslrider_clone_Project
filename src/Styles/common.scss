@@ -10,6 +10,10 @@
   outline-style: none;
 }
 
+$gray: #999999;
+$borderGray: #dfdfdf;
+$borderBlue: #007fff;
+
 @mixin center($justify-content) {
   display: flex;
   justify-content: $justify-content;

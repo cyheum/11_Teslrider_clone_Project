@@ -1,11 +1,15 @@
 @import "../../Styles/common.scss";
 
 .Order {
+  * {
+    font-size: 1.2rem;
+  }
+
   section {
-    padding: 76px 0 90px;
-    min-height: 100vh;
     height: 100%;
     width: 100%;
+    padding: 76px 0 90px;
+    min-height: 100vh;
 
     main {
       position: relative;

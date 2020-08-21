@@ -8,8 +8,15 @@
 
   div {
     width: 100%;
+
     .insideCarImg {
       min-width: 100%;
+      opacity: 0;
+
+      &.appearComponent {
+        transition: opacity 1s;
+        opacity: 1;
+      }
     }
   }
 }

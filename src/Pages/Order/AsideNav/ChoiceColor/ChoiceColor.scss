@@ -1,15 +1,15 @@
 @import "../../../../Styles/common.scss";
 
 .ChoiceColor {
-  padding: 50px;
   height: 100%;
   display: flex;
   flex-flow: column;
   justify-content: center;
+  padding: 50px;
 
   .choiceContainer {
     padding: 10px 0;
-    border-bottom: 1px solid #e2e2e2;
+    border-bottom: 1px solid $borderGray;
 
     &:last-child {
       margin-top: 10px;
@@ -38,7 +38,7 @@
         }
 
         &.pushed {
-          box-shadow: 0 0 0 2px #007fff;
+          box-shadow: 0 0 0 2px $borderBlue;
         }
       }
     }

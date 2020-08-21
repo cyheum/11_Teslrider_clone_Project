@@ -10,7 +10,7 @@
   .descriptionText {
     font-size: 13px;
     line-height: 200%;
-    color: gray;
+    color: $gray;
 
     span {
       font-size: 16px;
@@ -22,9 +22,9 @@
     height: auto;
 
     .choiceCarBtn {
-      width: 100%;
       @include center(space-between);
-      border: 1px solid gray;
+      width: 100%;
+      border: 1px solid $gray;
       border-radius: 50em;
       background-color: white;
       padding: 12px 20px;
@@ -33,7 +33,7 @@
       transition: box-shadow 500ms;
 
       &.pushed {
-        box-shadow: 0 0 0 2px #007fff;
+        box-shadow: 0 0 0 2px $borderBlue;
       }
 
       &:last-child {

@@ -107,11 +107,13 @@
 
   .showTotalPrice {
     margin-bottom: 30px;
+
     ul {
       display: flex;
       justify-content: space-around;
       border-bottom: 1px solid gray;
       margin-bottom: 10px;
+
       li {
         font-size: 2rem;
         color: gray;
@@ -136,6 +138,7 @@
 
     .feesContainer {
       margin: 40px 0;
+
       .fees {
         width: 100%;
         @include center(space-between);

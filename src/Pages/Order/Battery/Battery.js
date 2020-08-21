@@ -9,13 +9,21 @@ export default class Battery extends Component {
       distance: 0,
       speed: 0,
       arrivalTime: 0,
+      activeClass: "",
     };
   }
   componentDidMount() {
     this.countNum("distance", 487);
     this.countNum("speed", 250);
     this.countNum("arrivalTime", 4);
+    this.delay();
   }
+
+  delay = () => {
+    setTimeout(() => {
+      this.setState(() => ({ activeClass: "appearComponent" }));
+    }, 100);
+  };
 
   countNum = (name, limit) => {
     let increase = setInterval(() => {
@@ -29,12 +37,12 @@ export default class Battery extends Component {
   };
 
   render() {
-    const { distance, speed, arrivalTime } = this.state;
+    const { distance, speed, arrivalTime, activeClass } = this.state;
     return (
       <div className="Battery">
         <div>
           <img
-            className="carImg"
+            className={`carImg ${activeClass}`}
             alt="carImg"
             src="https://static-assets.tesla.com/configurator/compositor?&options=$WTAS,$PPSW,$MTS03&view=STUD_3QTR_V2&model=ms&size=1441&bkba_opt=1&version=v0028d202008130539&version=v0028d202008130539}"
           />

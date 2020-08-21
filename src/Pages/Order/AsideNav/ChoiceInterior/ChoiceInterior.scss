@@ -1,8 +1,13 @@
 @import "../../../../Styles/common.scss";
 
 .ChoiceInterior {
-  padding: 50px;
+  padding: 30px 50px 50px;
   height: 100%;
+
+  * {
+    font-size: 1.4rem;
+  }
+
   .choiceContainer {
     padding: 10px 0;
 
@@ -28,7 +33,7 @@
         }
 
         &.pushed {
-          box-shadow: 0 0 0 2px #007fff;
+          box-shadow: 0 0 0 2px $borderBlue;
         }
       }
     }
@@ -44,19 +49,17 @@
 
     .descriptionText {
       font-size: 15px;
-      color: gray;
+      color: $gray;
     }
   }
 
   .subTitle {
-    font-size: 14px;
     margin: 10px 0 20px;
   }
 
   .mainDescription {
     list-style: disc;
-    font-size: 14px;
-    color: gray;
+    color: $gray;
     line-height: 180%;
     margin: 10px 0;
 
@@ -65,8 +68,7 @@
 
       .subDescription {
         list-style: circle;
-        font-size: 12px;
-        color: gray;
+        color: $gray;
         line-height: 180%;
         margin: 15px 0;
       }
