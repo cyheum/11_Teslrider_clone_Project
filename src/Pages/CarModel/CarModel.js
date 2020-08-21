@@ -15,15 +15,15 @@ class CarModel extends Component {
   render() {
     return (
       <>
-        <Main></Main>
-        <Secure></Secure>
-        <Performance></Performance>
-        <Distance></Distance>
-        <Autopilot></Autopilot>
-        <Interior></Interior>
-        <Exterior></Exterior>
-        <Specs></Specs>
-        <Order></Order>
+        <Main />
+        <Secure />
+        <Performance />
+        <Distance />
+        <Autopilot />
+        <Interior />
+        <Exterior />
+        <Specs />
+        <Order />
         <SideNav />
       </>
     );

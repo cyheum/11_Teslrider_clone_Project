@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SpecSum from '../Components/SpecSum';
+import SpecSum from '../Components/SpecSum/SpecSum';
 import ModelFooter from '../Components/ModelFooter';
 import './Performance.scss';
 
