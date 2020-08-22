@@ -5,8 +5,8 @@ class SubjectAndBtnOfPower extends Component {
   render() {
     const { subjectName, subName, btnName } = this.props;
     return (
-      <>
-        <div className="SubjectAndBtn">
+      <div className="SubjectAndBtnOfPower">
+        <div className="subjectAndBtn">
           <h1 className="mainModelNames">{this.props.subjectName}</h1>
         </div>
         <div className="subName">{this.props.subName}</div>
@@ -17,7 +17,7 @@ class SubjectAndBtnOfPower extends Component {
             </a>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

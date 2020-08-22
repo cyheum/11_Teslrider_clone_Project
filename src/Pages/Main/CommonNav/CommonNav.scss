@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 20;
 
   .teslaLogoContainer {
     width: 100px;
@@ -22,7 +23,8 @@
 
     li {
       margin: 0 10px;
-      font-size: 14px;
+      font-size: 16px;
+      font-weight: 600;
     }
   }
 

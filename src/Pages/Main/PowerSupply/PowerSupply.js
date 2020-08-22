@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import SubjectAndBtnOfPower from "../SubjectAndBtn/SubjectAndBtnOfPower";
 import FooterBtnContainer from "../KnowingTesla/FooterBtnContainer";
-import SecNav from "../SecNav/SecNav";
 import "./PowerSupply.scss";
 
 const powerSupplyInfo = {
@@ -15,7 +14,6 @@ class PowerSupply extends Component {
     const { subjectName, subName, btnName } = powerSupplyInfo;
     return (
       <div className="PowerSupply">
-        <SecNav />
         <SubjectAndBtnOfPower
           subjectName={subjectName}
           subName={subName}

@@ -4,6 +4,16 @@
   position: absolute;
   top: 0;
   right: 0;
+  animation: menuIn 100ms ease-in-out;
+
+  @keyframes menuIn {
+    0% {
+      transform: translateX(310px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
 
   .submenuListContaner {
     height: 100vh;

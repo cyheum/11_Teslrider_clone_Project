@@ -1,23 +1,20 @@
 import React, { Component } from "react";
-import SecNav from "../SecNav/SecNav";
 import SubjectAndBtnSimple from "../SubjectAndBtn/SubjectAndBtnSimple";
+import CommonFooter from "../CommonFooter/CommonFooter";
 import "./MainModelY.scss";
 
-class MainModelY extends Component {
-  constructor() {
-    super();
-    this.state = {
-      subjectName: "Model Y",
-      btnName: "자세히 알아보기",
-    };
-  }
+const mainModelYInfo = {
+  subjectName: "Model Y",
+  btnName: "자세히 알아보기",
+};
 
+class MainModelY extends Component {
   render() {
-    const { subjectName, btnName } = this.state;
+    const { subjectName, btnName } = mainModelYInfo;
     return (
       <div className="MainModelY">
-        <SecNav />
         <SubjectAndBtnSimple subjectName={subjectName} btnName={btnName} />
+        <CommonFooter />
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter, Link } from "react-router-dom";
 import SubMenu from "../SubMenu/SubMenu";
 import TeslaLogoImg from "../ImgAndVideo/TeslaLogoImg";
 import "./CommonNav.scss";
@@ -36,7 +37,9 @@ class CommonNav extends Component {
           </ul>
         </div>
         <div className="navLoginContainer">
-          <div className="navLoginBtn">로그인</div>
+          <Link to="/login">
+            <div className="navLoginBtn">로그인</div>
+          </Link>
           <i className="fas fa-bars fa-2x" onClick={handleSubMenu} />
         </div>
       </nav>

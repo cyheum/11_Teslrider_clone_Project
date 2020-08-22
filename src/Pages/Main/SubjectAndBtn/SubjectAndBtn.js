@@ -4,8 +4,8 @@ import "./SubjectAndBtn.scss";
 class SubjectAndBtn extends Component {
   render() {
     return (
-      <>
-        <div className="SubjectAndBtn">
+      <div className="SubjectAndBtn">
+        <div className="subjectAndBtn">
           <h1 className="mainModelNames">Model 3</h1>
         </div>
         <div className="mainOrderBtnLine">
@@ -15,7 +15,7 @@ class SubjectAndBtn extends Component {
             </a>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
