@@ -4,6 +4,10 @@ import TeslaLogoImg from "../ImgAndVideo/TeslaLogoImg";
 import GoToTopBtn from "../ImgAndVideo/GoToTopBtn";
 
 class SecNav extends Component {
+  goToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   render() {
     return (
       <div className="SecNav">
@@ -12,7 +16,7 @@ class SecNav extends Component {
             <TeslaLogoImg />
           </div>
           <div className="topBtnContainer">
-            <GoToTopBtn />
+            <GoToTopBtn gotoTop={this.goToTop} />
           </div>
         </nav>
       </div>
