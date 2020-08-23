@@ -12,7 +12,9 @@ export default class Footer extends Component {
               ₩101,190,000<div>연료비 절감 후</div>
             </div>
             <div className="wrapPrice">
-              ₩107,990,000<div>연료비 절감 전</div>
+              {/* {this.props.totalPrice} */}
+              ₩101,190,000
+              <div>연료비 절감 전</div>
             </div>
             <span>예상 결제 가격</span>
           </div>

@@ -3,17 +3,8 @@ import NavContent from "./NavContent/NavContent";
 import "./HeaderNav.scss";
 
 export default class HeaderNav extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      titleName: ["1.자동차", "2.외부", "3.인테리어", "4.오토파일럿", "5.결제"],
-    };
-  }
-
   render() {
     const { changeComponent, activeComponent } = this.props;
-    const { titleName } = this.state;
     return (
       <nav className="HeaderNav">
         <div className="wrapLogo">
@@ -39,3 +30,11 @@ export default class HeaderNav extends Component {
     );
   }
 }
+
+const titleName = [
+  "1.자동차",
+  "2.외부",
+  "3.인테리어",
+  "4.오토파일럿",
+  "5.결제",
+];

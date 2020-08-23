@@ -3,12 +3,9 @@
 .ChoiceAutopilot {
   padding: 50px;
 
-  * {
-    font-size: 1.4rem;
-  }
-
   .wrapMainTitle {
     margin-bottom: 30px;
+
     div {
       @include center(flex-start);
 
@@ -42,8 +39,9 @@
     li {
       line-height: 160%;
       list-style: disc;
-      color: $gray;
       margin-bottom: 10px;
+      font-size: 1.4rem;
+      color: $gray;
     }
   }
 
@@ -51,17 +49,23 @@
     margin: 10px 0 20px;
   }
 
-  button {
+  .autopilotCheckBox {
     @include center(space-between);
     width: 100%;
     background-color: white;
     border: 1px solid $borderGray;
-    border-radius: 30em;
+    border-radius: 30px;
     padding: 17px 22px;
     margin-bottom: 20px;
+    cursor: pointer;
+
+    &.checked {
+      box-shadow: 0 0 0 2px $borderBlue inset;
+    }
 
     div {
       @include center(center);
+      font-size: 1.4rem;
 
       input {
         width: 20px;
@@ -72,10 +76,10 @@
   }
   .addDescription {
     max-width: 270px;
+    margin-bottom: 20px;
     font-size: 13px;
     line-height: 200%;
     color: $gray;
-    margin-bottom: 20px;
   }
 
   .lastDescription {

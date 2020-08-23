@@ -10,11 +10,11 @@ import Payment from "./Payment/Payment";
 import "./Order.scss";
 
 const orderComponentList = {
-  0: <Battery />,
-  1: <Paint />,
-  2: <Interior />,
-  3: <Autopilot />,
-  4: <Payment />,
+  0: Battery,
+  1: Paint,
+  2: Interior,
+  3: Autopilot,
+  4: Payment,
 };
 
 class Order extends Component {
@@ -23,7 +23,37 @@ class Order extends Component {
 
     this.state = {
       activeComponent: 0,
+      batteryIsPushedAt: 0,
+      isColorBtnPushedAt: 0,
+      isWheelBtnPushedAt: 0,
+      interiorPushedAt: 0,
+      isAutopilotChecked: false,
+      totalPrice: "",
     };
+  }
+
+  passProp = (Comp) => {
+    return class extends React.Component {
+      render() {
+        return <Comp {...this.props} />;
+      }
+    };
+  };
+
+  componentDidMount() {
+    // fetch("http://10.58.4.12:8000/customizing/totalprice", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     model: "Model 3",
+    //     battery: "Long Range",
+    //     color: "Pearl White Multi-Coat",
+    //     wheel: "18인치 에어로 휠",
+    //     interior: "All Black",
+    //     auto_pilot: 0,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => this.setState({ totalPrice: res.total_price }));
   }
 
   clickHandler = (componentIdx) => {
@@ -32,8 +62,42 @@ class Order extends Component {
     });
   };
 
+  handleClickChangeCarBtn = (num) => {
+    this.setState({
+      batteryIsPushedAt: num,
+    });
+  };
+
+  handleClickChangeBtn = (index, num) => {
+    if (index === 0) {
+      this.setState({
+        isColorBtnPushedAt: num,
+      });
+    } else {
+      this.setState({
+        isWheelBtnPushedAt: num,
+      });
+    }
+  };
+
+  clickHandlerChangeStyle = (num) => {
+    this.setState({
+      interiorPushedAt: num,
+    });
+  };
+
+  clickHandlerChangeAutopilotCheckedState = () => {
+    this.setState({
+      isAutopilotChecked: !this.state.isAutopilotChecked,
+    });
+  };
+
   render() {
     const { activeComponent } = this.state;
+    const NewProp = this.passProp(
+      orderComponentList[this.state.activeComponent]
+    );
+
     return (
       <article className="Order">
         <HeaderNav
@@ -42,9 +106,20 @@ class Order extends Component {
         />
         <section>
           <main>
-            {orderComponentList[activeComponent]}
-            <AsideNav activeComponent={activeComponent} />
-            <Footer />
+            <NewProp
+              totalData={this.state}
+              handleClickChangeCarBtn={this.handleClickChangeCarBtn}
+            />
+            <AsideNav
+              totalData={this.state}
+              handleClickChangeCarBtn={this.handleClickChangeCarBtn}
+              handleClickChangeBtn={this.handleClickChangeBtn}
+              clickHandlerChangeStyle={this.clickHandlerChangeStyle}
+              clickHandlerChangeAutopilotCheckedState={
+                this.clickHandlerChangeAutopilotCheckedState
+              }
+            />
+            <Footer totalPrice={this.state.totalPrice} />
           </main>
         </section>
       </article>

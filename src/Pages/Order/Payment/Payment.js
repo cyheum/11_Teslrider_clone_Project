@@ -7,6 +7,16 @@ import InputUserAddress from "./InputUserAddress/InputUserAddress";
 import InputUserDetailAddressInfo from "./InputUserDetailAddressInfo/InputUserDetailAddressInfo";
 
 export default class Payment extends Component {
+  state = {
+    isEnterprise: 1,
+  };
+
+  clickHandlerChangeBuyer = (index) => {
+    this.setState({
+      isEnterprise: index,
+    });
+  };
+
   render() {
     const {
       userInfoTitle,
@@ -14,6 +24,7 @@ export default class Payment extends Component {
       creditCardInfo: { cardNameNum, expiration },
       userAddressInfo: { mainAddress, detailAddress },
     } = paymentData;
+    const { isEnterprise } = this.state;
     return (
       <div className="Payment">
         <div className="fixDesignBtn">
@@ -24,12 +35,42 @@ export default class Payment extends Component {
           <div className="checkBoxContainer">
             <div className="titleAboutUserInfo">계정 세부 사항 입력</div>
             <div className="checkBoxList">
-              <div className="checkBox">
-                <div></div>
+              <div
+                className="wrapCheckBox"
+                onClick={() => this.clickHandlerChangeBuyer(1)}
+              >
+                <div
+                  className={
+                    isEnterprise ? "checkBox checked" : "checkBox normal"
+                  }
+                >
+                  <div
+                    className={
+                      isEnterprise
+                        ? "circleInCheckBox normal"
+                        : "circleInCheckBox hidden"
+                    }
+                  />
+                </div>
                 개인
               </div>
-              <div className="checkBox">
-                <div></div>
+              <div
+                className="wrapCheckBox"
+                onClick={() => this.clickHandlerChangeBuyer(0)}
+              >
+                <div
+                  className={
+                    isEnterprise ? "checkBox normal" : "checkBox checked"
+                  }
+                >
+                  <div
+                    className={
+                      isEnterprise
+                        ? "circleInCheckBox hidden"
+                        : "circleInCheckBox normal"
+                    }
+                  />
+                </div>
                 기업
               </div>
             </div>

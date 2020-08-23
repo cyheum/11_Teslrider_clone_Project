@@ -1,5 +1,6 @@
 @import "../../../Styles/common.scss";
-footer {
+
+.Footer {
   width: 100%;
   padding: 8px 10px 9px;
   position: fixed;
@@ -13,13 +14,14 @@ footer {
 
     .charge {
       font-size: 17px;
-      padding: 0 60px 0 50px;
+      padding-right: 60px;
+      padding-left: 50px;
     }
 
     .totalPrice {
       @include center(center);
-      border-left: 1px solid gray;
-      border-right: 1px solid gray;
+      border-left: 1px solid $gray;
+      border-right: 1px solid $gray;
       padding: 0 40px;
       margin: 5px 0;
 
@@ -40,26 +42,26 @@ footer {
       }
     }
   }
-}
 
-.wrapNextBtn {
-  width: 360px;
-  margin: 0 20px;
+  .wrapNextBtn {
+    width: 360px;
+    margin: 0 20px;
 
-  .nextBtn {
-    width: 100%;
-    background-color: #3e6ae1;
-    color: white;
-    font-size: 12px;
-    border-radius: 20px;
-    border: none;
-    margin: 8px 0;
-    padding: 13px 40px;
-    transition: background-color 500ms;
-    cursor: pointer;
+    .nextBtn {
+      width: 100%;
+      margin: 8px 0;
+      padding: 13px 40px;
+      background-color: #3e6ae1;
+      color: white;
+      font-size: 12px;
+      border-radius: 20px;
+      border: none;
+      transition: background-color 500ms;
+      cursor: pointer;
 
-    &:hover {
-      background-color: #3457b1;
+      &:hover {
+        background-color: #3457b1;
+      }
     }
   }
 }

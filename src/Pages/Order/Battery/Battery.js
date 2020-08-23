@@ -38,13 +38,18 @@ export default class Battery extends Component {
 
   render() {
     const { distance, speed, arrivalTime, activeClass } = this.state;
+    const { batteryIsPushedAt } = this.props.totalData;
     return (
       <div className="Battery">
         <div>
           <img
             className={`carImg ${activeClass}`}
             alt="carImg"
-            src="https://static-assets.tesla.com/configurator/compositor?&options=$WTAS,$PPSW,$MTS03&view=STUD_3QTR_V2&model=ms&size=1441&bkba_opt=1&version=v0028d202008130539&version=v0028d202008130539}"
+            src={
+              batteryIsPushedAt === 0
+                ? "https://static-assets.tesla.com/configurator/compositor?&options=$WTAS,$PPSW,$MTS03&view=STUD_3QTR_V2&model=ms&size=1441&bkba_opt=1&version=v0028d202008130539&version=v0028d202008130539}"
+                : "https://static-assets.tesla.com/configurator/compositor?&options=$WTAS,$PPSW,$MTS06&view=STUD_3QTR_V2&model=ms&size=1441&bkba_opt=1&version=v0028d202008200649&version=v0028d202008200649"
+            }
           />
         </div>
         <div className="carDescription">

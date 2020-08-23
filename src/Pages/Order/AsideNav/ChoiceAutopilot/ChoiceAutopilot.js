@@ -8,6 +8,10 @@ export default class ChoiceAutopilot extends Component {
       addDescription,
       lastDescription,
     } = description;
+    const {
+      clickHandlerChangeAutopilotCheckedState,
+      totalData: { isAutopilotChecked },
+    } = this.props;
     return (
       <div className="ChoiceAutopilot">
         <div className="wrapMainTitle">
@@ -33,10 +37,17 @@ export default class ChoiceAutopilot extends Component {
           <li>교통 신호등 및 정지 표지판을 인지하여 작동합니다.</li>
           <li>시내에서 자동 주행합니다.</li>
         </ul>
-        <button>
+        <button
+          className={
+            isAutopilotChecked
+              ? "autopilotCheckBox checked"
+              : "autopilotCheckBox normal"
+          }
+          onClick={clickHandlerChangeAutopilotCheckedState}
+        >
           <div>
-            <input type="checkbox" />
-            옵션 선택하기
+            <input type="checkbox" checked={isAutopilotChecked} />
+            {isAutopilotChecked ? "선택한 옵션" : "옵션 선택하기"}
           </div>
           <div>₩9,043,000</div>
         </button>

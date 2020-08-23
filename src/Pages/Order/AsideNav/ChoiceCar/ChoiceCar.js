@@ -2,25 +2,11 @@ import React, { Component } from "react";
 import "./ChoiceCar.scss";
 
 export default class ChoiceCar extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      isPushedAt: 0,
-      choiceCarBtn: [
-        { option: "Long Range", price: "₩107,990,000" },
-        { option: "Performance", price: "₩132,990,000" },
-      ],
-    };
-  }
-
-  handleClickChangeCarBtn = (num) => {
-    this.setState({
-      isPushedAt: num,
-    });
-  };
   render() {
-    const { isPushedAt, choiceCarBtn } = this.state;
+    const {
+      handleClickChangeCarBtn,
+      totalData: { batteryIsPushedAt },
+    } = this.props;
     return (
       <div className="ChoiceCar">
         <div className="headText">차량 선택하기</div>
@@ -29,17 +15,16 @@ export default class ChoiceCar extends Component {
           프리미엄 인테리어 및 사운드 시스템이 포함됩니다.
         </div>
         <div className="wrapButton">
-          {choiceCarBtn.map((el, index) => {
-            const { option, price } = el;
+          {choiceCarBtn.map(({ option, price }, index) => {
             return (
               <button
                 key={index}
                 className={
-                  isPushedAt === index
+                  batteryIsPushedAt === index
                     ? "choiceCarBtn pushed"
                     : "choiceCarBtn normal"
                 }
-                onClick={() => this.handleClickChangeCarBtn(index)}
+                onClick={() => handleClickChangeCarBtn(index)}
               >
                 <span>{option}</span>
                 <span>{price}</span>
@@ -58,3 +43,8 @@ export default class ChoiceCar extends Component {
     );
   }
 }
+
+const choiceCarBtn = [
+  { option: "Long Range", price: "₩107,990,000" },
+  { option: "Performance", price: "₩132,990,000" },
+];

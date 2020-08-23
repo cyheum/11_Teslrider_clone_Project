@@ -1,5 +1,11 @@
 @import "../../../../Styles/common.scss";
 
+@mixin widthAndFlex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .ChoicePayment {
   padding: 10px 20px 50px;
 
@@ -17,23 +23,21 @@
 
   .subTitle {
     font-size: 17px;
-    color: gray;
-    border-bottom: 1px solid gray;
+    color: $gray;
+    border-bottom: 1px solid $gray;
     padding: 12px 0;
   }
 
   .detailUserChoiceContainer {
-    padding: 10px 0 0;
+    padding-top: 10px;
 
     .detailUserChoice {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
+      @include widthAndFlex;
       margin: 10px 0;
 
       div {
         font-size: 1.5rem;
-        color: gray;
+        color: $gray;
 
         &:first-child {
           max-width: 64%;
@@ -43,11 +47,9 @@
   }
 
   .totalPrice {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    @include widthAndFlex;
     padding: 13px 0;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid $gray;
 
     div {
       font-size: 1.5rem;
@@ -56,15 +58,13 @@
   }
 
   .savingPrice {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    @include widthAndFlex;
     padding: 13px 0;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid $gray;
 
     div {
       font-size: 1.5rem;
-      color: gray;
+      color: $gray;
     }
   }
 
@@ -85,7 +85,7 @@
 
   .savingPriceDescription {
     font-size: 1.2rem;
-    color: gray;
+    color: $gray;
     margin-bottom: 5px;
   }
 
@@ -111,12 +111,12 @@
     ul {
       display: flex;
       justify-content: space-around;
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid $gray;
       margin-bottom: 10px;
 
       li {
         font-size: 2rem;
-        color: gray;
+        color: $gray;
         padding: 10px 25px;
       }
     }

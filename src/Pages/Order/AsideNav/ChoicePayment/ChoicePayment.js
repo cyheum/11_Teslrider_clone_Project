@@ -15,17 +15,38 @@ export default class ChoicePayment extends Component {
         },
         { title: "오토파일럿", content: "포함" },
       ],
+      totalCarImg: {},
     };
   }
 
+  componentDidMount() {
+    fetch("/yeheum/MockData/choiceCar.json")
+      .then((res) => res.json())
+      .then((res) => this.setState({ totalCarImg: res }));
+  }
+
   render() {
-    const { userCustomData } = this.state;
+    const { userCustomData, totalCarImg } = this.state;
+    const {
+      batteryIsPushedAt,
+      isWheelBtnPushedAt,
+      isColorBtnPushedAt,
+      interiorPushedAt,
+      isAutopilotChecked,
+    } = this.props.totalData;
+    console.log(totalCarImg);
+
     return (
       <div className="ChoicePayment">
         <div className="wrapUserCustomCar">
           <img
             alt="userCustomCar"
-            src="https://static-assets.tesla.com/configurator/compositor?&options=$WTAS,$PPSW,$MTS03&view=STUD_3QTR_V2&model=ms&size=1441&bkba_opt=1&version=v0028d202008190353"
+            src={
+              totalCarImg.carImgData &&
+              totalCarImg.carImgData[batteryIsPushedAt][isWheelBtnPushedAt][
+                isColorBtnPushedAt
+              ]
+            }
           />
           <div>귀하의 Model S</div>
         </div>

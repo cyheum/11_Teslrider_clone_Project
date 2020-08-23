@@ -2,68 +2,23 @@ import React, { Component } from "react";
 import "./ChoiceColor.scss";
 
 export default class ChoiceColor extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isColorBtnPushedAt: 0,
-      isWheelBtnPushedAt: 0,
-      aboutChoiceData: [
-        {
-          choiceBtn: [
-            "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_ppsw.png?&version=v0028d202008130539",
-            "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_pbsb.png?&version=v0028d202008130539",
-            "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_pmng.png?&version=v0028d202008130539",
-            "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_ppsb.png?&version=v0028d202008130539",
-            "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_ppmr.png?&version=v0028d202008130539",
-          ],
-          title: "색상 선택하기",
-          description: "Pearl White Multi-Coat",
-          include: "포함",
-        },
-        {
-          choiceBtn: [
-            "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_swat_whl_wtas.png?&version=v0028d202008130539",
-            "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_swat_whl_wttc.png?&version=v0028d202008130539",
-          ],
-          title: "휠 선택하기",
-          description: "19인치 실버 휠",
-          include: "포함",
-        },
-      ],
-    };
-  }
-
-  handleClickChangeBtn = (index, num) => {
-    if (index === 0) {
-      this.setState({
-        isColorBtnPushedAt: num,
-      });
-    } else {
-      this.setState({
-        isWheelBtnPushedAt: num,
-      });
-    }
-  };
-
   setButtonClassName = (index, btnIdx) => {
-    const { isColorBtnPushedAt, isWheelBtnPushedAt } = this.state;
-    if (index === 0) {
-      return isColorBtnPushedAt === btnIdx
-        ? "choiceColorButton pushed"
-        : "choiceColorButton normal";
-    } else {
-      return isWheelBtnPushedAt === btnIdx
-        ? "choiceColorButton pushed"
-        : "choiceColorButton normal";
-    }
+    const { isColorBtnPushedAt, isWheelBtnPushedAt } = this.props.totalData;
+    const isPushed =
+      (index && isWheelBtnPushedAt === btnIdx) ||
+      (!index && isColorBtnPushedAt === btnIdx);
+    return `choiceColorButton ${isPushed ? "pushed" : "normal"}`;
   };
 
   render() {
-    const { aboutChoiceData } = this.state;
+    const {
+      handleClickChangeBtn,
+      totalData: { isColorBtnPushedAt, isWheelBtnPushedAt },
+    } = this.props;
     return (
       <div className="ChoiceColor">
         {aboutChoiceData.map((el, index) => {
-          const { choiceBtn, title, description, include } = el;
+          const { choiceBtn, title, description, price } = el;
           return (
             <div className="choiceContainer" key={index}>
               <div className="headText">{title}</div>
@@ -75,7 +30,7 @@ export default class ChoiceColor extends Component {
                       key={btnIdx}
                     >
                       <img
-                        onClick={() => this.handleClickChangeBtn(index, btnIdx)}
+                        onClick={() => handleClickChangeBtn(index, btnIdx)}
                         alt="colorbuttonImg"
                         src={style}
                       />
@@ -84,8 +39,16 @@ export default class ChoiceColor extends Component {
                 })}
               </div>
               <div className="colorDescription">
-                <span>{description}</span>
-                <span>{include}</span>
+                <span>
+                  {index
+                    ? description[isWheelBtnPushedAt]
+                    : description[isColorBtnPushedAt]}
+                </span>
+                <span>
+                  {index
+                    ? price[isWheelBtnPushedAt]
+                    : price[isColorBtnPushedAt]}
+                </span>
               </div>
             </div>
           );
@@ -94,3 +57,33 @@ export default class ChoiceColor extends Component {
     );
   }
 }
+
+const aboutChoiceData = [
+  {
+    choiceBtn: [
+      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_ppsw.png?&version=v0028d202008130539",
+      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_pbsb.png?&version=v0028d202008130539",
+      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_pmng.png?&version=v0028d202008130539",
+      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_ppsb.png?&version=v0028d202008130539",
+      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_ppmr.png?&version=v0028d202008130539",
+    ],
+    title: "색상 선택하기",
+    description: [
+      "Pearl White Multi-Coat",
+      "Solid Black",
+      "Midnight Silver Metallic",
+      "Deep Blue Metallic",
+      "Red Multi-Coat",
+    ],
+    price: ["포함", "₩1,929,000", "₩1,929,000", "₩1,929,000", "₩3,279,000"],
+  },
+  {
+    choiceBtn: [
+      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_swat_whl_wtas.png?&version=v0028d202008130539",
+      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_swat_whl_wttc.png?&version=v0028d202008130539",
+    ],
+    title: "휠 선택하기",
+    description: ["19인치 실버 휠", "21인치 소닉 카본 트윈 터빈 휠"],
+    price: ["포함", "₩4,672,000"],
+  },
+];
