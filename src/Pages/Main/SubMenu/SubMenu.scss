@@ -1,0 +1,47 @@
+.SubMenu {
+  width: 310px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  animation: menuIn 100ms ease-in-out;
+
+  @keyframes menuIn {
+    0% {
+      transform: translateX(310px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+
+  .submenuListContaner {
+    height: 100vh;
+    background-color: white;
+    padding-top: 52px;
+
+    li {
+      height: 52px;
+      margin: 0 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid lightgray;
+
+      .submenuIconContainer {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      span {
+        font-size: 14px;
+
+        .submenuquit {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+  }
+}
