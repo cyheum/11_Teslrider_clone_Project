@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
 
-  .loginScreen {
+  .LoginScreen {
     height: 100%;
     padding-top: 52px;
     display: flex;
@@ -23,8 +23,8 @@
       .inputContainer {
         margin-top: 22px;
 
-        .emailContainer,
-        .passwordContainer {
+        .EmailContainer,
+        .PasswordContainer {
           display: flex;
           flex-direction: column;
           margin-bottom: 17px;
@@ -58,6 +58,7 @@
               align-items: center;
 
               .showPw {
+                cursor: pointer;
                 font-size: 14px;
                 color: rgb(92, 94, 98);
               }
@@ -90,7 +91,7 @@
           }
         }
 
-        .loginPageLoginBtn {
+        .LoginPageLoginBtn {
           width: 100%;
           height: 40px;
           margin: 3px 0 12px 0;
@@ -124,7 +125,7 @@
         }
       }
 
-      .lineContainer {
+      .LineContainer {
         width: 100%;
         margin: 40px 0;
         display: flex;
@@ -149,7 +150,7 @@
         }
       }
 
-      .createAccountBtn {
+      .CreateAccountBtn {
         width: 100%;
         height: 40px;
         border: 3px solid black;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SubMenu from "../SubMenu/SubMenu";
 import TeslaLogoImg from "../ImgAndVideo/TeslaLogoImg";
 import "./CommonNav.scss";
