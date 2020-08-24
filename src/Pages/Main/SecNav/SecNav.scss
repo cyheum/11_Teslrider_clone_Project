@@ -1,0 +1,47 @@
+.SecNav {
+  height: 52px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 5;
+
+  .navContainer {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .teslaLogoContainer {
+      width: 100px;
+      height: 24px;
+
+      .TeslaLogoImg {
+        width: 100%;
+        height: 100%;
+        margin-left: 20px;
+        filter: invert(100%);
+      }
+    }
+
+    .topBtnContainer {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      margin: 0 20px;
+
+      .GoToTopBtn {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 18px;
+        -moz-transform: scaleY(-1);
+        -o-transform: scaleY(-1);
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
+        filter: FlipV;
+        -ms-filter: "FlipV";
+        filter: invert(100%);
+      }
+    }
+  }
+}

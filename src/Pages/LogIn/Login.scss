@@ -1,0 +1,169 @@
+.LogIn {
+  width: 100vw;
+  height: 100vh;
+
+  .loginScreen {
+    height: 100%;
+    padding-top: 52px;
+    display: flex;
+    justify-content: center;
+
+    .loginContainer {
+      width: 380px;
+      height: 500px;
+      padding: 0 24px;
+
+      .titleLogin {
+        padding: 32px 0 8px 0;
+        line-height: 45px;
+        font-size: 34px;
+        font-weight: 500;
+      }
+
+      .inputContainer {
+        margin-top: 22px;
+
+        .emailContainer,
+        .passwordContainer {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 17px;
+
+          label {
+            margin: 0 20px 4px 20px;
+            display: flex;
+
+            .loginTooltipIcon {
+              padding-bottom: 2px;
+              margin-left: 10px;
+            }
+
+            span {
+              font-size: 14px;
+              font-weight: 500;
+              color: rgb(92, 94, 98);
+            }
+          }
+
+          .pwInputContainer {
+            position: relative;
+
+            .showPwContainer {
+              height: 100%;
+              width: 13%;
+              position: absolute;
+              top: 0;
+              right: 0;
+              display: flex;
+              align-items: center;
+
+              .showPw {
+                font-size: 14px;
+                color: rgb(92, 94, 98);
+              }
+            }
+          }
+
+          input {
+            width: 100%;
+            height: 40px;
+            border: none;
+            background-color: #f4f4f4;
+            border-radius: 50px;
+            padding-left: 20px;
+
+            &:focus {
+              outline: 0;
+              box-shadow: 0 0 1px #808080;
+              transition-duration: 200ms;
+            }
+
+            &[type="text"] {
+              letter-spacing: 0.04em;
+            }
+
+            &[type="text"],
+            &[type="password"] {
+              font-size: 15px;
+              font-weight: 700;
+            }
+          }
+        }
+
+        .loginPageLoginBtn {
+          width: 100%;
+          height: 40px;
+          margin: 3px 0 12px 0;
+          border: none;
+          border-radius: 50px;
+          background-color: #3e6be0;
+          color: white;
+          font-size: 12px;
+
+          &:hover {
+            background-color: #3557b1;
+            transition: 0.5s;
+          }
+        }
+
+        .helpUser {
+          display: flex;
+          justify-content: center;
+
+          a {
+            border-bottom: 1px solid rgb(92, 94, 98);
+          }
+
+          a,
+          span {
+            margin: 0 5px;
+            font-size: 12px;
+            font-weight: 500;
+            color: rgb(92, 94, 98);
+          }
+        }
+      }
+
+      .lineContainer {
+        width: 100%;
+        margin: 40px 0;
+        display: flex;
+        justify-content: center;
+
+        .or {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 14px;
+          color: rgb(92, 94, 98);
+        }
+
+        .or::before,
+        .or::after {
+          content: "";
+          width: 40%;
+          height: 1px;
+          margin: 0 8px;
+          background-color: rgba(92, 94, 98, 0.1);
+        }
+      }
+
+      .createAccountBtn {
+        width: 100%;
+        height: 40px;
+        border: 3px solid black;
+        border-radius: 50px;
+        margin: 8px 0;
+        font-size: 12px;
+        background-color: white;
+
+        &:hover {
+          background-color: black;
+          color: white;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}
