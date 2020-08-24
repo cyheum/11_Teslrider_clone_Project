@@ -51,6 +51,10 @@
     padding: 13px 0;
     border-bottom: 1px solid $gray;
 
+    &.hidden {
+      display: none;
+    }
+
     div {
       font-size: 1.5rem;
       color: black;
@@ -62,6 +66,10 @@
     padding: 13px 0;
     border-bottom: 1px solid $gray;
 
+    &.hidden {
+      display: none;
+    }
+
     div {
       font-size: 1.5rem;
       color: $gray;
@@ -72,6 +80,10 @@
     width: 100%;
     @include center(space-between);
     padding: 10px 0;
+
+    &.hidden {
+      display: none;
+    }
 
     div {
       font-size: 2.7rem;
@@ -87,6 +99,10 @@
     font-size: 1.2rem;
     color: $gray;
     margin-bottom: 5px;
+
+    &.hidden {
+      display: none;
+    }
   }
 
   .detailButton {
@@ -95,13 +111,27 @@
     background-color: white;
     border: none;
     font-size: 1.3rem;
+    cursor: pointer;
 
     .detailButtonDeco {
+      @include center(center);
       width: 14px;
       height: 14px;
       border: 2px solid black;
       border-radius: 50%;
       margin-right: 15px;
+
+      .minus {
+        width: 5px;
+        height: 2px;
+        background-color: black;
+      }
+
+      .plus {
+        width: 5px;
+        height: 2px;
+        background-color: black;
+      }
     }
   }
 

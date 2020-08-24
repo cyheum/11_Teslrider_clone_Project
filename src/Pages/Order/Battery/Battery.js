@@ -12,28 +12,39 @@ export default class Battery extends Component {
       activeClass: "",
     };
   }
+
   componentDidMount() {
-    this.countNum("distance", 487);
-    this.countNum("speed", 250);
-    this.countNum("arrivalTime", 4);
+    this.countNum("distance", 487, 1);
+    this.countNum("speed", 250, 1);
+    this.countNum("arrivalTime", 3.8, 0.1);
     this.delay();
   }
+
+  countNum = (name, limit, incNum) => {
+    const { distance, speed, arrivalTime } = this.state;
+    let increase = setInterval(() => {
+      if (limit % 1 !== 0) {
+        this.setState({
+          [name]: (this.state[name] * 10 + incNum * 10) / 10,
+        });
+        if (this.state[name] > (limit * 10 - incNum * 10) / 10) {
+          clearInterval(increase);
+        }
+      } else {
+        this.setState({
+          [name]: this.state[name] + incNum,
+        });
+        if (this.state[name] > limit - incNum) {
+          clearInterval(increase);
+        }
+      }
+    });
+  };
 
   delay = () => {
     setTimeout(() => {
       this.setState(() => ({ activeClass: "appearComponent" }));
     }, 100);
-  };
-
-  countNum = (name, limit) => {
-    let increase = setInterval(() => {
-      this.setState({
-        [name]: this.state[name] + 1,
-      });
-      if (this.state[name] > limit - 1) {
-        clearInterval(increase);
-      }
-    }, 1);
   };
 
   render() {

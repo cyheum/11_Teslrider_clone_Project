@@ -58,9 +58,11 @@
     padding: 17px 22px;
     margin-bottom: 20px;
     cursor: pointer;
+    transition: box-shadow 500ms;
 
     &.checked {
       box-shadow: 0 0 0 2px $borderBlue inset;
+      transition: box-shadow 500ms;
     }
 
     div {

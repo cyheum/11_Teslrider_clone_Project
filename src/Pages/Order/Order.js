@@ -22,6 +22,7 @@ class Order extends Component {
     super();
 
     this.state = {
+      modelPushedAt: 0,
       activeComponent: 0,
       batteryIsPushedAt: 0,
       isColorBtnPushedAt: 0,
@@ -29,6 +30,7 @@ class Order extends Component {
       interiorPushedAt: 0,
       isAutopilotChecked: false,
       totalPrice: "",
+      fuelCostReductionPrice: "",
     };
   }
 
@@ -40,60 +42,94 @@ class Order extends Component {
     };
   };
 
+  runFetch = () => {
+    const {
+      modelPushedAt,
+      batteryIsPushedAt,
+      isColorBtnPushedAt,
+      isWheelBtnPushedAt,
+      interiorPushedAt,
+      isAutopilotChecked,
+    } = this.state;
+    fetch("http://10.58.5.163:8000/customizing/totalprice", {
+      method: "POST",
+      body: JSON.stringify({
+        model: carList[modelPushedAt].model,
+        battery: carList[modelPushedAt].battery[batteryIsPushedAt],
+        color: carList[modelPushedAt].color[isColorBtnPushedAt],
+        wheel: carList[modelPushedAt].wheel[isWheelBtnPushedAt],
+        interior: carList[modelPushedAt].interior[interiorPushedAt],
+        auto_pilot: isAutopilotChecked ? 1 : 0,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) =>
+        this.setState({
+          totalPrice: res.total_price,
+          fuelCostReductionPrice: res.fuel_cost_reduction_price,
+        })
+      );
+  };
+
   componentDidMount() {
-    // fetch("http://10.58.4.12:8000/customizing/totalprice", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     model: "Model 3",
-    //     battery: "Long Range",
-    //     color: "Pearl White Multi-Coat",
-    //     wheel: "18인치 에어로 휠",
-    //     interior: "All Black",
-    //     auto_pilot: 0,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => this.setState({ totalPrice: res.total_price }));
+    this.runFetch();
   }
 
   clickHandler = (componentIdx) => {
+    if (this.state.activeComponent === componentIdx) return;
     this.setState({
       activeComponent: componentIdx,
     });
   };
 
   handleClickChangeCarBtn = (num) => {
-    this.setState({
-      batteryIsPushedAt: num,
-    });
+    if (this.state.batteryIsPushedAt === num) return;
+    this.setState(
+      {
+        batteryIsPushedAt: num,
+      },
+      () => this.runFetch()
+    );
   };
 
   handleClickChangeBtn = (index, num) => {
-    if (index === 0) {
-      this.setState({
-        isColorBtnPushedAt: num,
-      });
-    } else {
-      this.setState({
-        isWheelBtnPushedAt: num,
-      });
+    const { isWheelBtnPushedAt, isColorBtnPushedAt } = this.state;
+    if (
+      (index && isWheelBtnPushedAt === num) ||
+      (!index && isColorBtnPushedAt === num)
+    ) {
+      return;
     }
+    const btnPushedAt = index ? "isWheelBtnPushedAt" : "isColorBtnPushedAt";
+    this.setState(
+      {
+        [btnPushedAt]: num,
+      },
+      () => this.runFetch()
+    );
   };
 
   clickHandlerChangeStyle = (num) => {
-    this.setState({
-      interiorPushedAt: num,
-    });
+    if (this.state.interiorPushedAt === num) return;
+    this.setState(
+      {
+        interiorPushedAt: num,
+      },
+      () => this.runFetch()
+    );
   };
 
   clickHandlerChangeAutopilotCheckedState = () => {
-    this.setState({
-      isAutopilotChecked: !this.state.isAutopilotChecked,
-    });
+    this.setState(
+      {
+        isAutopilotChecked: !this.state.isAutopilotChecked,
+      },
+      () => this.runFetch()
+    );
   };
 
   render() {
-    const { activeComponent } = this.state;
+    const { activeComponent, totalPrice, fuelCostReductionPrice } = this.state;
     const NewProp = this.passProp(
       orderComponentList[this.state.activeComponent]
     );
@@ -108,6 +144,7 @@ class Order extends Component {
           <main>
             <NewProp
               totalData={this.state}
+              changePropState={this.changePropState}
               handleClickChangeCarBtn={this.handleClickChangeCarBtn}
             />
             <AsideNav
@@ -119,7 +156,10 @@ class Order extends Component {
                 this.clickHandlerChangeAutopilotCheckedState
               }
             />
-            <Footer totalPrice={this.state.totalPrice} />
+            <Footer
+              totalPrice={totalPrice}
+              fuelCostReductionPrice={fuelCostReductionPrice}
+            />
           </main>
         </section>
       </article>
@@ -128,3 +168,20 @@ class Order extends Component {
 }
 
 export default Order;
+
+const carList = [
+  {
+    model: "Model S",
+    battery: ["Long Range", "Performance"],
+    color: [
+      "Pearl White Multi-Coat",
+      "Solid Black",
+      "Midnight Silver Metallic",
+      "Deep Blue Metallic",
+      "Red Multi-Coat",
+    ],
+    price: ["포함", "₩1,929,000", "₩1,929,000", "₩1,929,000", "₩3,279,000"],
+    wheel: ["19인치 실버 휠", "21인치 소닉 카본 트윈 터빈 휠"],
+    interior: ["All black", "Black & White", "Cream"],
+  },
+];

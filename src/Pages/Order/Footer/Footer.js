@@ -3,17 +3,18 @@ import "./Footer.scss";
 
 export default class Footer extends Component {
   render() {
+    const { totalPrice, fuelCostReductionPrice } = this.props;
     return (
       <footer className="Footer">
         <div className="wrapTotalPrice">
           <span className="charge">현금</span>
           <div className="totalPrice">
             <div className="wrapPrice">
-              ₩101,190,000<div>연료비 절감 후</div>
+              {fuelCostReductionPrice}
+              <div>연료비 절감 후</div>
             </div>
             <div className="wrapPrice">
-              {/* {this.props.totalPrice} */}
-              ₩101,190,000
+              {totalPrice}
               <div>연료비 절감 전</div>
             </div>
             <span>예상 결제 가격</span>

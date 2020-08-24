@@ -24,7 +24,7 @@ export default class Interior extends Component {
     const { batteryIsPushedAt, interiorPushedAt } = this.props.totalData;
     return (
       <div className="Interior">
-        <div>
+        <div className="wrapInsideCarImg">
           <img
             className={`insideCarImg ${this.state.activeClass}`}
             alt="insideCarImg"

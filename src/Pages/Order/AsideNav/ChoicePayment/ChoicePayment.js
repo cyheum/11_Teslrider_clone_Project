@@ -2,19 +2,40 @@ import React, { Component } from "react";
 import "./ChoicePayment.scss";
 
 export default class ChoicePayment extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const {
+      modelPushedAt,
+      batteryIsPushedAt,
+      isWheelBtnPushedAt,
+      isColorBtnPushedAt,
+      interiorPushedAt,
+      isAutopilotChecked,
+    } = this.props.totalData;
     this.state = {
       userCustomData: [
-        { title: "Model S Long Range", content: "₩107,990,000" },
-        { title: "Pearl White Multi-Coat", content: "포함" },
-        { title: "19인치 실버 휠", content: "포함" },
         {
-          title: "All Black 프리미엄 인테리어 및 애쉬 우드 데코",
-          content: "포함",
+          title: `${carList[modelPushedAt].model} ${carList[modelPushedAt].battery[batteryIsPushedAt]}`,
+          content: carList[modelPushedAt].batteryPrice[batteryIsPushedAt],
+        },
+        {
+          title: carList[modelPushedAt].color[isColorBtnPushedAt],
+          content: carList[modelPushedAt].colorPrice[isColorBtnPushedAt],
+        },
+        {
+          title: carList[modelPushedAt].wheel[isWheelBtnPushedAt],
+          content: carList[modelPushedAt].wheelPrice[isWheelBtnPushedAt],
+        },
+        {
+          title: `${carList[modelPushedAt].interior[interiorPushedAt]} 프리미엄 인테리어 및 ${carList[modelPushedAt].interiorName[batteryIsPushedAt][interiorPushedAt]}`,
+          content: carList[modelPushedAt].interiorPrice[interiorPushedAt],
         },
         { title: "오토파일럿", content: "포함" },
+        isAutopilotChecked
+          ? { title: "완전 자율 주행 기능", content: "₩9,043,000" }
+          : {},
       ],
+      detailBtnPushed: false,
       totalCarImg: {},
     };
   }
@@ -25,17 +46,25 @@ export default class ChoicePayment extends Component {
       .then((res) => this.setState({ totalCarImg: res }));
   }
 
+  clickHandlerChangeDetailBtn = () => {
+    this.setState({
+      detailBtnPushed: !this.state.detailBtnPushed,
+    });
+  };
+
   render() {
-    const { userCustomData, totalCarImg } = this.state;
+    const { userCustomData, totalCarImg, detailBtnPushed } = this.state;
     const {
+      modelPushedAt,
       batteryIsPushedAt,
       isWheelBtnPushedAt,
       isColorBtnPushedAt,
       interiorPushedAt,
       isAutopilotChecked,
+      totalPrice,
+      fuelCostReductionPrice,
     } = this.props.totalData;
-    console.log(totalCarImg);
-
+    console.log(this.state);
     return (
       <div className="ChoicePayment">
         <div className="wrapUserCustomCar">
@@ -62,24 +91,57 @@ export default class ChoicePayment extends Component {
             );
           })}
         </div>
-        <div className="totalPrice">
+        <div
+          className={
+            detailBtnPushed ? "totalPrice normal" : "totalPrice hidden"
+          }
+        >
           <div>구매가격</div>
-          <div>₩107,990,000</div>
+          <div>{fuelCostReductionPrice}</div>
         </div>
-        <div className="savingPrice">
+        <div
+          className={
+            detailBtnPushed ? "savingPrice normal" : "savingPrice hidden"
+          }
+        >
           <div>향후 5년 간 예상 연료비 절감</div>
           <div>- ₩6,800,000</div>
         </div>
-        <div className="afterSavingTotalPrice">
+        <div
+          className={
+            detailBtnPushed
+              ? "afterSavingTotalPrice normal"
+              : "afterSavingTotalPrice hidden"
+          }
+        >
           <div>예상 전체 절감 비용 반영 후 가격</div>
-          <div>₩101,190,000</div>
+          <div>{totalPrice}</div>
         </div>
-        <div className="savingPriceDescription">
+        <div
+          className={
+            detailBtnPushed
+              ? "savingPriceDescription normal"
+              : "savingPriceDescription hidden"
+          }
+        >
           모든 절감 비용은 구매 이후 경험하게 됩니다.
         </div>
-        <div className="savingPriceDescription">절감 계산 방법 보기</div>
-        <button className="detailButton">
-          <div className="detailButtonDeco" />
+        <div
+          className={
+            detailBtnPushed
+              ? "savingPriceDescription normal"
+              : "savingPriceDescription hidden"
+          }
+        >
+          절감 계산 방법 보기
+        </div>
+        <button
+          className="detailButton"
+          onClick={this.clickHandlerChangeDetailBtn}
+        >
+          <div className="detailButtonDeco">
+            <div className={detailBtnPushed ? "minus" : "plus"} />
+          </div>
           세부 사항 감추기
         </button>
         <div className="showTotalPrice">
@@ -90,11 +152,11 @@ export default class ChoicePayment extends Component {
           </ul>
           <div className="afterSavingTotalPrice">
             <div>예상 전체 절감 비용 반영 후 가격</div>
-            <div>₩101,190,000</div>
+            <div>{totalPrice}</div>
           </div>
           <div className="afterSavingTotalPrice">
             <div>구매 가격</div>
-            <div>₩107,990,000</div>
+            <div>{fuelCostReductionPrice}</div>
           </div>
           <div>세금 및 수수료 제외</div>
           <div className="feesContainer">
@@ -109,3 +171,33 @@ export default class ChoicePayment extends Component {
     );
   }
 }
+
+const carList = [
+  {
+    model: "Model S",
+    battery: ["Long Range", "Performance"],
+    batteryPrice: ["₩107,990,000", "₩132,990,000"],
+    color: [
+      "Pearl White Multi-Coat",
+      "Solid Black",
+      "Midnight Silver Metallic",
+      "Deep Blue Metallic",
+      "Red Multi-Coat",
+    ],
+    colorPrice: [
+      "포함",
+      "₩1,929,000",
+      "₩1,929,000",
+      "₩1,929,000",
+      "₩3,279,000",
+    ],
+    wheel: ["19인치 실버 휠", "21인치 소닉 카본 트윈 터빈 휠"],
+    wheelPrice: ["포함", "₩4,672,000"],
+    interior: ["All black", "Black & White", "Cream"],
+    interiorName: {
+      0: ["애쉬 우드 데코", "다크 우드 데코", "오크 우드 데코"],
+      1: ["카본 파이버 데코", "카본 파이버 데코", "오크 우드 데코"],
+    },
+    interiorPrice: ["포함", "₩1,929,000", "₩1,929,000"],
+  },
+];
