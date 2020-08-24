@@ -1,0 +1,90 @@
+@import "../../../../Styles/common.scss";
+
+.ChoiceAutopilot {
+  padding: 50px;
+
+  .wrapMainTitle {
+    margin-bottom: 30px;
+
+    div {
+      @include center(flex-start);
+
+      .mainTitle {
+        font-size: 20px;
+
+        &::after {
+          content: "";
+          display: inline-block;
+          height: 16px;
+          width: 1px;
+          margin: 0 10px;
+          background-color: black;
+        }
+      }
+    }
+
+    ul {
+      margin: 5px 0;
+    }
+  }
+
+  .mainTitle {
+    font-size: 20px;
+  }
+
+  ul {
+    padding-left: 30px;
+    margin-bottom: 20px;
+
+    li {
+      line-height: 160%;
+      list-style: disc;
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+      color: $gray;
+    }
+  }
+
+  .subTitle {
+    margin: 10px 0 20px;
+  }
+
+  .autopilotCheckBox {
+    @include center(space-between);
+    width: 100%;
+    background-color: white;
+    border: 1px solid $borderGray;
+    border-radius: 30px;
+    padding: 17px 22px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    &.checked {
+      box-shadow: 0 0 0 2px $borderBlue inset;
+    }
+
+    div {
+      @include center(center);
+      font-size: 1.4rem;
+
+      input {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+      }
+    }
+  }
+  .addDescription {
+    max-width: 270px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 200%;
+    color: $gray;
+  }
+
+  .lastDescription {
+    color: $gray;
+    font-size: 12px;
+    line-height: 150%;
+  }
+}
