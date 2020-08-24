@@ -1,0 +1,63 @@
+@import "../../../Styles/common.scss";
+
+.HeaderNav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  @include center(space-between);
+  border-bottom: 1px solid $borderGray;
+  background-color: white;
+  padding: 0 10px;
+
+  .wrapLogo {
+    @include center(flex-start);
+    width: 28%;
+    min-width: 100px;
+
+    .logo {
+      max-width: 100px;
+      margin-left: 10%;
+    }
+  }
+
+  ol {
+    @include center(space-around);
+    width: 100%;
+
+    li {
+      position: relative;
+      cursor: pointer;
+
+      &.titleNav {
+        @include center(center);
+        width: 100%;
+        max-width: 225px;
+        height: 76px;
+        font-size: 14px;
+        color: $gray;
+
+        &.pushed {
+          color: black;
+        }
+        &.actived {
+          &::after {
+            content: "";
+            height: 3px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            background-color: $borderBlue;
+          }
+        }
+      }
+    }
+  }
+
+  .choiceLanguage {
+    width: 30%;
+    text-align: right;
+    font-size: 19px;
+    padding-right: 10px;
+  }
+}

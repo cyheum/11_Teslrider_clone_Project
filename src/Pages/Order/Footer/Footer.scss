@@ -1,0 +1,67 @@
+@import "../../../Styles/common.scss";
+
+.Footer {
+  width: 100%;
+  padding: 8px 10px 9px;
+  position: fixed;
+  bottom: 0;
+  @include center(space-between);
+  background-color: #333333;
+
+  .wrapTotalPrice {
+    @include center(center);
+    color: white;
+
+    .charge {
+      font-size: 17px;
+      padding-right: 60px;
+      padding-left: 50px;
+    }
+
+    .totalPrice {
+      @include center(center);
+      border-left: 1px solid $gray;
+      border-right: 1px solid $gray;
+      padding: 0 40px;
+      margin: 5px 0;
+
+      .wrapPrice {
+        padding: 10px;
+        font-size: 22px;
+
+        div {
+          font-size: 13px;
+        }
+      }
+
+      span {
+        padding: 10px;
+        font-size: 15px;
+        text-decoration: underline;
+        text-underline-position: under;
+      }
+    }
+  }
+
+  .wrapNextBtn {
+    width: 360px;
+    margin: 0 20px;
+
+    .nextBtn {
+      width: 100%;
+      margin: 8px 0;
+      padding: 13px 40px;
+      background-color: #3e6ae1;
+      color: white;
+      font-size: 12px;
+      border-radius: 20px;
+      border: none;
+      transition: background-color 500ms;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #3457b1;
+      }
+    }
+  }
+}
