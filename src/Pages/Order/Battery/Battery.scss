@@ -1,0 +1,51 @@
+@import "../../../Styles/common.scss";
+
+.Battery {
+  @include center(center);
+  height: calc(100vh - 166px);
+  width: 100%;
+
+  div {
+    .carImg {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+
+      &.appearComponent {
+        transition: opacity 1s;
+        opacity: 1;
+      }
+    }
+  }
+
+  .carDescription {
+    position: absolute;
+    bottom: 3em;
+    @include center(center);
+
+    ul {
+      display: flex;
+
+      li {
+        height: 69px;
+        width: 240px;
+        @include center(center);
+        flex-flow: column;
+        border-right: 1px solid #dfdfdf;
+
+        &:last-child {
+          border: none;
+        }
+
+        .carDescriptiontopText {
+          font-size: 45px;
+        }
+
+        .carDescriptionbottomText {
+          font-size: 15px;
+          color: $gray;
+        }
+      }
+    }
+  }
+}

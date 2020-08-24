@@ -32,6 +32,14 @@
     width: 270px;
   }
 
+  .overflowItems::after {
+  display: block;
+  content: '';
+  width: 60px;
+  height: 1px;
+  background-color: black;
+}
+
   .overflowItemsHeader {
     display: flex;
     margin-bottom: 7px;

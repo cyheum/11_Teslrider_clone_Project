@@ -1,0 +1,77 @@
+@import "../../../../Styles/common.scss";
+
+.ChoiceInterior {
+  padding: 30px 50px 50px;
+  height: 100%;
+
+  * {
+    font-size: 1.4rem;
+  }
+
+  .choiceContainer {
+    padding: 10px 0;
+
+    .headText {
+      font-size: 20px;
+    }
+
+    .wrapChoiceStyleButton {
+      display: flex;
+
+      .choiceStyleButton {
+        width: 50px;
+        height: 50px;
+        margin: 6px;
+        padding: 3px;
+        border-radius: 50%;
+        transition: box-shadow 500ms;
+
+        img {
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+        }
+
+        &.pushed {
+          box-shadow: 0 0 0 2px $borderBlue;
+        }
+      }
+    }
+
+    .StyleDescription {
+      @include center(space-between);
+      margin: 10px 0;
+
+      span {
+        font-size: 15px;
+      }
+    }
+
+    .descriptionText {
+      font-size: 15px;
+      color: $gray;
+    }
+  }
+
+  .subTitle {
+    margin: 10px 0 20px;
+  }
+
+  .mainDescription {
+    list-style: disc;
+    color: $gray;
+    line-height: 180%;
+    margin: 10px 0;
+
+    ul {
+      padding-left: 15px;
+
+      .subDescription {
+        margin: 15px 0;
+        list-style: circle;
+        line-height: 180%;
+        color: $gray;
+      }
+    }
+  }
+}

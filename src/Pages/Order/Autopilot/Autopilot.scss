@@ -1,0 +1,33 @@
+@import "../../../Styles/common.scss";
+
+.Autopilot {
+  height: calc(100vh - 166px);
+  width: 100%;
+  background-color: #f6f6f6;
+  overflow: hidden;
+
+  .autopilotDescription {
+    max-width: 737px;
+    margin: 50px 100px 0;
+
+    div {
+      &:first-child {
+        font-size: 20px;
+        margin-bottom: 25px;
+      }
+
+      &:last-child {
+        font-size: 13px;
+        line-height: 200%;
+        color: $gray;
+      }
+    }
+  }
+  .wrapVideo {
+    video {
+      max-width: 100%;
+      mix-blend-mode: darken;
+      padding: 0 10px 10px 50px;
+    }
+  }
+}

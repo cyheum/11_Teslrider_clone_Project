@@ -1,6 +1,8 @@
 @import '../../../Styles/common.scss';
 
 .Main {
+  @include center(space-between);
+  flex-direction: column;
   width: 100vw;
   min-height: 100vh;
   background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/35d15221-0a5f-4dce-b484-a4db67b81dd2/bvlatuR/std/0x0/model-s@2x)no-repeat center;

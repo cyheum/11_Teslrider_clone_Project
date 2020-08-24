@@ -1,0 +1,71 @@
+@import '../../../Styles/common.scss';
+
+.Order {
+  @include center(flex-end);
+  width: 100vw;
+  height: calc(100vh - 109px);
+
+  .mainContainer {
+    display: flex;
+    align-items: center;
+    width: 85%;
+    margin-top: 5%;
+    min-height: 1px;
+    padding-bottom: 2vh;
+
+    .mainContents {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .itemLayout {
+      width: fit-content;
+      padding-top: 24px;
+      padding-left: 24px;
+    }
+
+    .contenstHeader {
+      padding-bottom: 16px;
+      font-size: 2.8rem;
+    }
+
+    .contentsBtn {
+      display: flex;
+      left: 0;
+      padding-bottom: 16px;
+      max-width: 250px;
+      min-width: 0;
+      width: 100%;
+    }
+
+    .orderBtn {
+      @include center(center);
+      width: 100%;
+      margin: 4px 5px;
+      padding: 10px 40px;
+      font-size: 1.2rem;
+      border: 3px solid #171a20;
+      border-radius: 100px;
+      color: black;
+    }
+
+    .mainImgWrap {
+      display: flex;
+    }
+
+    .mainImg {
+      max-width: 100%;
+      min-width: 700px;
+      margin-left: 10px;
+    }
+
+    .contentsBtn:hover {
+      .orderBtn {
+        transition: color .4s;
+        background-color: black;
+        transition: background-color .4s;
+        color: white;
+      }
+    }
+  }
+}

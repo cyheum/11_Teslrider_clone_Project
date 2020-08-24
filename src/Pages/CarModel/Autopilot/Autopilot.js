@@ -13,7 +13,7 @@ class Autopilot extends Component {
           </div>
           <OverflowContents />
         </div>
-        <ModelFooter />
+        <ModelFooter dataname={"autopilot"}/>
       </div>
     );
   }

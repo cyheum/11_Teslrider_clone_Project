@@ -11,10 +11,10 @@ class Performance extends Component {
           <div className="performanceMain">
             <SpecSum />
           </div>
-          <ModelFooter />
+          <ModelFooter dataname={"performance"}/>
         </div>
       </div>
-    );
+    );  
   }
 }
 

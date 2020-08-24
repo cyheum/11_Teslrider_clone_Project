@@ -1,0 +1,25 @@
+@import '../../../Styles/common.scss';
+
+.Exterior {
+  width: 100vw;
+  height: 100vh;
+
+  .exteriorContainer {
+    @include center(center);
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .main {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mainImg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/f55ee333-601a-48e5-9103-4abbeb4d99eb/bvlatuR/std/0x0/hero-high-viewport)no-repeat center / 100%;
+  }
+}

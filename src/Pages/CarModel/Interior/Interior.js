@@ -11,7 +11,7 @@ class Interior extends Component {
           <div className="imgWrap"></div>
           <OverflowContents />
         </div>
-        <ModelFooter />
+        <ModelFooter dataname="interior"/>
       </div>
     );
   }

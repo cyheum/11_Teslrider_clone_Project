@@ -1,0 +1,119 @@
+@import '../../../Styles/common.scss';
+
+.Specs{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  padding: 48px 20px;
+  background-color: black;
+  color: white;
+
+  .specContainer {
+    display: flex;
+    margin: auto 0;
+    width: 100%;
+
+    .specImg, .specInfo {
+      width: 100%;
+      height: 100%;
+      padding-top: 24px;
+      padding-left: 24px;
+    }
+
+    .modelImg {
+      max-width: 100%;
+      height: 501px;
+      padding-right: 60px;
+      background: url(https://www.tesla.com/sites/default/files/modelsx-new/sx-specs/MS-specs-desktop.jpg)no-repeat center /100%;
+    }
+
+    .specImg {
+      margin-bottom: 193px;
+    }
+
+    .infoWrap {
+      display: block;
+      max-width: 475px;
+      min-width: 320px;
+
+      .infoHeader {
+        padding-bottom: 24px;
+        font-size: 2.8rem;
+        font-weight: 600;
+      }
+
+      .inforMain {
+        margin: 8px 0;
+      }
+      
+      .labelWrap {
+        @include center(center);
+        width: 100%;
+      }
+      
+      .topLabel {
+        @include center(center);
+        width: 100%;
+        min-height: 33px;
+        margin-right: 10px;
+        margin-bottom: 8px;
+        border: 3px solid white;
+        border-radius: 100px;
+        font-size: 1.2rem;
+      }
+      
+      .activeBtn {
+        border: 3px solid white;
+      }
+
+      .inforFooter{
+        margin-bottom: 50px;
+      }
+
+      .more {
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+      }
+     
+      .iconWrap {
+        margin-right: 12px;
+        border: 3px solid white;
+        border-radius: 50%;
+      }
+    
+      .moreIcon {
+        width: 30px;
+        height: 30px;
+        background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid Meet' width='100' height='100'%3e%3cpath d='M54.7 30.7h-9.6v14.4H30.7v9.6h14.4v14.5l9.6-.1V54.7h14.4l.1-9.6H54.7'/%3e%3c/svg%3e")no-repeat center / 100%;
+        cursor: pointer;
+        filter: invert(100);
+      }
+    
+      .order {
+        width: 152px;
+        margin-left: 13px;
+      }
+    
+      .orderBtn {
+        @include center(center);
+        width: 100%;
+        min-width: auto;
+        height: 42px;
+        margin: 8px;
+        padding: 10px 32px;
+        font-size: 1.2rem;
+      }
+  
+      .iconWrap:hover {
+        transition: background-color .4s;
+        background-color: white;
+      }
+    
+      .moreIcon:hover {
+        transition: color .4s;
+        filter: none;
+      }
+    }
+  }
+}

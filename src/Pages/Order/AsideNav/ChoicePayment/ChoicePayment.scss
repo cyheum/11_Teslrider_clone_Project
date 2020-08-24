@@ -1,0 +1,158 @@
+@import "../../../../Styles/common.scss";
+
+@mixin widthAndFlex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ChoicePayment {
+  padding: 10px 20px 50px;
+
+  .wrapUserCustomCar {
+    img {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    div {
+      font-size: 30px;
+      font-weight: 400;
+      text-align: center;
+    }
+  }
+
+  .subTitle {
+    font-size: 17px;
+    color: $gray;
+    border-bottom: 1px solid $gray;
+    padding: 12px 0;
+  }
+
+  .detailUserChoiceContainer {
+    padding-top: 10px;
+
+    .detailUserChoice {
+      @include widthAndFlex;
+      margin: 10px 0;
+
+      div {
+        font-size: 1.5rem;
+        color: $gray;
+
+        &:first-child {
+          max-width: 64%;
+        }
+      }
+    }
+  }
+
+  .totalPrice {
+    @include widthAndFlex;
+    padding: 13px 0;
+    border-bottom: 1px solid $gray;
+
+    div {
+      font-size: 1.5rem;
+      color: black;
+    }
+  }
+
+  .savingPrice {
+    @include widthAndFlex;
+    padding: 13px 0;
+    border-bottom: 1px solid $gray;
+
+    div {
+      font-size: 1.5rem;
+      color: $gray;
+    }
+  }
+
+  .afterSavingTotalPrice {
+    width: 100%;
+    @include center(space-between);
+    padding: 10px 0;
+
+    div {
+      font-size: 2.7rem;
+
+      &:first-child {
+        font-size: 1.5rem;
+        color: black;
+      }
+    }
+  }
+
+  .savingPriceDescription {
+    font-size: 1.2rem;
+    color: $gray;
+    margin-bottom: 5px;
+  }
+
+  .detailButton {
+    display: flex;
+    margin: 40px 0 60px;
+    background-color: white;
+    border: none;
+    font-size: 1.3rem;
+
+    .detailButtonDeco {
+      width: 14px;
+      height: 14px;
+      border: 2px solid black;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+  }
+
+  .showTotalPrice {
+    margin-bottom: 30px;
+
+    ul {
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 1px solid $gray;
+      margin-bottom: 10px;
+
+      li {
+        font-size: 2rem;
+        color: $gray;
+        padding: 10px 25px;
+      }
+    }
+
+    .afterSavingTotalPrice {
+      width: 100%;
+      @include center(space-between);
+      padding: 0;
+
+      div {
+        font-size: 2.7rem;
+
+        &:first-child {
+          font-size: 1.5rem;
+          color: black;
+        }
+      }
+    }
+
+    .feesContainer {
+      margin: 40px 0;
+
+      .fees {
+        width: 100%;
+        @include center(space-between);
+        padding: 0;
+
+        div {
+          font-size: 2.7rem;
+
+          &:first-child {
+            font-size: 1.5rem;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

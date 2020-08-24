@@ -1,18 +1,25 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
   font-size: 10px;
-  font-family: HeiT ASC Traditional Chinese,M Hei PRC W45,AXIS Font Japanese W55,FB New Gothic,Gotham Book,system,sans-serif;
+  font-family: HeiT ASC Traditional Chinese, M Hei PRC W45,
+    AXIS Font Japanese W55, FB New Gothic, Gotham Book, system, sans-serif;
+  outline-style: none;
 }
+
+$gray: #999999;
+$borderGray: #dfdfdf;
+$borderBlue: #007fff;
 
 @mixin center($justify-content) {
   display: flex;
   justify-content: $justify-content;
   align-items: center;
 }
+<<<<<<< HEAD
 
 @mixin column {
   display: flex;
@@ -45,3 +52,5 @@
   40% {transform: translateY(-3px);}
   60% {transform: translateY(3px);}
 }
+=======
+>>>>>>> 48699b1c83e32a1640b5ca3d8673f2bc0660f3e9

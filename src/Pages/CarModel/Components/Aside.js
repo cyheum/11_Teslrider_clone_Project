@@ -3,26 +3,40 @@ import { Link } from 'react-router-dom';
 import './Aside.scss';
 
 class Aside extends Component {
+  constructor(props){
+    super(props);
+    this.state= {
+      data: {
+      }
+    }
+  }
+
+  componentDidMount() {
+    fetch("/data/Data.json")
+      .then((res) => res.json())
+      .then((res) => this.setState({ data: res.Aside[this.props.dataname] }));
+  }
+
   render() {
     return (
       <div className="Aside">
-        <div className="Container">
-            <div className="Header">
+        <div className="container">
+            <div className="header">
             <header>
-              <div className="smallHeader">주행 가능 거리</div>
-              <div className="bigHeader">자유로운 장거리 여행</div>
+              <div className="smallHeader">{this.state.data && this.state.data.title}</div>
+              <div className="bigHeader">{this.state.data && this.state.data.subTitle}</div>
             </header>
           </div>
-          <div className="Contents">
-            <p className="ContentText">업계 최고 수준의 주행 가능 거리와 편리한 충전 옵션을 자랑하는 Model S와 함께 전 세계 어디든 원하는 곳으로 떠날 수 있습니다.</p>
-            <div className="LowBtn">
-              <div className="LowLeft orderBtnText">
-                <div className="LowLeftBtnWrap">
-                  <div className="LowLeftBtn" />
+          <div className="contents">
+            <p className="contentText">{this.state.data && this.state.data.contentText}</p>
+            <div className="lowBtn">
+              <div className="lowLeft orderBtnText">
+                <div className="lowLeftBtnWrap">
+                  <div className="lowLeftBtn" />
                 </div>
                 자세히 알아보기
               </div>
-              <div className="Lowright">
+              <div className="lowright">
                 <Link to="/model" className="orderBtn">
                   <div className="orderBtnText">지금 주문하기</div>
                 </Link>

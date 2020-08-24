@@ -1,0 +1,55 @@
+@import "../../../../Styles/common.scss";
+
+.ChoiceColor {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding: 50px;
+
+  .choiceContainer {
+    padding: 10px 0;
+    border-bottom: 1px solid $borderGray;
+
+    &:last-child {
+      margin-top: 10px;
+      border: none;
+    }
+
+    .headText {
+      font-size: 20px;
+    }
+
+    .wrapChoiceColorButton {
+      display: flex;
+
+      .choiceColorButton {
+        width: 53px;
+        height: 53px;
+        padding: 3px;
+        margin: 6px;
+        border-radius: 50%;
+        transition: box-shadow 500ms;
+
+        img {
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+        }
+
+        &.pushed {
+          box-shadow: 0 0 0 2px $borderBlue;
+        }
+      }
+    }
+
+    .colorDescription {
+      @include center(space-between);
+      margin: 10px 0;
+
+      span {
+        font-size: 15px;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import "../../../Styles/common.scss";
+
+.AsideNav {
+  min-width: 435px;
+
+  .wrapDescription {
+    height: calc(100vh - 150px);
+    width: 435px;
+    position: fixed;
+    right: 0;
+    border-left: 1px solid #e2e2e2;
+    background-color: white;
+    overflow: auto;
+  }
+}

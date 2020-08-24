@@ -2,27 +2,13 @@ import React, { Component } from 'react';
 import './SideNav.scss';
 
 class SideNav extends Component {
-  state = {
-    label: [
-      {labelText: "model S"},
-      {labelText: "안전"},
-      {labelText: "퍼포먼스"},
-      {labelText: "주행 가능 거리"},
-      {labelText: "오토파일럿"},
-      {labelText: "인테리어"},
-      {labelText: "외부"},
-      {labelText: "사양"},
-      {labelText: "주문하기"}
-    ]
-  }
 
   makeLabel = () => {
-    let data = this.state.label;
-    return data.map(({label}, idx) =>
+    return LABEL.map(({text}, idx) =>
       (
-        <li className="sideNavItem">
+        <li className="sideNavItem" key={idx}>
         <div className="sideNavTab" />
-        <div className="sideNavLabel">{data}</div>
+        <div className="sideNavLabel">{text}</div>
       </li>
       )
     )
@@ -38,5 +24,17 @@ class SideNav extends Component {
     );
   }
 }
+
+const LABEL = [
+  {text: "model S"},
+  {text: "안전"},
+  {text: "퍼포먼스"},
+  {text: "주행 가능 거리"},
+  {text: "오토파일럿"},
+  {text: "인테리어"},
+  {text: "외부"},
+  {text: "사양"},
+  {text: "주문하기"}
+]
 
 export default SideNav;

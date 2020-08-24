@@ -17,7 +17,7 @@ class Distance extends Component {
             </div>
           </div>
         </div>
-        <Aside />
+        <Aside dataname={"distance"}/>
       </div>
     );
   }
