@@ -8,6 +8,7 @@ import Interior from "./Interior/Interior";
 import Autopilot from "./Autopilot/Autopilot";
 import Payment from "./Payment/Payment";
 import "./Order.scss";
+import ExpectPayment from "./ExpectPayment/ExpectPayment";
 
 const orderComponentList = {
   0: Battery,
@@ -28,6 +29,7 @@ class Order extends Component {
       isWheelBtnPushedAt: 0,
       interiorPushedAt: 0,
       isAutopilotChecked: false,
+      expectPaymentClicked: false,
       totalPrice: "",
     };
   }
@@ -92,12 +94,18 @@ class Order extends Component {
     });
   };
 
+  clickHandlerChangeExpectPaymentClickState = () => {
+    this.setState({
+      expectPaymentClicked: !this.state.expectPaymentClicked,
+    });
+  };
+
   render() {
-    const { activeComponent } = this.state;
+    const { activeComponent, expectPaymentClicked } = this.state;
     const NewProp = this.passProp(
       orderComponentList[this.state.activeComponent]
     );
-
+    console.log(expectPaymentClicked);
     return (
       <article className="Order">
         <HeaderNav
@@ -119,7 +127,21 @@ class Order extends Component {
                 this.clickHandlerChangeAutopilotCheckedState
               }
             />
-            <Footer totalPrice={this.state.totalPrice} />
+            {expectPaymentClicked ? (
+              <ExpectPayment
+                clickHandlerChangeExpectPaymentClickState={
+                  this.clickHandlerChangeExpectPaymentClickState
+                }
+              />
+            ) : (
+              ""
+            )}
+            <Footer
+              totalPrice={this.state.totalPrice}
+              clickHandlerChangeExpectPaymentClickState={
+                this.clickHandlerChangeExpectPaymentClickState
+              }
+            />
           </main>
         </section>
       </article>

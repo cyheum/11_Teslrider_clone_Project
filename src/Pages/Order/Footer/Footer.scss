@@ -34,11 +34,19 @@
         }
       }
 
-      span {
-        padding: 10px;
+      .expectPaymentBtn {
+        margin: 10px;
+        border-bottom: 1px solid white;
+        font-weight: 300;
         font-size: 15px;
-        text-decoration: underline;
-        text-underline-position: under;
+        cursor: pointer;
+        transition: all 500ms;
+
+        &:hover {
+          font-weight: 400;
+          box-shadow: 0 1px 0 0 white;
+          transition: all 500ms;
+        }
       }
     }
   }
