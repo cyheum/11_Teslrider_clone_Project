@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./Interior.scss";
+import "./OrderInterior.scss";
 
-export default class Interior extends Component {
+export default class OrderInterior extends Component {
   constructor() {
     super();
 
@@ -23,7 +23,7 @@ export default class Interior extends Component {
   render() {
     const { batteryIsPushedAt, interiorPushedAt } = this.props.totalData;
     return (
-      <div className="Interior">
+      <div className="OrderInterior">
         <div className="wrapInsideCarImg">
           <img
             className={`insideCarImg ${this.state.activeClass}`}

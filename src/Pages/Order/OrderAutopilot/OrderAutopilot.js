@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./Autopilot.scss";
+import "./OrderAutopilot.scss";
 
-export default class Autopilot extends Component {
+export default class OrderAutopilot extends Component {
   render() {
     return (
-      <div className="Autopilot">
+      <div className="OrderAutopilot">
         <div className="autopilotDescription">
           <div>오토파일럿</div>
           <div>

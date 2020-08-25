@@ -36,6 +36,7 @@ export default class ChoicePayment extends Component {
           : {},
       ],
       detailBtnPushed: false,
+      activePaymentMethod: 0,
       totalCarImg: {},
     };
   }
@@ -52,19 +53,26 @@ export default class ChoicePayment extends Component {
     });
   };
 
+  clickHandlerPaymentMethod = (index) => {
+    this.setState({
+      activePaymentMethod: index,
+    });
+  };
+
   render() {
-    const { userCustomData, totalCarImg, detailBtnPushed } = this.state;
     const {
-      modelPushedAt,
+      userCustomData,
+      totalCarImg,
+      detailBtnPushed,
+      activePaymentMethod,
+    } = this.state;
+    const {
       batteryIsPushedAt,
       isWheelBtnPushedAt,
       isColorBtnPushedAt,
-      interiorPushedAt,
-      isAutopilotChecked,
       totalPrice,
       fuelCostReductionPrice,
     } = this.props.totalData;
-    console.log(this.state);
     return (
       <div className="ChoicePayment">
         <div className="wrapUserCustomCar">
@@ -86,69 +94,65 @@ export default class ChoicePayment extends Component {
             return (
               <div className="detailUserChoice" key={index}>
                 <div>{title}</div>
-                <div>{content}</div>
+                <div className={detailBtnPushed ? "normal" : "hidden"}>
+                  {content}
+                </div>
               </div>
             );
           })}
         </div>
         <div
           className={
-            detailBtnPushed ? "totalPrice normal" : "totalPrice hidden"
-          }
-        >
-          <div>구매가격</div>
-          <div>{fuelCostReductionPrice}</div>
-        </div>
-        <div
-          className={
-            detailBtnPushed ? "savingPrice normal" : "savingPrice hidden"
-          }
-        >
-          <div>향후 5년 간 예상 연료비 절감</div>
-          <div>- ₩6,800,000</div>
-        </div>
-        <div
-          className={
             detailBtnPushed
-              ? "afterSavingTotalPrice normal"
-              : "afterSavingTotalPrice hidden"
+              ? "detailPaymentWrap normal"
+              : "detailPaymentWrap hidden"
           }
         >
-          <div>예상 전체 절감 비용 반영 후 가격</div>
-          <div>{totalPrice}</div>
-        </div>
-        <div
-          className={
-            detailBtnPushed
-              ? "savingPriceDescription normal"
-              : "savingPriceDescription hidden"
-          }
-        >
-          모든 절감 비용은 구매 이후 경험하게 됩니다.
-        </div>
-        <div
-          className={
-            detailBtnPushed
-              ? "savingPriceDescription normal"
-              : "savingPriceDescription hidden"
-          }
-        >
-          절감 계산 방법 보기
+          <div className="totalPrice">
+            <div>구매가격</div>
+            <div>{fuelCostReductionPrice}</div>
+          </div>
+          <div className="savingPrice">
+            <div>향후 5년 간 예상 연료비 절감</div>
+            <div>- ₩6,800,000</div>
+          </div>
+          <div className="afterSavingTotalPrice">
+            <div>예상 전체 절감 비용 반영 후 가격</div>
+            <div>{totalPrice}</div>
+          </div>
+          <div className="savingPriceDescription">
+            모든 절감 비용은 구매 이후 경험하게 됩니다.
+          </div>
+          <div className="savingPriceDescription">절감 계산 방법 보기</div>
         </div>
         <button
           className="detailButton"
           onClick={this.clickHandlerChangeDetailBtn}
         >
           <div className="detailButtonDeco">
-            <div className={detailBtnPushed ? "minus" : "plus"} />
+            <div
+              className={detailBtnPushed ? "detailBtn minus" : "detailBtn plus"}
+            />
           </div>
-          세부 사항 감추기
+          {detailBtnPushed ? "세부 사항 감추기" : "세부 사항 표시"}
         </button>
         <div className="showTotalPrice">
           <ul>
-            <li>현금</li>
-            <li>리스</li>
-            <li>할부</li>
+            {payment.map((el, idx) => {
+              return (
+                <li
+                  className={
+                    activePaymentMethod === idx
+                      ? "paymentMethod active"
+                      : "paymentMethod normal"
+                  }
+                  key={idx}
+                  onClick={() => this.clickHandlerPaymentMethod(idx)}
+                >
+                  {el}
+                </li>
+              );
+            })}
           </ul>
           <div className="afterSavingTotalPrice">
             <div>예상 전체 절감 비용 반영 후 가격</div>
@@ -201,3 +205,5 @@ const carList = [
     interiorPrice: ["포함", "₩1,929,000", "₩1,929,000"],
   },
 ];
+
+const payment = ["현금", "리스", "할부"];

@@ -4,16 +4,16 @@ import HeaderNav from "./HeaderNav/HeaderNav";
 import Footer from "./Footer/Footer";
 import Battery from "./Battery/Battery";
 import Paint from "./Paint/Paint";
-import Interior from "./Interior/Interior";
-import Autopilot from "./Autopilot/Autopilot";
+import OrderInterior from "./OrderInterior/OrderInterior";
+import OrderAutopilot from "./OrderAutopilot/OrderAutopilot";
 import Payment from "./Payment/Payment";
 import "./Order.scss";
 
 const orderComponentList = {
   0: Battery,
   1: Paint,
-  2: Interior,
-  3: Autopilot,
+  2: OrderInterior,
+  3: OrderAutopilot,
   4: Payment,
 };
 

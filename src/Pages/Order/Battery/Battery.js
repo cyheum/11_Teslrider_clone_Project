@@ -21,7 +21,6 @@ export default class Battery extends Component {
   }
 
   countNum = (name, limit, incNum) => {
-    const { distance, speed, arrivalTime } = this.state;
     let increase = setInterval(() => {
       if (limit % 1 !== 0) {
         this.setState({

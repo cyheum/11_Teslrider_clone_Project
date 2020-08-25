@@ -7,7 +7,12 @@ export default class Footer extends Component {
     return (
       <footer className="Footer">
         <div className="wrapTotalPrice">
-          <span className="charge">현금</span>
+          <select className="charge">
+            현금
+            <option value="현금">현금</option>
+            <option value="리스">리스</option>
+            <option value="할부">할부</option>
+          </select>
           <div className="totalPrice">
             <div className="wrapPrice">
               {fuelCostReductionPrice}

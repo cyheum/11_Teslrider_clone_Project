@@ -23,6 +23,7 @@
   .fixDesignBtn {
     width: 100%;
     padding: 10px 100px;
+    cursor: pointer;
 
     span {
       font-size: 14px;
@@ -122,18 +123,20 @@
       .wrapAgreeCheckBox {
         @include center(flex-start);
         margin: 30px 0 30px;
+        font-size: 1.5rem;
+        color: $gray;
+        cursor: pointer;
+        transition: color 1s;
+
+        &:hover {
+          color: black;
+          transition: color 1s;
+        }
 
         .agreeCheckBox {
           width: 25px;
           height: 25px;
-          border: 1px solid $gray;
-          border-radius: 3px;
           margin-right: 20px;
-        }
-
-        div {
-          font-size: 1.5rem;
-          color: $gray;
         }
       }
     }
@@ -194,11 +197,18 @@
             @include divStyle();
           }
 
-          input {
+          .selectBoxWrap {
             @include inputStyle();
+            background-color: white;
 
             &:focus {
               border: 1px solid $gray;
+            }
+
+            select {
+              width: 100%;
+              border: none;
+              font-size: 1.5rem;
             }
           }
         }
@@ -250,6 +260,32 @@
 
             &:focus {
               border: 1px solid $gray;
+            }
+          }
+        }
+
+        .inputUserExpirationCardInfoContainer {
+          width: 100%;
+
+          &:first-child {
+            padding-right: 20px;
+          }
+          div {
+            @include divStyle();
+          }
+
+          .selectBoxWrap {
+            @include inputStyle();
+            background-color: white;
+
+            &:focus {
+              border: 1px solid $gray;
+            }
+
+            select {
+              width: 100%;
+              border: none;
+              font-size: 1.5rem;
             }
           }
         }
