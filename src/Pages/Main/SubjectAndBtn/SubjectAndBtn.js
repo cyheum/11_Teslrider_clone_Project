@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MainStoreBtnContainer from "./MainStoreBtnContainer";
 import "./SubjectAndBtn.scss";
 
 class SubjectAndBtn extends Component {
@@ -6,14 +7,15 @@ class SubjectAndBtn extends Component {
     return (
       <div className="SubjectAndBtn">
         <div className="subjectAndBtn">
-          <h1 className="mainModelNames">Model 3</h1>
+          <h1 className="mainModelNames">{this.props.title}</h1>
         </div>
         <div className="mainOrderBtnLine">
           <div className="mainOrderBtnContainer">
-            <a className="mainOrderbtn" href="/" title="Model 3 주문하기">
+            <a className="mainOrderbtn" href="/">
               지금 주문하기
             </a>
           </div>
+          {this.props.storeBtn === false ? null : <MainStoreBtnContainer />}
         </div>
       </div>
     );

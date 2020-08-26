@@ -1,31 +1,27 @@
 .SignupNav {
-  height: 52px;
   width: 100%;
+  height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  .signupNavContainer {
-    height: 100%;
+  .teslaLogoContainer {
+    width: 100px;
+    height: 24px;
+
+    .TeslaLogoImg {
+      width: 100%;
+      height: 100%;
+      margin-left: 20px;
+      filter: invert(100%);
+    }
+  }
+
+  .topBtnContainer {
+    width: 20px;
+    height: 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
-    .teslaLogoContainer {
-      width: 100px;
-      height: 24px;
-
-      .TeslaLogoImg {
-        width: 100%;
-        height: 100%;
-        margin-left: 20px;
-        filter: invert(100%);
-      }
-    }
-
-    .topBtnContainer {
-      width: 20px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      margin: 0 20px;
-    }
+    margin: 0 20px;
   }
 }

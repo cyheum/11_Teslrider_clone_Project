@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import LoginTooltipIcon from "./LoginTooltipIcon";
 import LoginPageLoginBtn from "./LoginPageLoginBtn";
 import CreateAccountBtn from "./CreateAccountBtn";
@@ -16,8 +17,9 @@ class LoginScreen extends Component {
   }
 
   userInfo = (e) => {
+    const { name, value } = e.target;
     this.setState({
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
@@ -30,7 +32,7 @@ class LoginScreen extends Component {
 
   tryLogin = (e) => {
     e.preventDefault();
-    fetch("localhost:8000/user/signin", {
+    fetch("http://10.58.1.69:8000/user/signin", {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email,
@@ -38,12 +40,19 @@ class LoginScreen extends Component {
       }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res));
+      .then((res) => {
+        if (res.access_token) {
+          localStorage.setItem("access_token", res.access_token);
+          this.props.history.push("/");
+        } else {
+          alert("입력하신 이메일 주소 및 비밀번호가 등록되어 있지 않습니다.");
+        }
+      });
   };
 
   render() {
-    console.log(this.state);
     const { userInfo, handlePassword, tryLogin } = this;
+    const { inputType, visible } = this.state;
     return (
       <div className="LoginScreen">
         <div className="loginContainer">
@@ -61,14 +70,10 @@ class LoginScreen extends Component {
                 <span>비밀번호</span>
               </label>
               <div className="pwInputContainer">
-                <input
-                  type={this.state.inputType}
-                  name="password"
-                  onChange={userInfo}
-                />
+                <input type={inputType} name="password" onChange={userInfo} />
                 <div className="showPwContainer">
                   <span className="showPw" onClick={handlePassword}>
-                    {this.state.visible}
+                    {visible}
                   </span>
                 </div>
               </div>
@@ -88,4 +93,4 @@ class LoginScreen extends Component {
   }
 }
 
-export default LoginScreen;
+export default withRouter(LoginScreen);

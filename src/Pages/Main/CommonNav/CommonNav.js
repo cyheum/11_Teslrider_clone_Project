@@ -9,20 +9,30 @@ class CommonNav extends Component {
     super();
     this.state = {
       subMenuDisplay: false,
+      isLoggedIn: false,
     };
   }
 
-  handleSubMenu = (e) => {
+  handleSubMenu = () => {
     this.setState({
       subMenuDisplay: !this.state.subMenuDisplay,
     });
   };
 
+  componentDidMount = () => {
+    if (localStorage.getItem("access_token")) {
+      this.setState({
+        isLoggedIn: true,
+      });
+    }
+  };
+
   render() {
     const { handleSubMenu } = this;
+    const { subMenuDisplay, isLoggedIn } = this.state;
     return (
       <nav className="CommonNav">
-        {this.state.subMenuDisplay && <SubMenu handleSubMenu={handleSubMenu} />}
+        {subMenuDisplay && <SubMenu handleSubMenu={handleSubMenu} />}
         <div className="teslaLogoContainer">
           <TeslaLogoImg />
         </div>
@@ -37,9 +47,13 @@ class CommonNav extends Component {
           </ul>
         </div>
         <div className="navLoginContainer">
-          <Link to="/login">
-            <div className="navLoginBtn">로그인</div>
-          </Link>
+          {isLoggedIn ? (
+            <div className="navLoginBtn">TESLA 계정</div>
+          ) : (
+            <Link to="/login">
+              <div className="navLoginBtn">로그인</div>
+            </Link>
+          )}
           <i className="fas fa-bars fa-2x" onClick={handleSubMenu} />
         </div>
       </nav>
