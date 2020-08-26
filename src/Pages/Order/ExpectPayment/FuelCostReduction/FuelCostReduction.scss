@@ -2,16 +2,46 @@
 
 .FuelCostReduction {
   padding: 80px 100px;
+  width: 100%;
 
   .title {
     font-size: 2.4rem;
     margin-bottom: 15px;
   }
   .distanceFuelContainer {
+    display: flex;
+    margin: 20px 0;
+
     .distanceFuel {
-      .text {
+      width: 100%;
+
+      .inputBoxTitle {
+        margin: 0 10px 10px;
+        font-size: 1.5rem;
+        color: gray;
+      }
+
+      .wrapInputBox {
         position: relative;
+
+        input {
+          width: 95%;
+          padding: 10px;
+          border: 1px solid $borderGray;
+          border-radius: 30px;
+        }
+
+        span {
+          position: absolute;
+          right: 20px;
+          top: 10px;
+        }
       }
     }
+  }
+
+  .description {
+    color: $gray;
+    font-size: 1.3rem;
   }
 }

@@ -1,4 +1,11 @@
 @import "../../../../Styles/common.scss";
 
 .IncentiveSystem {
+  padding: 80px 100px;
+  width: 100%;
+
+  .title {
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+  }
 }
