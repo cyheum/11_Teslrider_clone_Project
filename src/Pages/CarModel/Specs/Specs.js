@@ -1,35 +1,40 @@
-import React, { Component } from 'react';
-import InfoContent from './InfoContent';
-import './Specs.scss';
+  import React, { Component } from 'react';
+  import InfoContent from './InfoContent';
+  import './Specs.scss';
 
-class Specs extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      data: {},
-      keyName: "performance"
+  class Specs extends Component {
+    constructor(){
+      super();
+      this.state = {
+        data: {},
+        keyName: "performance",
+        css: 0
+      }
     }
-  }
 
-  componentDidMount() {
-    fetch("/data/Data.json")
-    // {method: "GET",
-    // body:JSON.stringify({
-    //   model: this.state.data,
-    // })})
-    .then((res) => res.json())
-    .then((res) => this.setState({ data: res.car}));
+    componentDidMount() {
+      // fetch("http://10.58.5.236:8000/car/86")
+      fetch("/data/Data.json")
+      .then((res) => res.json())
+      .then((res) => this.setState({ data : res.car }))
   }
   
-  handleType = (e) => {
+  handleType = (e, idx) => {
     this.setState({
-      keyName: e.target.id
+      keyName: e.target.id,
+      css: idx
     })
   }
 
+  makeLabel = () => {
+    return LABEL.map(({label}, idx) =>
+    (
+    <label className={`topLabel ${this.state.css === idx ? this.state.keyName : ""}`} onClick={(e)=>this.handleType(e, idx)} id={LABEL[idx].className} key={idx}>{label}</label>
+    ))
+  }
   render() {
     return (
-      <div className="Specs">
+      <div className="Specs" id="8">
         <div className="specContainer">
           <div className="specImg">
             <div className="modelImg"/ >
@@ -39,10 +44,9 @@ class Specs extends Component {
               <div className="infoHeader">Model S 제원</div>
               <div className="inforMain">
                 <div className="labelWrap">
-                  <label className="topLabel" onClick={this.handleType} id="performance">퍼포먼스</label>
-                  <label className="topLabel" onClick={this.handleType} id="longRange">LONG RANGE</label>
+                  {this.makeLabel()}
                 </div>
-                <InfoContent data={this.state.data} keyName={this.state.keyName}/>
+                {this.state.data.performance && <InfoContent data={this.state.data} keyName={this.state.keyName}/>} 
               </div>
               <div className="inforFooter">
                 <div className="more">
@@ -60,4 +64,8 @@ class Specs extends Component {
   }
 }
 
+const LABEL = [
+  {label: "퍼포먼스", className: "performance"},
+  {label: "LONG RANGE", className: "longRange"},
+]
 export default Specs;

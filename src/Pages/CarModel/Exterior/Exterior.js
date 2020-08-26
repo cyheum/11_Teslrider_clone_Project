@@ -6,14 +6,14 @@ import './Exterior.scss';
 class Exterior extends Component {
   render() {
     return (
-      <div className="Exterior">
+      <div className="Exterior" id="7">
         <div className="exteriorContainer">
-          <div className="main">
+          <main className="main">
             <div className="mainImg">
               <Explantation />
             </div>
 
-          </div>
+          </main>
           <ModelFooter dataname="exterior" />
         </div>
       </div>

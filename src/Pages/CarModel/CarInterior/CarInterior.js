@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import OverflowContents from '../Components/OverflowContents';
 import ModelFooter from '../Components/ModelFooter';
-import './Interior.scss';
+import './CarInterior.scss';
 
-class Interior extends Component {
+class CarInterior extends Component {
+  
   render() {
     return (
-      <div className="Interior">
+      <div className="CarInterior" id="6">
         <div className="interiorMain">
           <div className="imgWrap"></div>
-          <OverflowContents />
+          <OverflowContents interior={true}/>
         </div>
         <ModelFooter dataname="interior"/>
       </div>
@@ -17,4 +18,4 @@ class Interior extends Component {
   }
 }
 
-export default Interior;
+export default CarInterior;

@@ -23,12 +23,12 @@ class Aside extends Component {
         <div className="container">
             <div className="header">
             <header>
-              <div className="smallHeader">{this.state.data && this.state.data.title}</div>
-              <div className="bigHeader">{this.state.data && this.state.data.subTitle}</div>
+              <div className="smallHeader">{this.state.data?.title}</div>
+              <div className="bigHeader">{this.state.data?.subTitle}</div>
             </header>
           </div>
           <div className="contents">
-            <p className="contentText">{this.state.data && this.state.data.contentText}</p>
+            <p className="contentText">{this.state.data?.contentText}</p>
             <div className="lowBtn">
               <div className="lowLeft orderBtnText">
                 <div className="lowLeftBtnWrap">
@@ -37,7 +37,7 @@ class Aside extends Component {
                 자세히 알아보기
               </div>
               <div className="lowright">
-                <Link to="/model" className="orderBtn">
+                <Link to="/order" className="orderBtn">
                   <div className="orderBtnText">지금 주문하기</div>
                 </Link>
               </div>

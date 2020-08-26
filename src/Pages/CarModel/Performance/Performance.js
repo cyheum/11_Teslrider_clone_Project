@@ -6,7 +6,7 @@ import './Performance.scss';
 class Performance extends Component {
   render() {
     return (
-      <div className="Performance">
+      <div className="Performance" id="3">
         <div className="performanceContainer">
           <div className="performanceMain">
             <SpecSum />

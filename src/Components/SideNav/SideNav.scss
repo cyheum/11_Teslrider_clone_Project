@@ -1,4 +1,4 @@
-@import '../Styles/common.scss';
+@import '../../Styles/common.scss';
 
 .SideNav {
   .sideNavContainer{
@@ -8,6 +8,9 @@
     width: 100px;
     margin-top: -78px;
     z-index: 5;
+    & a {
+    color: black;
+    }
   }
 
   .sideNavItem {

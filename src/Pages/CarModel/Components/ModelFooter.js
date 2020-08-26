@@ -24,8 +24,8 @@ class ModelFooter extends Component {
         <div className="container">
           <div className="footerLeft">
             <header className="header">
-              <div className="headerName">{this.state.data && this.state.data.headerName}</div>
-              <div className="headerContent">{this.state.data && this.state.data.headerContent}</div>
+              <div className="headerName">{this.state.data?.headerName}</div>
+              <div className="headerContent">{this.state.data?.headerContent}</div>
             </header>
             <div className="contents">
               <div className="more">
@@ -35,14 +35,14 @@ class ModelFooter extends Component {
                 자세히 알아보기
               </div>
               <div className="order">
-                <Link to="/model" className="orderBtn">
+                <Link to="/order" className="orderBtn">
                   <div className="orderBtnText">지금 주문하기</div>
                 </Link>
               </div>
             </div>
           </div>
           <div className="aside">
-          {this.state.data && this.state.data.aside}
+          {this.state.data?.aside}
           </div>
         </div>
       </div>

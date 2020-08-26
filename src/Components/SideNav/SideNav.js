@@ -4,12 +4,14 @@ import './SideNav.scss';
 class SideNav extends Component {
 
   makeLabel = () => {
-    return LABEL.map(({text}, idx) =>
+  return LABEL.map(({text}, idx) =>
       (
-        <li className="sideNavItem" key={idx}>
+        <a href={`#${idx+1}`} key={idx}>
+      <li className="sideNavItem">
         <div className="sideNavTab" />
         <div className="sideNavLabel">{text}</div>
       </li>
+      </a>
       )
     )
   }

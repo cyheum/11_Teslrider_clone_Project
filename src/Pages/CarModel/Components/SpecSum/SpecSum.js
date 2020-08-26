@@ -3,7 +3,49 @@ import DialIcon from './DialIcon';
 import './SpecSum.scss';
 
 class SpecSum extends Component {
+  constructor() {
+    super();
+    this.state = {
+      innerCirlce: false,
+      dailParams: false,
+      distance: 0,
+      speed: 0,
+      speedT: 0,
+      loading: 0,
+      activeClass: "",
+    };
+  }
+
+  componentDidMount () {
+    setTimeout(()=>this.setState({
+      innerCirlce: true,
+      dailParams: true
+    }), 500)
+    this.countNum("distance", 261);
+    this.countNum("speed", 2);
+    this.countNum("speedT", 5);
+    this.delay();
+  }
+
+  delay = () => {
+    setTimeout(() => {
+      this.setState(() => ({ activeClass: "appearComponent" }));
+    }, 100);
+  };
+
+  countNum = (name, limit) => {
+    let increase = setInterval(() => {
+      this.setState({
+        [name]: this.state[name] + 1,
+      });
+      if (this.state[name] > limit - 1) {
+        clearInterval(increase);
+      }
+    }, 1);
+  };
+
   render() {
+    const { distance, speed, speedT } = this.state;
     return (
       <div className="SpecSum">
         <ul className="specSumContainer">
@@ -13,14 +55,14 @@ class SpecSum extends Component {
               듀얼 모터 AWD로 어떠한 기상 조건에서도 트랙션 및 토크를 즉시 제어
             </div>
           </li>
-          <li className="specSumContents">
+          <li className="specSumContents border">
             <div className="contentsHeder">
               <section className="dialAnimate">
                 <DialIcon />
                 <div className="digits">
-                  <div className="digisitsNum">2</div>
+                  <div className="digisitsNum">{speed}</div>
                   <span className="digisitsNum">.</span>
-                  <div className="digisitsNum">5</div>
+                  <div className="digisitsNum">{speedT}</div>
                   <span className="digisitsNum">초</span>
                 </div>
                 </section>
@@ -30,7 +72,7 @@ class SpecSum extends Component {
             </div>
           </li>
           <li className="specSumContents">
-            <div className="contentsHeder">261 km/h</div>
+            <div className="contentsHeder">{distance} km/h</div>
             <div className="contentsText">향상된 핸들링 및 공기역학을 통해 최고 속도 261km/h 달성</div>
           </li>
         </ul>

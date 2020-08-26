@@ -6,12 +6,12 @@ import './Order.scss';
 class Order extends Component {
   render() {
     return (
-      <div className="Order">
+      <div className="Order" id="9" >
         <div className="mainContainer">
           <div className="mainContents itemLayout">
             <div className="contenstHeader">Model S 주문하기</div>
             <div className="contentsBtn">
-              <Link to="/" className="orderBtn">지금 주문하기</Link>
+              <Link to="/order" className="orderBtn">지금 주문하기</Link>
             </div>
           </div>
           <div className="mainImgWrap itemLayout">

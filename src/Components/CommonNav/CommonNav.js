@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
-import SubMenu from "../SubMenu/SubMenu";
-import TeslaLogoImg from "../ImgAndVideo/TeslaLogoImg";
+import SubMenu from "../../Pages/Main/SubMenu/SubMenu";
+import TeslaLogoImg from "../../Pages/Main/ImgAndVideo/TeslaLogoImg";
 import "./CommonNav.scss";
 
 class CommonNav extends Component {

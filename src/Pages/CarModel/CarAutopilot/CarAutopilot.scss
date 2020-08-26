@@ -1,23 +1,26 @@
 @import '../../../Styles/common.scss';
 
-.Interior {
+.CarAutopilot {
   display: flex;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
 
-  .interiorMain {
+  .autopilotMain {
     position: relative;
     width: 100%;
     height: 100%;
   }
 
-  .imgWrap {
+  .videoWrap {
     @include center(center);
     position: absolute;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/2558f32f-6c76-40b7-a66b-5d6d3c21ae99/bvlatuR/std/0x0/hero@2_1)no-repeat center / 100%;
+  }
+  
+  video {
+    width: 100%;
   }
 }

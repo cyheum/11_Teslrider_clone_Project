@@ -6,7 +6,7 @@ class OverflowContents extends Component {
     return (
       <div className="OverflowContents">
         <div className="overflowContentsLeft">
-          <ul className="overflowItemContainer">
+          <ul className={`overflowItemContainer ${this.props.interior ? "overflowright" : "overflowLeft"}`} >
             <li className="overflowItems">
               <div className="overflowItemsHeader">360°</div>
               <div className="overflowItemsContent">후방, 측방 및 전방 카메라가 최고의 가시성 제공</div>
@@ -24,10 +24,8 @@ class OverflowContents extends Component {
             </li>
           </ul>
         </div>
-        <div className="overflowContentsCenter" />
-        <div className="overflowContentsright" />
-    </div>
-    );
+      </div>
+    )
   }
 }
 

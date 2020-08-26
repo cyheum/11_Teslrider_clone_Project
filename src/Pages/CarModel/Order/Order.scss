@@ -3,7 +3,7 @@
 .Order {
   @include center(flex-end);
   width: 100vw;
-  height: calc(100vh - 109px);
+  height: 100vh;
 
   .mainContainer {
     display: flex;

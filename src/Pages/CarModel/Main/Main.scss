@@ -23,7 +23,6 @@
   }
   .mainSpecs {
     @include center(center);
-    animation: fadein 1s ease-in-out forwards;
   }
   
   .mainSpecsContainer {
@@ -82,22 +81,54 @@
     position: absolute;
     max-width: 28px;
     width: 40px;
-    height: 18px;
+    height: 14px;
     left: 0;
-    bottom: 0;
+    bottom: 5px;
     overflow: hidden;
     fill: #191b1d;
     left: calc(50% - 14px);
     opacity: .2;
+    &.inactive {
+      svg{
+        transform-origin: center bottom;
+        transform: rotate(-180deg);
+        transition: transform 1.733s cubic-bezier(.77,0,.175,1);
+      }
+    }
+    &.active {
+      svg {
+        transform-origin: center bottom;
+        transform: rotate(0deg);
+        transition: transform 1.733s cubic-bezier(.77,0,.175,1);
+      }
+    }
   }
 
   .dialInnerParameter{
     position: absolute;
+    width: 4px;
     max-width: 4px;
+    height: 16px;
     left: calc(50% - 2px);
     bottom: 4px;
-    z-index: 2;
+    z-index: 10;
   }
+  .start {
+    svg{
+      transform-origin: center bottom;
+      transform: rotate(-90deg);
+      transition: transform 1.733s cubic-bezier(.77,0,.175,1);
+    }
+  }
+
+  .done {
+    svg {
+      transform-origin: center bottom;
+      transform: rotate(90deg);
+      transition: transform 1.733s cubic-bezier(.77,0,.175,1);
+    }
+  }
+
 
   .digits {
     display: flex;
@@ -150,7 +181,7 @@
   .SpecBtn {
     padding: 0;
   }
- 
+
   .mainFooter {
     text-align: center;
   }
