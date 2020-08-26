@@ -165,18 +165,3 @@ class Order extends Component {
 }
 
 export default Order;
-
-const carList = {
-  model: "Model S",
-  battery: ["Long Range", "Performance"],
-  color: [
-    "Pearl White Multi-Coat",
-    "Solid Black",
-    "Midnight Silver Metallic",
-    "Deep Blue Metallic",
-    "Red Multi-Coat",
-  ],
-  price: ["포함", "₩1,929,000", "₩1,929,000", "₩1,929,000", "₩3,279,000"],
-  wheel: ["19인치 실버 휠", "21인치 소닉 카본 트윈 터빈 휠"],
-  interior: ["All black", "Black & White", "Cream"],
-};
