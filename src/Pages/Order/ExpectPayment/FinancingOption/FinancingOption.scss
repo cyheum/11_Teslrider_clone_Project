@@ -1,4 +1,35 @@
 @import "../../../../Styles/common.scss";
 
 .FinancingOption {
+  padding: 82px 100px 50px;
+
+  ul {
+    @include center(space-around);
+    border-bottom: 1px solid $gray;
+    margin-bottom: 10px;
+
+    .paymentMethod {
+      text-align: center;
+      width: 100%;
+      position: relative;
+      font-size: 2rem;
+      color: $gray;
+      padding: 10px 25px;
+      cursor: pointer;
+
+      &.active {
+        color: black;
+
+        &::after {
+          content: "";
+          width: 100%;
+          height: 2px;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background-color: black;
+        }
+      }
+    }
+  }
 }

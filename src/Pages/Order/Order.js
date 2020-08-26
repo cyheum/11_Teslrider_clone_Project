@@ -101,11 +101,10 @@ class Order extends Component {
   };
 
   render() {
-    const { activeComponent, expectPaymentClicked } = this.state;
+    const { activeComponent, expectPaymentClicked, totalPrice } = this.state;
     const NewProp = this.passProp(
       orderComponentList[this.state.activeComponent]
     );
-    console.log(expectPaymentClicked);
     return (
       <article className="Order">
         <HeaderNav
@@ -137,7 +136,8 @@ class Order extends Component {
               ""
             )}
             <Footer
-              totalPrice={this.state.totalPrice}
+              totalPrice={totalPrice}
+              activeComponent={activeComponent}
               clickHandlerChangeExpectPaymentClickState={
                 this.clickHandlerChangeExpectPaymentClickState
               }

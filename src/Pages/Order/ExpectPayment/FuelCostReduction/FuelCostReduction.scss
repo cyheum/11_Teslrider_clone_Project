@@ -1,4 +1,17 @@
 @import "../../../../Styles/common.scss";
 
 .FuelCostReduction {
+  padding: 80px 100px;
+
+  .title {
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+  }
+  .distanceFuelContainer {
+    .distanceFuel {
+      .text {
+        position: relative;
+      }
+    }
+  }
 }
