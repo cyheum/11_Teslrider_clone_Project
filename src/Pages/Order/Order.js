@@ -22,15 +22,14 @@ class Order extends Component {
     super();
 
     this.state = {
-      modelPushedAt: 0,
+      modelPushedAt: "Model_S",
       activeComponent: 0,
-      batteryIsPushedAt: 0,
-      isColorBtnPushedAt: 0,
-      isWheelBtnPushedAt: 0,
-      interiorPushedAt: 0,
+      batteryIsPushedAt: 9,
+      isColorBtnPushedAt: 16,
+      isWheelBtnPushedAt: 15,
+      interiorPushedAt: 8,
       isAutopilotChecked: false,
-      totalPrice: "",
-      fuelCostReductionPrice: "",
+      data: {},
     };
   }
 
@@ -42,7 +41,7 @@ class Order extends Component {
     };
   };
 
-  runFetch = () => {
+  runFetchForPrice = () => {
     const {
       modelPushedAt,
       batteryIsPushedAt,
@@ -50,29 +49,37 @@ class Order extends Component {
       isWheelBtnPushedAt,
       interiorPushedAt,
       isAutopilotChecked,
+      data,
     } = this.state;
-    fetch("http://10.58.5.163:8000/customizing/totalprice", {
+
+    fetch("http://10.58.4.178:8000/customizing/products", {
       method: "POST",
       body: JSON.stringify({
-        model: carList[modelPushedAt].model,
-        battery: carList[modelPushedAt].battery[batteryIsPushedAt],
-        color: carList[modelPushedAt].color[isColorBtnPushedAt],
-        wheel: carList[modelPushedAt].wheel[isWheelBtnPushedAt],
-        interior: carList[modelPushedAt].interior[interiorPushedAt],
+        model: modelPushedAt,
+        battery_id: batteryIsPushedAt,
+        color_id: isColorBtnPushedAt,
+        wheel_id: isWheelBtnPushedAt,
+        interior_id: interiorPushedAt,
         auto_pilot: isAutopilotChecked ? 1 : 0,
       }),
     })
       .then((res) => res.json())
+      .then((res) => this.setState({ data: { ...data, carImgPrice: res } }));
+  };
+
+  runFetchForIcons = () => {
+    const { data } = this.state;
+    fetch("http://10.58.4.178:8000/customizing/icons?model=Model_S")
+      .then((res) => res.json())
       .then((res) =>
-        this.setState({
-          totalPrice: res.total_price,
-          fuelCostReductionPrice: res.fuel_cost_reduction_price,
-        })
+        this.setState({ data: { ...data, icons: res } }, () =>
+          this.runFetchForPrice()
+        )
       );
   };
 
   componentDidMount() {
-    this.runFetch();
+    this.runFetchForIcons();
   }
 
   clickHandler = (componentIdx) => {
@@ -88,24 +95,18 @@ class Order extends Component {
       {
         batteryIsPushedAt: num,
       },
-      () => this.runFetch()
+      () => this.runFetchForPrice()
     );
   };
 
   handleClickChangeBtn = (index, num) => {
-    const { isWheelBtnPushedAt, isColorBtnPushedAt } = this.state;
-    if (
-      (index && isWheelBtnPushedAt === num) ||
-      (!index && isColorBtnPushedAt === num)
-    ) {
-      return;
-    }
     const btnPushedAt = index ? "isWheelBtnPushedAt" : "isColorBtnPushedAt";
+    if (btnPushedAt === num) return;
     this.setState(
       {
         [btnPushedAt]: num,
       },
-      () => this.runFetch()
+      () => this.runFetchForPrice()
     );
   };
 
@@ -115,7 +116,7 @@ class Order extends Component {
       {
         interiorPushedAt: num,
       },
-      () => this.runFetch()
+      () => this.runFetchForPrice()
     );
   };
 
@@ -124,16 +125,15 @@ class Order extends Component {
       {
         isAutopilotChecked: !this.state.isAutopilotChecked,
       },
-      () => this.runFetch()
+      () => this.runFetchForPrice()
     );
   };
 
   render() {
-    const { activeComponent, totalPrice, fuelCostReductionPrice } = this.state;
+    const { activeComponent } = this.state;
     const NewProp = this.passProp(
       orderComponentList[this.state.activeComponent]
     );
-
     return (
       <article className="Order">
         <HeaderNav
@@ -156,10 +156,7 @@ class Order extends Component {
                 this.clickHandlerChangeAutopilotCheckedState
               }
             />
-            <Footer
-              totalPrice={totalPrice}
-              fuelCostReductionPrice={fuelCostReductionPrice}
-            />
+            <Footer totalData={this.state} />
           </main>
         </section>
       </article>
@@ -169,19 +166,17 @@ class Order extends Component {
 
 export default Order;
 
-const carList = [
-  {
-    model: "Model S",
-    battery: ["Long Range", "Performance"],
-    color: [
-      "Pearl White Multi-Coat",
-      "Solid Black",
-      "Midnight Silver Metallic",
-      "Deep Blue Metallic",
-      "Red Multi-Coat",
-    ],
-    price: ["포함", "₩1,929,000", "₩1,929,000", "₩1,929,000", "₩3,279,000"],
-    wheel: ["19인치 실버 휠", "21인치 소닉 카본 트윈 터빈 휠"],
-    interior: ["All black", "Black & White", "Cream"],
-  },
-];
+const carList = {
+  model: "Model S",
+  battery: ["Long Range", "Performance"],
+  color: [
+    "Pearl White Multi-Coat",
+    "Solid Black",
+    "Midnight Silver Metallic",
+    "Deep Blue Metallic",
+    "Red Multi-Coat",
+  ],
+  price: ["포함", "₩1,929,000", "₩1,929,000", "₩1,929,000", "₩3,279,000"],
+  wheel: ["19인치 실버 휠", "21인치 소닉 카본 트윈 터빈 휠"],
+  interior: ["All black", "Black & White", "Cream"],
+};

@@ -5,7 +5,10 @@ export default class ChoiceCar extends Component {
   render() {
     const {
       handleClickChangeCarBtn,
-      totalData: { batteryIsPushedAt },
+      totalData: {
+        batteryIsPushedAt,
+        data: { icons },
+      },
     } = this.props;
     return (
       <div className="ChoiceCar">
@@ -15,22 +18,24 @@ export default class ChoiceCar extends Component {
           프리미엄 인테리어 및 사운드 시스템이 포함됩니다.
         </div>
         <div className="wrapButton">
-          {choiceCarBtn.map(({ option, price }, index) => {
-            return (
-              <button
-                key={index}
-                className={
-                  batteryIsPushedAt === index
-                    ? "choiceCarBtn pushed"
-                    : "choiceCarBtn normal"
-                }
-                onClick={() => handleClickChangeCarBtn(index)}
-              >
-                <span>{option}</span>
-                <span>{price}</span>
-              </button>
-            );
-          })}
+          {icons &&
+            icons.battery_value.map((el, idx) => {
+              const keyName = Object.keys(el);
+              return (
+                <button
+                  key={keyName}
+                  className={
+                    batteryIsPushedAt === keyName
+                      ? "choiceCarBtn pushed"
+                      : "choiceCarBtn normal"
+                  }
+                  onClick={() => handleClickChangeCarBtn(keyName)}
+                >
+                  <span>{el[keyName]}</span>
+                  <span>{price[idx]}</span>
+                </button>
+              );
+            })}
         </div>
         <div className="descriptionText">
           <span>Tesla AWD</span>에 탑재된 두 개의 독립 모터는 향상된 효율성과
@@ -44,7 +49,4 @@ export default class ChoiceCar extends Component {
   }
 }
 
-const choiceCarBtn = [
-  { option: "Long Range", price: "₩107,990,000" },
-  { option: "Performance", price: "₩132,990,000" },
-];
+const price = ["₩107,990,000", "₩132,990,000"];

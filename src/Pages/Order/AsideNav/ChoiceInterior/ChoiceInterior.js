@@ -5,32 +5,45 @@ export default class ChoiceInterior extends Component {
   render() {
     const {
       clickHandlerChangeStyle,
-      totalData: { interiorPushedAt, batteryIsPushedAt },
+      totalData: {
+        interiorPushedAt,
+        batteryIsPushedAt,
+        data: {
+          icons,
+          icons: { battery_value, interior_icon },
+        },
+      },
     } = this.props;
     const { title, name, price } = interiorDetail;
+    const newInterior_icon =
+      battery_value[batteryIsPushedAt] === "Long Range"
+        ? interior_icon.slice(0, 3)
+        : interior_icon(3);
     return (
       <div className="ChoiceInterior">
         <div className="choiceContainer">
           <div className="headText">프리미엄 인테리어 선택하기</div>
           <div className="wrapChoiceStyleButton">
-            {styleBtn[batteryIsPushedAt].map((style, index) => {
-              return (
-                <div
-                  className={
-                    interiorPushedAt === index
-                      ? "choiceStyleButton pushed"
-                      : "choiceStyleButton normal"
-                  }
-                  key={index}
-                >
-                  <img
-                    onClick={() => clickHandlerChangeStyle(index)}
-                    alt="stylebuttonImg"
-                    src={style}
-                  />
-                </div>
-              );
-            })}
+            {icons &&
+              newInterior_icon.map((style, index) => {
+                const keyName = Object.keys(style);
+                return (
+                  <div
+                    className={
+                      interiorPushedAt === keyName
+                        ? "choiceStyleButton pushed"
+                        : "choiceStyleButton normal"
+                    }
+                    key={index}
+                  >
+                    <img
+                      onClick={() => clickHandlerChangeStyle(keyName)}
+                      alt="stylebuttonImg"
+                      src={style[keyName]}
+                    />
+                  </div>
+                );
+              })}
           </div>
           <div className="StyleDescription">
             <span>{title[interiorPushedAt]}</span>
@@ -65,19 +78,6 @@ export default class ChoiceInterior extends Component {
     );
   }
 }
-
-const styleBtn = {
-  0: [
-    "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_black.png?&version=v0028d202008130539",
-    "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_white_cf.png?&version=v0028d202008130539",
-    "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_cream.png?&version=v0028d202008130539",
-  ],
-  1: [
-    "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_black_cf.png?&version=v0028d202008200649",
-    "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_white_cf.png?&version=v0028d202008200649",
-    "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_cream.png?&version=v0028d202008200649",
-  ],
-};
 
 const interiorDetail = {
   title: ["All Black", "Black/White", "Cream"],

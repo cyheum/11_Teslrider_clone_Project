@@ -7,17 +7,9 @@ export default class Paint extends Component {
 
     this.state = {
       activeClass: "",
-      totalCarImg: {},
     };
   }
   componentDidMount() {
-    fetch("/yeheum/MockData/choiceCar.json")
-      .then((res) => res.json())
-      .then((res) =>
-        this.setState({
-          totalCarImg: res,
-        })
-      );
     this.delay();
   }
 
@@ -29,23 +21,15 @@ export default class Paint extends Component {
 
   render() {
     const {
-      batteryIsPushedAt,
-      isColorBtnPushedAt,
-      isWheelBtnPushedAt,
+      data: { carImgPrice },
     } = this.props.totalData;
-    const { totalCarImg } = this.state;
     return (
       <div className="Paint">
         <div>
           <img
             className={`carImg ${this.state.activeClass}`}
             alt="carImg"
-            src={
-              totalCarImg.carImgData &&
-              totalCarImg.carImgData[batteryIsPushedAt][isWheelBtnPushedAt][
-                isColorBtnPushedAt
-              ]
-            }
+            src={carImgPrice && carImgPrice.image.car}
           />
         </div>
       </div>

@@ -11,11 +11,14 @@ export default class ChoicePayment extends Component {
       isColorBtnPushedAt,
       interiorPushedAt,
       isAutopilotChecked,
+      data: {
+        icons: { battery_value },
+      },
     } = this.props.totalData;
     this.state = {
       userCustomData: [
         {
-          title: `${carList[modelPushedAt].model} ${carList[modelPushedAt].battery[batteryIsPushedAt]}`,
+          title: `${carList[modelPushedAt].model} ${battery_value[batteryIsPushedAt]}`,
           content: carList[modelPushedAt].batteryPrice[batteryIsPushedAt],
         },
         {
@@ -41,12 +44,6 @@ export default class ChoicePayment extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch("/yeheum/MockData/choiceCar.json")
-      .then((res) => res.json())
-      .then((res) => this.setState({ totalCarImg: res }));
-  }
-
   clickHandlerChangeDetailBtn = () => {
     this.setState({
       detailBtnPushed: !this.state.detailBtnPushed,
@@ -60,31 +57,20 @@ export default class ChoicePayment extends Component {
   };
 
   render() {
+    const { userCustomData, detailBtnPushed, activePaymentMethod } = this.state;
     const {
-      userCustomData,
-      totalCarImg,
-      detailBtnPushed,
-      activePaymentMethod,
-    } = this.state;
-    const {
-      batteryIsPushedAt,
-      isWheelBtnPushedAt,
-      isColorBtnPushedAt,
-      totalPrice,
-      fuelCostReductionPrice,
+      data: {
+        carImgPrice,
+        carImgPrice: {
+          price: { total_price, fuel_cost_reduction_price },
+          image,
+        },
+      },
     } = this.props.totalData;
     return (
       <div className="ChoicePayment">
         <div className="wrapUserCustomCar">
-          <img
-            alt="userCustomCar"
-            src={
-              totalCarImg.carImgData &&
-              totalCarImg.carImgData[batteryIsPushedAt][isWheelBtnPushedAt][
-                isColorBtnPushedAt
-              ]
-            }
-          />
+          <img alt="userCustomCar" src={carImgPrice && image.car} />
           <div>귀하의 Model S</div>
         </div>
         <div className="subTitle">요약</div>
@@ -110,7 +96,7 @@ export default class ChoicePayment extends Component {
         >
           <div className="totalPrice">
             <div>구매가격</div>
-            <div>{fuelCostReductionPrice}</div>
+            <div>{`₩${parseInt(total_price).toLocaleString()}`}</div>
           </div>
           <div className="savingPrice">
             <div>향후 5년 간 예상 연료비 절감</div>
@@ -118,7 +104,9 @@ export default class ChoicePayment extends Component {
           </div>
           <div className="afterSavingTotalPrice">
             <div>예상 전체 절감 비용 반영 후 가격</div>
-            <div>{totalPrice}</div>
+            <div>{`₩${parseInt(
+              fuel_cost_reduction_price
+            ).toLocaleString()}`}</div>
           </div>
           <div className="savingPriceDescription">
             모든 절감 비용은 구매 이후 경험하게 됩니다.
@@ -156,11 +144,13 @@ export default class ChoicePayment extends Component {
           </ul>
           <div className="afterSavingTotalPrice">
             <div>예상 전체 절감 비용 반영 후 가격</div>
-            <div>{totalPrice}</div>
+            <div>{`₩${parseInt(
+              fuel_cost_reduction_price
+            ).toLocaleString()}`}</div>
           </div>
           <div className="afterSavingTotalPrice">
             <div>구매 가격</div>
-            <div>{fuelCostReductionPrice}</div>
+            <div>{`₩${parseInt(total_price).toLocaleString()}`}</div>
           </div>
           <div>세금 및 수수료 제외</div>
           <div className="feesContainer">
@@ -176,34 +166,43 @@ export default class ChoicePayment extends Component {
   }
 }
 
-const carList = [
-  {
+const carList = {
+  Model_S: {
     model: "Model S",
     battery: ["Long Range", "Performance"],
-    batteryPrice: ["₩107,990,000", "₩132,990,000"],
-    color: [
-      "Pearl White Multi-Coat",
-      "Solid Black",
-      "Midnight Silver Metallic",
-      "Deep Blue Metallic",
-      "Red Multi-Coat",
-    ],
-    colorPrice: [
-      "포함",
-      "₩1,929,000",
-      "₩1,929,000",
-      "₩1,929,000",
-      "₩3,279,000",
-    ],
-    wheel: ["19인치 실버 휠", "21인치 소닉 카본 트윈 터빈 휠"],
-    wheelPrice: ["포함", "₩4,672,000"],
-    interior: ["All black", "Black & White", "Cream"],
-    interiorName: {
-      0: ["애쉬 우드 데코", "다크 우드 데코", "오크 우드 데코"],
-      1: ["카본 파이버 데코", "카본 파이버 데코", "오크 우드 데코"],
+    batteryPrice: { 9: "₩107,990,000", 10: "₩132,990,000" },
+    color: {
+      16: "Pearl White Multi-Coat",
+      17: "Solid Black",
+      18: "Midnight Silver Metallic",
+      19: "Deep Blue Metallic",
+      20: "Red Multi-Coat",
     },
-    interiorPrice: ["포함", "₩1,929,000", "₩1,929,000"],
+    colorPrice: {
+      16: "포함",
+      17: "₩1,929,000",
+      18: "₩1,929,000",
+      19: "₩1,929,000",
+      20: "₩3,279,000",
+    },
+    wheel: {
+      15: "19인치 실버 휠",
+      16: "21인치 소닉 카본 트윈 터빈 휠",
+      17: "19인치 실버 휠",
+      18: "21인치 소닉 카본 트윈 터빈 휠",
+    },
+    wheelPrice: { 15: "포함", 16: "₩4,672,000", 17: "포함", 18: "₩4,672,000" },
+    interior: { 8: "All black", 9: "Black & White", 10: "Cream" },
+    interiorName: {
+      9: { 8: "애쉬 우드 데코", 9: "다크 우드 데코", 10: "오크 우드 데코" },
+      10: {
+        8: "카본 파이버 데코",
+        9: "카본 파이버 데코",
+        10: "오크 우드 데코",
+      },
+    },
+    interiorPrice: { 8: "포함", 9: "₩1,929,000", 10: "₩1,929,000" },
   },
-];
+};
 
 const payment = ["현금", "리스", "할부"];
