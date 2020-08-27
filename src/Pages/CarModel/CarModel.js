@@ -17,17 +17,16 @@ import './CarModel.scss';
 
 
 class CarModel extends Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
       secNavDisplay: false,
       currentPosY: 0,
-      scroll: false
+      scroll: false,
+      model : this.props.match.params.model
     };
-
-    this.firstCom = React.createRef();
   }
+  
   componentDidMount() {
     document.addEventListener("scroll", () => {
       if (window.scrollY >= 770) {
@@ -43,11 +42,11 @@ class CarModel extends Component {
     let scrollY = window.scrollY
     if (this.state.scroll && scrollY < this.state.currentPosY) return;
     this.setState({ scroll: false });
-    if (e.keyCode == 90) {
+    if (e.keyCode === 90) {
     // if (this.prev > scrollY && scrollY < this.state.currentPosY) {
       this.setState({ scroll: true, currentPosY: this.state.currentPosY - 943},
         () => window.scrollTo({ top: this.state.currentPosY, behavior: "smooth" }));
-      } else if ( e.keyCode == 88) {
+      } else if ( e.keyCode === 88) {
     // } else if (this.prev < scrollY && scrollY > this.state.currentPosY) {
       this.setState({ scroll: true, currentPosY: this.state.currentPosY + 943},
         () => window.scrollTo({ top: this.state.currentPosY, behavior: "smooth" }));
@@ -56,21 +55,22 @@ class CarModel extends Component {
   }
   
   render() {
+    const { model, secNavDisplay } = this.state;
     return (
       <div className="models">
         <CommonNav />
-        <Main />
-        {this.state.secNavDisplay && <SecNav />}
-        <Secure/>
-        <Performance />
-        <Distance />
-        <CarAutopilot/>
-        <Interior/>
-        <Exterior />
-        <Specs />
-        <Order  />
-        <SideNav />
-        <CommonFooter />
+        <Main model={model}/>
+        {secNavDisplay && <SecNav model={model} />}
+        <Secure model={model}/>
+        <Performance model={model}/>
+        <Distance model={model}/>
+        <CarAutopilot model={model}/>
+        <Interior model={model}/>
+        <Exterior model={model}/>
+        <Specs model={model}/>
+        <Order model={model}/>
+        <SideNav model={model}/>
+        <CommonFooter model={model}/>
       </div>
     );
   }

@@ -10,20 +10,37 @@ class Main extends Component {
       dailParams: false,
       distance: 0,
       speed: 0,
-      speedT: 0,
       loading: 0,
+      data : {},
+      backImg : "",
+      backColor: false
     };
   }
 
   componentDidMount () {
+    fetch(`/data/car/${this.props.model}.json`)
+    .then((res) => res.json())
+    .then((res) => this.setState({
+      data : res.car,
+      backImg : res.car.img.main,
+      speed: parseFloat(res.car.spec.제로백)
+    }))
+    .then(() => {
+      this.countNum("distance", this.state.data.spec.적재공간);
+      this.countNum("loading", this.state.data.spec.주행가능거리);
+      }
+    )
+
+    if (this.props.model ==="model3" ) {
+      this.setState({
+        backColor: true
+      })
+    }
+
     setTimeout(()=>this.setState({
       innerCirlce: true,
       dailParams: true
     }), 500)
-    this.countNum("distance", 487);
-    this.countNum("speed", 2);
-    this.countNum("speedT", 5);
-    this.countNum("loading", 804);
   }
 
   countNum = (name, limit) => {
@@ -37,13 +54,26 @@ class Main extends Component {
     }, 1);
   };
 
+  backgroundImg = () => {
+    return {
+      background: `url(${this.state.backImg}) no-repeat center / 100%`
+    }
+  }
+
+  title = (title) => {
+    return title = title[0].toUpperCase()
+    + title.substring(1, title.length - 1)
+    +" "
+    + title[title.length -1].toUpperCase()
+  }
+
   render() {
-    const { distance, speed, speedT, loading } = this.state;
+    const { distance, speed, loading } = this.state;
     return (
-      <div className="Main" id="1">
-        <div className="mainTitle">Model S</div>
-        <div className="mainCenter"></div>
-        <div className="mainSpecs">
+      <div className="Main" id="main" style={this.backgroundImg()}>
+        <div className="mainTitle">{this.title(this.props.model)}</div>
+        <div className="mainCenter"/ >
+        <div className={`mainSpecs ${this.state.backColor ? "turnColor" : ""}`}>
           <ul className="mainSpecsContainer">
             <li className="mainSpecsItem">
               <div className="specItemCallout">
@@ -66,8 +96,6 @@ class Main extends Component {
                     </div>
                     <div className="digits">
                       <div className="digisitsNum">{speed}</div>
-                      <span className="digisitsNum">.</span>
-                      <div className="digisitsNum">{speedT}</div>
                       <span className="digisitsNum">초</span>
                     </div>
                   </section>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SubMenu from "../../Pages/Main/SubMenu/SubMenu";
 import TeslaLogoImg from "../../Pages/Main/ImgAndVideo/TeslaLogoImg";
 import "./CommonNav.scss";
@@ -28,7 +28,9 @@ class CommonNav extends Component {
         </div>
         <div>
           <ul className="carList">
-            <li>MODEL S</li>
+            <Link to={"/car/models"}>
+              <li>MODEL S</li>
+            </Link>
             <li>MODEL 3</li>
             <li>MODEL X</li>
             <li>MODEL Y</li>

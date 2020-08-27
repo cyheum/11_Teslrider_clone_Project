@@ -2,9 +2,29 @@ import React, { Component } from "react";
 import "./CommonFooter.scss";
 
 class CommonFooter extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      data: {},
+      backColor: false
+    }
+  }
+
+  componentDidMount () {
+    fetch(`/data/car/${this.props.model}.json`)
+    .then((res) => res.json())
+    .then((res) => this.setState({ data: res }));
+    if (this.props.model ==="model3" ) {
+      this.setState({
+        backColor: true
+      })
+    }
+  };
+
   render() {
     return (
-      <footer className="CommonFooter">
+      <>
+      <footer className={`CommonFooter ${this.state.backColor ? "invert" : ""}`}>
         <ul className="footerList">
           <li>
             <a className="footerListVersionOfTesla" href="/">
@@ -39,6 +59,7 @@ class CommonFooter extends Component {
           southkorea@tesla.com
         </p>
       </footer>
+      </>
     );
   }
 }

@@ -2,25 +2,57 @@ import React, { Component } from 'react';
 import './OverflowContents.scss';
 
 class OverflowContents extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {}
+    }
+  }
+
+  componentDidMount () {
+    fetch(`/data/car/${this.props.model}.json`)
+    .then((res) => res.json())
+    .then((res) => {
+        this.setState({ data : res[this.props.dataname] })
+      }
+    )
+  }
+
+  icon(is){
+    const { spec } = this.state.data;
+    const { dataname } = this.props;
+    if(is){
+      return <div className="overflowItemsHeader">
+      <div className="overflowItemsHeaderLast"></div>
+      <span>{dataname === "autopilot" ? spec?.sensor : spec?.load}</span>
+      </div>
+    }else {
+      return <div className="overflowItemsHeader">
+      {dataname === "autopilot" ? spec?.sensor : spec?.load}
+      </div>
+    }
+  }
+
+
   render() {
+    const { spec } = this.state.data;
+    const { dataname } = this.props;
     return (
       <div className="OverflowContents">
         <div className="overflowContentsLeft">
-          <ul className={`overflowItemContainer ${this.props.interior ? "overflowright" : "overflowLeft"}`} >
+          <ul className={`overflowItemContainer ${this.state.data.overflow === "right" ? "overflowright" : "overflowLeft"}`} >
             <li className="overflowItems">
-              <div className="overflowItemsHeader">360°</div>
-              <div className="overflowItemsContent">후방, 측방 및 전방 카메라가 최고의 가시성 제공</div>
+              <div className="overflowItemsHeader">{dataname === "autopilot" ? spec?.wide : spec?.display}</div>
+              <div className="overflowItemsContent">{dataname === "autopilot" ? spec?.explain?.wide : spec?.explain.display}</div>
             </li>
             <li className="overflowItems">
-              <div className="overflowItemsHeader">160m</div>
-              <div className="overflowItemsContent">전방 레이더가 원거리 물체에 대한 장거리 탐지 제공</div>
+              <div className="overflowItemsHeader">{dataname === "autopilot" ? spec?.distance : spec?.d}</div>
+              <div className="overflowItemsContent">{dataname === "autopilot" ? spec?.explain?.distance : spec?.explain?.update}</div>
             </li>
             <li className="overflowItems">
-              <div className="overflowItemsHeader">
-                <div className="overflowItemsHeaderLast" />
-                  <span>울트라소닉 센서</span>
-                </div>
-              <div className="overflowItemsContent">주변 차량 감지를 통한 잠재적 충돌 방지 및 주차 보조</div>
+                {dataname == "autopilot" ?  this.icon(true) : this.icon()}
+              <div className="overflowItemsContent">{dataname === "autopilot" ? spec?.explain?.sensor : spec?.explain?.load}</div>
             </li>
           </ul>
         </div>

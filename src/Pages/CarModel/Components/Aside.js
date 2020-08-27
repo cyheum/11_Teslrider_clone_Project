@@ -11,10 +11,10 @@ class Aside extends Component {
     }
   }
 
-  componentDidMount() {
-    fetch("/data/Data.json")
-      .then((res) => res.json())
-      .then((res) => this.setState({ data: res.Aside[this.props.dataname] }));
+  componentDidMount () {
+    fetch(`/data/car/${this.props.model}.json`)
+    .then((res) => res.json())
+    .then((res) => this.setState({ data : res.aside }))
   }
 
   render() {
@@ -23,12 +23,12 @@ class Aside extends Component {
         <div className="container">
             <div className="header">
             <header>
-              <div className="smallHeader">{this.state.data?.title}</div>
-              <div className="bigHeader">{this.state.data?.subTitle}</div>
+              <div className="smallHeader">{this.props.where === "secure" ? this.state.data.secure?.title : this.state.data.distance?.title}</div>
+              <div className="bigHeader">{this.props.where === "secure" ? this.state.data.secure?.subTitle : this.state.data.distance?.subTitle}</div>
             </header>
           </div>
           <div className="contents">
-            <p className="contentText">{this.state.data?.contentText}</p>
+            <p className="contentText">{this.props.where === "secure" ? this.state.data.secure?.contentText : this.state.data.distance?.contentText}</p>
             <div className="lowBtn">
               <div className="lowLeft orderBtnText">
                 <div className="lowLeftBtnWrap">

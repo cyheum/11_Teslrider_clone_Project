@@ -3,35 +3,44 @@ import DialIcon from './DialIcon';
 import './SpecSum.scss';
 
 class SpecSum extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       innerCirlce: false,
       dailParams: false,
       distance: 0,
       speed: 0,
-      speedT: 0,
       loading: 0,
       activeClass: "",
+      motor:"",
+      explainMotor: "",
+      explainZero: "",
+      explainMaxSpeed: ""
     };
   }
 
   componentDidMount () {
+
+    fetch(`/data/car/${this.props.model}.json`)
+    .then((res) => res.json())
+    .then((res) => this.setState({
+      data: res.car,
+      motor : res.car.spec.모터,
+      explainMotor : res.car.spec.explain.모터,
+      explainZero : res.car.spec.explain.제로백,
+      explainMaxSpeed : res.car.spec.explain.최고속도,
+      speed: parseFloat(res.car.spec.제로백)
+    }))
+    .then(() => {
+      this.countNum("distance", this.state.data.spec.최고속도);
+    }
+    )
+    
     setTimeout(()=>this.setState({
       innerCirlce: true,
       dailParams: true
     }), 500)
-    this.countNum("distance", 261);
-    this.countNum("speed", 2);
-    this.countNum("speedT", 5);
-    this.delay();
   }
-
-  delay = () => {
-    setTimeout(() => {
-      this.setState(() => ({ activeClass: "appearComponent" }));
-    }, 100);
-  };
 
   countNum = (name, limit) => {
     let increase = setInterval(() => {
@@ -45,14 +54,14 @@ class SpecSum extends Component {
   };
 
   render() {
-    const { distance, speed, speedT } = this.state;
+    const { distance, speed } = this.state;
     return (
       <div className="SpecSum">
         <ul className="specSumContainer">
           <li className="specSumContents">
-            <div className="contentsHeder">AWD</div>
+            <div className="contentsHeder">{this.state.motor}</div>
             <div className="contentsText">
-              듀얼 모터 AWD로 어떠한 기상 조건에서도 트랙션 및 토크를 즉시 제어
+              {this.state.explainMotor}
             </div>
           </li>
           <li className="specSumContents border">
@@ -61,19 +70,17 @@ class SpecSum extends Component {
                 <DialIcon />
                 <div className="digits">
                   <div className="digisitsNum">{speed}</div>
-                  <span className="digisitsNum">.</span>
-                  <div className="digisitsNum">{speedT}</div>
                   <span className="digisitsNum">초</span>
                 </div>
                 </section>
             </div>
             <div className="contentsText">
-              0-100 km/h 도달 시간이 2.5에 불과하여 지구 상에서 가장 빠른 가속을 자랑하는 세단입니다.
+              {this.state.explainZero}
             </div>
           </li>
           <li className="specSumContents">
             <div className="contentsHeder">{distance} km/h</div>
-            <div className="contentsText">향상된 핸들링 및 공기역학을 통해 최고 속도 261km/h 달성</div>
+            <div className="contentsText">{this.state.explainMaxSpeed}</div>
           </li>
         </ul>
       </div>

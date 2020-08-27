@@ -15,11 +15,10 @@ class Routes extends React.Component {
         return (
         <Router>
             <Switch>
-            <Route exact path="/" component={Main} />
+            <Route exact path="/main" component={Main} />
             <Route exact path="/login" component={LogIn} />
-            <Route exact path="/model" component={CarModel} />
+            <Route exact path="/car/:model" component={CarModel} />
             <Route exact path="/order" component={Order} />
-
             </Switch>
         </Router>
         )

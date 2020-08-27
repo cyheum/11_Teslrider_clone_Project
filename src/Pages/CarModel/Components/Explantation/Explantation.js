@@ -2,6 +2,20 @@ import React, { Component } from 'react';
 import './Explantation.scss';
 
 class Explantation extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      data:{}
+    }
+  }
+
+  componentDidMount () {
+    fetch(`/data/car/${this.props.model}.json`)
+    .then((res) => res.json())
+    .then((res) => this.setState({ data : res.exterior }))
+  }
+
   render() {
     return (
       <div className="Explantation">
@@ -10,27 +24,27 @@ class Explantation extends Component {
                   <div className="itemWrap">
                     <header className="itemHeader">
                       <div className="itemImg" />
-                      <div className="itemText">시그니처 컬러</div>
+                      <div className="itemText">{this.state.data.spec?.컬러}</div>
                     </header>
-                    <p className="itemContents">시그니처 멀티레이어 페인트로 Model S 커스터마이즈</p>
+                    <p className="itemContents">{this.state.data.spec?.explain?.컬러}</p>
                   </div>
                 </div>
                 <div className="itemBorder items">
                   <div className="itemWrap">
                     <header className="itemHeader">
-                    <div className="itemHeaderTitle">0.23</div>
+                    <div className="itemHeaderTitle">{this.state.data.spec?.저항}</div>
                     <div className="itemScase"/>
                     </header>
-                    <p className="itemContents">동급 차량 중 가장 낮은 공기저항계수를 자랑하는 가장 공기역학적인 차</p>
+                    <p className="itemContents">{this.state.data.spec?.explain?.저항}</p>
                   </div>
                 </div>
                 <div className="items">
                   <div className="itemWrap">
                     <header className="itemHeader">
                       <div className="itemRooftop" />
-                      <div className="itemText">루프랙 호환</div>
+                      <div className="itemText">{this.state.data.spec?.천장}</div>
                     </header>
-                    <p className="itemContents">광활한 글래스 루프로 더 넓은 헤드룸과 자외선 차단 제공</p>
+                    <p className="itemContents">{this.state.data.spec?.explain?.천장}</p>
                   </div>
                 </div>
               </div>

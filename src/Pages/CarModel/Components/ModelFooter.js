@@ -13,7 +13,7 @@ class ModelFooter extends Component {
   }
 
   componentDidMount() {
-    fetch("/data/Data.json")
+    fetch(`/data/car/${this.props.model}.json`)
       .then((res) => res.json())
       .then((res) => this.setState({ data: res.ModelFooter[this.props.dataname] }));
   }

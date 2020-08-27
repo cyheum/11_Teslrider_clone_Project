@@ -3,23 +3,47 @@ import Aside from '../Components/Aside';
 import './Secure.scss';
 
 class Secure extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      backImg: "",
+      pointers: {}
+    }
+  }
+
+  componentDidMount () {
+    fetch(`/data/car/${this.props.model}.json`)
+    .then((res) => res.json())
+    .then((res) => this.setState({ data : res.car }))
+    .then(()=> this.setState({
+      backImg : this.state.data.img.secure,
+      pointers : this.state.data.secure.pointer
+    }))
+  }
+
+  backgroundImg = () => {
+    return {
+      background: `url(${this.state.backImg}) no-repeat center / 100%`
+    }
+  }
+  
+  pointer = () => {
+    let pointerArray = Object.keys(this.state.pointers);
+    return pointerArray.map((key, idx) =>
+      <li className="SpecItem" key={idx}>
+        <span className="spectItemText">{this.state.pointers[key]}</span>
+      </li>
+    )
+  }
+
   render() {
     return (
-    <div className="Secure" id="2">
-        <Aside dataname={"secure"}/>
+    <div className="Secure" id="secure">
+        <Aside dataname={"secure"} model={this.props.model} where="secure" />
         <main className="main">
-          <div className="mainImgContainer">
-            {
-            
-          }
+          <div className="mainImgContainer" style={this.backgroundImg()}>
             <ul className="mainSpecs">
-              { LABEL.map(({text}, idx) =>
-                (
-                  <li className="SpecItem" key={idx}>
-                    <span className="spectItemText">{text}</span>
-                  </li>
-                )
-                )}
+              {this.pointer()}
             </ul>
           </div>
         </main>
@@ -27,11 +51,5 @@ class Secure extends Component {
     );
   }
 }
-
-const LABEL = [
-  {text: "전방 충돌 방지"},
-  {text: "측면 충격 보호"},
-  {text: "매우 낮은 전복 위험"},
-]
 
 export default Secure;

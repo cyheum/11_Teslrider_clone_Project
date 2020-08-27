@@ -7,19 +7,33 @@ class CarAutopilot extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Component: "autopilot"
+      data:{},
+      video: ""
     }
   }
+  
+  componentDidMount () {
+    fetch(`/data/car/${this.props.model}.json`)
+    .then((res) => res.json())
+    .then((res) => this.setState({ data : res, video: res.car.video.autopilot }))
+  }
+
+  componentDidUpdate(_, prevState) {
+    if(prevState.video !== this.state.video){
+    }
+  }
+
   render() {
+    const { model } = this.props;
     return (
-      <div className="CarAutopilot" id="5">
+      <div className="CarAutopilot" id="autopilot">
         <div className="autopilotMain">
           <div className="videoWrap">
-            <video loop autoPlay="autoPlay" src="https://tesla-cdn.thron.com/static/WCL9WK_autopilot.mp4-2000_QQHSUM.mp4?xseo=" />
+            <video loop muted autoPlay src={this.state.video} />
           </div>
-          <OverflowContents compName={this.state.Component} />
+          <OverflowContents dataname="autopilot"  model={model}/>
         </div>
-        <ModelFooter dataname={"autopilot"} />
+        <ModelFooter dataname="autopilot" model={model}/>
       </div>
     );
   }

@@ -4,21 +4,55 @@ import './Order.scss';
 
 
 class Order extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      data: {},
+      backImg: "",
+      backColor: false
+    }
+  }
+
+  componentDidMount () {
+    fetch(`/data/car/${this.props.model}.json`)
+    .then((res) => res.json())
+    .then((res) => this.setState({
+      data: res,
+      backImg: res.car.img.order
+    }))
+
+    if (this.props.model ==="model3" ) {
+      this.setState({
+        backColor: true
+      })
+    }
+  }
+
+  title = (title) => {
+    return title = title[0].toUpperCase()
+    + title.substring(1, title.length - 1)
+    +" "
+    + title[title.length -1].toUpperCase()
+  }
+
   render() {
+    const {backColor, backImg} = this.state;
     return (
-      <div className="Order" id="9" >
+      <>
+      <div className={`Order ${backColor ? "black" : ""}`} id="order">
         <div className="mainContainer">
-          <div className="mainContents itemLayout">
-            <div className="contenstHeader">Model S 주문하기</div>
+          <div className={`mainContents itemLayout ${backColor ? "invert" : ""}`}>
+            <div className="contenstHeader">{this.title(this.props.model)} 주문하기</div>
             <div className="contentsBtn">
               <Link to="/order" className="orderBtn">지금 주문하기</Link>
             </div>
           </div>
           <div className="mainImgWrap itemLayout">
-            <img className="mainImg" alt="Model S" src="https://tesla-cdn.thron.com/delivery/public/image/tesla/ea5293bf-a57a-4e55-a68e-aa9eb41638ad/bvlatuR/std/0x0/models@2" />
+            <img className="mainImg" alt={this.props.model} src={backImg} />
           </div>
         </div>
       </div>
+      </>
     );
   }
 }
