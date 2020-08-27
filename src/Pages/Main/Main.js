@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Models from "./Models/Models";
-import SecNav from "./SecNav/SecNav";
+import SecNav from "../../Components/SecNav/SecNav";
 import KnowingTesla from "./KnowingTesla/KnowingTesla";
 import PowerSupply from "./PowerSupply/PowerSupply";
 import MainModelY from "./MainModelY/MainModelY";

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import SubMenu from "../SubMenu/SubMenu";
-import TeslaLogoImg from "../ImgAndVideo/TeslaLogoImg";
+import { withRouter, Link } from "react-router-dom";
+import SubMenu from "../../Pages/Main/SubMenu/SubMenu";
+import TeslaLogoImg from "../../Pages/Main/ImgAndVideo/TeslaLogoImg";
 import "./CommonNav.scss";
 
 class CommonNav extends Component {
@@ -34,7 +34,9 @@ class CommonNav extends Component {
       <nav className="CommonNav">
         {subMenuDisplay && <SubMenu handleSubMenu={handleSubMenu} />}
         <div className="teslaLogoContainer">
-          <TeslaLogoImg />
+          <Link to="/">
+            <TeslaLogoImg />
+          </Link>
         </div>
         <div>
           <ul className="carList">
@@ -61,4 +63,4 @@ class CommonNav extends Component {
   }
 }
 
-export default CommonNav;
+export default withRouter(CommonNav);

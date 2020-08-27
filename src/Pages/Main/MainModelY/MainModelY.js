@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SubjectAndBtnSimple from "../SubjectAndBtn/SubjectAndBtnSimple";
-import CommonFooter from "../CommonFooter/CommonFooter";
+import CommonFooter from "../../../Components/CommonFooter/CommonFooter";
 import "./MainModelY.scss";
 
 const mainModelYInfo = {

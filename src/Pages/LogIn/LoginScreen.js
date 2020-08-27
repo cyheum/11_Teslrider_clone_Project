@@ -4,6 +4,7 @@ import LoginTooltipIcon from "./LoginTooltipIcon";
 import LoginPageLoginBtn from "./LoginPageLoginBtn";
 import CreateAccountBtn from "./CreateAccountBtn";
 import LineContainer from "./LineContainer";
+import API from "../../config";
 
 class LoginScreen extends Component {
   constructor() {
@@ -11,8 +12,8 @@ class LoginScreen extends Component {
     this.state = {
       email: "",
       password: "",
-      inputType: "password",
-      visible: "표시",
+      inputType: true,
+      visible: true,
     };
   }
 
@@ -25,29 +26,46 @@ class LoginScreen extends Component {
 
   handlePassword = () => {
     this.setState({
-      inputType: this.state.inputType === "password" ? "text" : "password",
-      visible: this.state.visible === "표시" ? "숨김" : "표시",
+      inputType: !this.state.inputType,
+      visible: !this.state.visible,
     });
   };
 
   tryLogin = (e) => {
     e.preventDefault();
-    fetch("http://10.58.1.69:8000/user/signin", {
-      method: "POST",
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.access_token) {
-          localStorage.setItem("access_token", res.access_token);
-          this.props.history.push("/");
-        } else {
-          alert("입력하신 이메일 주소 및 비밀번호가 등록되어 있지 않습니다.");
-        }
-      });
+
+    if (!this.state.email)
+      return alert("유효한 이메일 주소를 입력해야 합니다.");
+    if (!this.state.email.includes("@"))
+      return alert("이메일 주소에 '@'를 포함해 주세요.");
+    if (!this.state.password) return alert("비밀번호가 필요합니다.");
+    if (
+      !(
+        this.state.password.length >= 8 &&
+        this.state.password.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)
+      )
+    ) {
+      return alert(
+        "최소 8자 이상의 유효한 비밀번호를 입력하시기 바랍니다. 비밀번호에는 최소 1개의 숫자와 1개의 문자가 포함되어야 합니다."
+      );
+    } else {
+      fetch(`${API}/user/signin`, {
+        method: "POST",
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password,
+        }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.access_token) {
+            localStorage.setItem("access_token", res.access_token);
+            this.props.history.push("/");
+          } else {
+            alert("입력하신 이메일 주소 및 비밀번호가 등록되어 있지 않습니다.");
+          }
+        });
+    }
   };
 
   render() {
@@ -70,10 +88,14 @@ class LoginScreen extends Component {
                 <span>비밀번호</span>
               </label>
               <div className="pwInputContainer">
-                <input type={inputType} name="password" onChange={userInfo} />
+                <input
+                  type={inputType ? "password" : "text"}
+                  name="password"
+                  onChange={userInfo}
+                />
                 <div className="showPwContainer">
                   <span className="showPw" onClick={handlePassword}>
-                    {visible}
+                    {visible ? "표시" : "숨김"}
                   </span>
                 </div>
               </div>
