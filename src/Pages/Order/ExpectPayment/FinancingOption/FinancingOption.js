@@ -21,14 +21,12 @@ export default class FinancingOption extends Component {
     return (
       <div className="FinancingOption">
         <ul>
-          {payment.map((el, idx) => {
+          {PaymentTitle.map((el, idx) => {
             return (
               <li
-                className={
-                  activePaymentMethod === idx
-                    ? "paymentMethod active"
-                    : "paymentMethod normal"
-                }
+                className={`paymentMethod ${
+                  activePaymentMethod === idx ? "active" : "normal"
+                }`}
                 key={idx}
                 onClick={() => this.clickHandlerPaymentMethod(idx)}
               >
@@ -43,4 +41,4 @@ export default class FinancingOption extends Component {
   }
 }
 
-const payment = ["현금", "리스", "할부"];
+const PaymentTitle = ["현금", "리스", "할부"];

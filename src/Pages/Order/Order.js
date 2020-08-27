@@ -7,8 +7,8 @@ import Paint from "./Paint/Paint";
 import Interior from "./Interior/Interior";
 import Autopilot from "./Autopilot/Autopilot";
 import Payment from "./Payment/Payment";
-import "./Order.scss";
 import ExpectPayment from "./ExpectPayment/ExpectPayment";
+import "./Order.scss";
 
 const orderComponentList = {
   0: Battery,
@@ -94,7 +94,7 @@ class Order extends Component {
     });
   };
 
-  clickHandlerChangeExpectPaymentClickState = () => {
+  clickHdrChangeEptPaymentState = () => {
     this.setState({
       expectPaymentClicked: !this.state.expectPaymentClicked,
     });
@@ -126,21 +126,17 @@ class Order extends Component {
                 this.clickHandlerChangeAutopilotCheckedState
               }
             />
-            {expectPaymentClicked ? (
+            {expectPaymentClicked && (
               <ExpectPayment
-                clickHandlerChangeExpectPaymentClickState={
-                  this.clickHandlerChangeExpectPaymentClickState
+                clickHdrChangeEptPaymentState={
+                  this.clickHdrChangeEptPaymentState
                 }
               />
-            ) : (
-              ""
             )}
             <Footer
               totalPrice={totalPrice}
               activeComponent={activeComponent}
-              clickHandlerChangeExpectPaymentClickState={
-                this.clickHandlerChangeExpectPaymentClickState
-              }
+              clickHdrChangeEptPaymentState={this.clickHdrChangeEptPaymentState}
             />
           </main>
         </section>

@@ -9,6 +9,13 @@ export default class FuelCostReduction extends Component {
       fuel: 1689.87,
     };
   }
+
+  handleChangeState = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
   render() {
     const { distance, fuel } = this.state;
     return (
@@ -16,13 +23,18 @@ export default class FuelCostReduction extends Component {
         <div className="title">연료비 절감 비용</div>
         <div>전기차는 가솔린 구동 차량에 비해 연료비가 저렴합니다.</div>
         <div className="distanceFuelContainer">
-          {fuelCostReductionData.map((el, idx) => {
+          {FuelCostReductionData.map((el, idx) => {
             const newKey = idx ? fuel : distance;
             return (
               <div key={el.title} className="distanceFuel">
                 <div className="inputBoxTitle">{el.title}</div>
                 <div className="wrapInputBox">
-                  <input type="text" value={newKey}></input>
+                  <input
+                    type="text"
+                    name={idx ? "fuel" : "distance"}
+                    onChange={this.handleChangeState}
+                    placeholder={newKey.toLocaleString()}
+                  />
                   <span>{el.unit}</span>
                 </div>
               </div>
@@ -47,7 +59,7 @@ export default class FuelCostReduction extends Component {
   }
 }
 
-const fuelCostReductionData = [
+const FuelCostReductionData = [
   { title: "주행 거리", unit: "Km / 년" },
   { title: "가솔린", unit: "/ 리터" },
 ];

@@ -25,7 +25,7 @@
 
   .wrapmodalContainer {
     width: 1100px;
-    height: 60%;
+    height: 600px;
     display: flex;
     position: relative;
     z-index: 110;
@@ -33,6 +33,15 @@
     border-radius: 6px;
     opacity: 1;
     animation: 1s ease 1ms fadeIn backwards;
+
+    .exitBtn {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
 
     .modalLeftNav {
       width: 22%;
@@ -75,12 +84,10 @@
 
             &.second {
               top: 53px;
-              transition: top 500ms;
             }
 
             &.third {
               top: 106px;
-              transition: top 500ms;
             }
           }
         }

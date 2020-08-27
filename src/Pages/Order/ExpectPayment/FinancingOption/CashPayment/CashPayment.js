@@ -10,15 +10,11 @@ export default class CashPayment extends Component {
           <div className="priceNum">₩107,990,000</div>
         </div>
         <div className="reductionPriceWrap">
-          {priceData.map((data, idx) => {
+          {PriceData.map((data, idx) => {
             return (
               <div className="reductionPriceContainer">
                 <div
-                  className={
-                    idx
-                      ? "reductionPriceTitle black"
-                      : "reductionPriceTitle gray"
-                  }
+                  className={`reductionPriceTitle ${idx ? "black" : "gray"}`}
                 >
                   {data.title}
                 </div>
@@ -32,7 +28,7 @@ export default class CashPayment extends Component {
   }
 }
 
-const priceData = [
+const PriceData = [
   { title: "연료비 절감", price: "- ₩6,800,000" },
   { title: "연료비 절감 후 가격", price: "₩101,190,000" },
 ];

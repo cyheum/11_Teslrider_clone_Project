@@ -19,15 +19,23 @@ export default class ExpectPayment extends Component {
   };
 
   render() {
-    const { clickHandlerChangeExpectPaymentClickState } = this.props;
+    const { clickHdrChangeEptPaymentState } = this.props;
     const { navBtnPushedAt } = this.state;
+    const ActiveModalCompo = [
+      <FinancingOption />,
+      <FuelCostReduction />,
+      <IncentiveSystem />,
+    ];
     return (
       <div className="ExpectPayment">
-        <div
-          className="exitModal"
-          onClick={clickHandlerChangeExpectPaymentClickState}
-        />
+        <div className="exitModal" onClick={clickHdrChangeEptPaymentState} />
         <div className="wrapmodalContainer">
+          <img
+            alt="exitBtnImg"
+            className="exitBtn"
+            onClick={clickHdrChangeEptPaymentState}
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2U9IiMxNzFBMjAiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cGF0aCBkPSJNMTYuMDcxIDEuOTI5TDEuOTMgMTYuMDdNMTYuMDcxIDE2LjA3MUwxLjkzIDEuOTMiLz48L2c+PC9zdmc+"
+          />
           <div className="modalLeftNav">
             <div className="wrapModalLogo">
               <img
@@ -38,14 +46,12 @@ export default class ExpectPayment extends Component {
             </div>
             <div className="modalNavContainer">
               <ul className="modalNavList">
-                {navTitle.map((title, idx) => {
+                {NavTitle.map((title, idx) => {
                   return (
                     <li
-                      className={
-                        navBtnPushedAt === idx
-                          ? "modalNavTitle pushed"
-                          : "modalNavTitle normal"
-                      }
+                      className={`modalNavTitle ${
+                        navBtnPushedAt === idx ? "pushed" : "normal"
+                      }`}
                       key={idx}
                       onClick={() => this.clickHandlerChnageNavBtnPushed(idx)}
                     >
@@ -54,28 +60,22 @@ export default class ExpectPayment extends Component {
                   );
                 })}
                 <span
-                  className={
-                    navBtnPushedAt === 0
-                      ? "modalLeftNavActiveLine first"
-                      : navBtnPushedAt === 1
-                      ? "modalLeftNavActiveLine second"
-                      : "modalLeftNavActiveLine third"
-                  }
+                  className={`modalLeftNavActiveLine ${
+                    !navBtnPushedAt
+                      ? "first"
+                      : navBtnPushedAt
+                      ? "second"
+                      : "third"
+                  }`}
                 />
               </ul>
             </div>
           </div>
-          <div className="modalContent">
-            {(() => {
-              if (navBtnPushedAt === 0) return <FinancingOption />;
-              if (navBtnPushedAt === 1) return <FuelCostReduction />;
-              if (navBtnPushedAt === 2) return <IncentiveSystem />;
-            })()}
-          </div>
+          <div className="modalContent">{ActiveModalCompo[navBtnPushedAt]}</div>
         </div>
       </div>
     );
   }
 }
 
-const navTitle = ["파이낸싱 옵션", "연료비 절감", "인센티브 제도"];
+const NavTitle = ["파이낸싱 옵션", "연료비 절감", "인센티브 제도"];
