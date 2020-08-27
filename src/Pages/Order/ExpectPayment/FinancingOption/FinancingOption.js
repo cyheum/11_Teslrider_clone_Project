@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./FinancingOption.scss";
 import CashPayment from "./CashPayment/CashPayment";
+import "./FinancingOption.scss";
 
 export default class FinancingOption extends Component {
   constructor() {

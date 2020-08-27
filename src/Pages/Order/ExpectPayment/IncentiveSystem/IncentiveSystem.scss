@@ -1,11 +1,23 @@
 @import "../../../../Styles/common.scss";
 
 .IncentiveSystem {
-  padding: 80px 100px;
+  padding: 75px 100px;
   width: 100%;
 
   .title {
     font-size: 2.4rem;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+  }
+
+  .subTitle {
+    font-size: 1.4rem;
+    margin-bottom: 70px;
+    color: $gray;
+  }
+
+  .description {
+    font-size: 1.4rem;
+    margin-bottom: 35px;
+    color: $gray;
   }
 }

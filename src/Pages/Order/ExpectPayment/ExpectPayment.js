@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./ExpectPayment.scss";
 import FinancingOption from "./FinancingOption/FinancingOption";
 import FuelCostReduction from "./FuelCostReduction/FuelCostReduction";
 import IncentiveSystem from "./IncentiveSystem/IncentiveSystem";
+import "./ExpectPayment.scss";
 
 export default class ExpectPayment extends Component {
   constructor() {

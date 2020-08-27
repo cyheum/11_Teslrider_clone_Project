@@ -37,6 +37,11 @@ export default class FuelCostReduction extends Component {
           가정할 때 이는 연료 비용으로 약 ₩6,800,000 을(를) 절감할 수 있는
           수치입니다.
         </div>
+        <div className="description">
+          비슷한 휘발유 구동 차량의 연비를 100km당 8.6 리터로 가정했습니다. 또한
+          향후 5년간 전기 비용은 전국 평균인 kWh당 ₩135.53 (으)로, 고급 휘발유의
+          경우 리터당 ₩1,689.87 (으)로 가정했습니다.
+        </div>
       </div>
     );
   }
