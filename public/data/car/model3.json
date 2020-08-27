@@ -1,0 +1,157 @@
+{
+  "ModelFooter":
+  {
+    "performance": 
+      {
+        "headerName": "퍼포먼스",
+        "headerContent": "가장 빠른 가속",
+        "aside": "Model 3는 듀얼 모터 AWD, 20인치 퍼포먼스 휠 및 브레이크와 낮아진 서스펜션 등이 탑재되어 어떤 기후조건에서도 완벽한 차량 제어를 제공합니다. 또한, Model 3의 카본 파이버 스포일러는 고속 주행 시 안정성을 향상시켜 0-100 km/h 도달 시간이 3.4초에 불과합니다."
+      },
+    "autopilot":
+      {
+        "headerName": "오토파일럿",
+        "headerContent": "운전의 미래",
+        "aside":"오토파일럿의 첨단 안전 및 편의 기술은 주행 시에 가장 부담스러울 수 있는 부분을 돕도록 설계되었습니다."
+      },
+    "interior":
+    {
+      "headerName": "인테리어",
+      "headerContent": "운전자 중심의 디자인",
+      "aside":"Model 3의 내부는 다른 차량과 다릅니다. 스마트폰을 키로 사용하고 중앙의 15인치 터치스크린에서 모든 운전자 컨트롤에 액세스할 수 있습니다. 풀 글래스 루프가 전면에서 후면까지 덮어서 모든 좌석에 개방감을 제공합니다."
+    },
+    "exterior":
+    {
+      "headerName": "외부",
+      "headerContent": "효율성을 위한 설계",
+      "aside":"Model 3는 속도와 견고성을 중심으로 설계되어 놀라운 공기역학, 루디크러스 퍼포먼스 및 타협하지 않는 아름다움을 자랑합니다. 차량에 접근 시 자동 도어핸들이 나타나며 도어가 닫히면 들어갑니다."
+    }
+  },
+
+  "aside":
+  {
+    "distance":
+    {
+      "title": "주행 가능 거리",
+      "subTitle": "자유로운 장거리 여행",
+      "contentText": "Model 3는 순수 전기차이기 때문에 주유소에 갈 필요가 없습니다. 집에서 충전한 후에 아침에 일어나면 이미 충전이 완료되어 있습니다. 도로에서 주행 중일 때는 공공 충전소나 Tesla의 충전 네트워크에서 쉽게 충전할 수 있습니다. 전 세계에 17,000대 이상의 Tesla 수퍼차저가 설치되어 있으며 매주 여섯 곳에 새로운 수퍼차저가 설치됩니다."
+    },
+    "secure":
+    {
+      "title": "안전",
+      "subTitle": "안전을 위한 설계",
+      "contentText": "전체 Model 3의 디자인에서 가장 중요한 요소는 안전입니다. 알루미늄과 강철로 조합된 금속 구조는 차량의 모든 영역에서 최대 강도를 발휘합니다. Model 3는 전면 글라스 루프가 탑재된 경우에도 루프 충돌 테스트에서 차체 중량의 네 배를 견뎌내었으며, 이는 아프리카 코끼리 성체 두 마리에 상당하는 무게입니다."
+      
+    }
+  },
+  "autopilot": {
+    "overflow": "left",
+    "spec": {
+      "wide": "360°",
+      "distance": "160m",
+      "sensor": "울트라소닉 센서",
+      "explain": {
+      "wide": "후방, 측방 및 전방 카메라가 최고의 가시성 제공",
+      "distance": "전방 레이더가 원거리 물체에 대한 장거리 탐지 제공",
+      "sensor": "주변 차량 감지를 통한 잠재적 충돌 방지 및 주차 보조"
+      }
+    }
+  },
+  "interior": {
+    "overflow": "right",
+    "spec": {
+      "display": "15인치",
+      "d": "160m",
+      "load": "425 리터",
+      "explain": {
+      "display": "지속적으로 향상되는 거대한 터치스크린 디스플레이",
+      "update": "OTA(Over-The-Air) 소프트웨어 업데이트를 통한 새로운 기능, 성능 및 퍼포먼스 도입",
+      "load": "동급 최고의 적재 공간으로 일반적인 SUV 차량보다 많은 적재 공간 제공"
+      }
+    },
+    "background":{
+      "type" : "video",
+      "video" : "https://tesla-cdn.thron.com/delivery/public/video/tesla/c72e74ed-9513-4104-8984-5e36386ad696/bvlatuR/WEBHD/interior"
+    }
+  },
+  "exterior":{
+    "spec":{
+      "컬러": "시그니처 컬러",
+      "저항": "0.23",
+      "천장": "루프백 호환",
+      "explain" : {
+        "컬러": "시그니처 멀티레이어 페인트로 Model 3 커스터마이즈",
+        "저항": "동급 차량 중 가장 낮은 공기저항계수를 자랑하는 가장 공기역학적인 차",
+        "천장": "광활한 글래스 루프로 더 넓은 헤드룸과 자외선 차단 제공"
+      }
+    },
+    "img" : "https://www.tesla.com/sites/default/files/model3-new/compare/compare_model3_center.png"
+
+  },
+  "car" :
+  {
+    "model" : "model 3",
+    "img": {
+      "main" : "https://www.tesla.com/sites/default/files/model3-new/hero/model-3-hero-desktop-v2.jpg",
+      "secure" : "https://www.tesla.com/themes/custom/tesla_frontend/components/images/model-3-hero.png",
+      "specs" : "https://www.tesla.com/sites/default/files/modelsx-new/sx-specs/MS-specs-desktop.jpg",
+      "order" : "https://www.tesla.com/sites/default/files/model3-new/order/Desktop_Model3_Order_102719.png",
+      "performance": "https://tesla-cdn.thron.com/delivery/public/image/tesla/b1647be0-b685-4987-a68e-2a9197d33ad4/bvlatuR/std/0x0/all-wheel-drive@2",
+      "spec": "https://tesla-cdn.thron.com/delivery/public/image/tesla/a59358bb-b582-4a41-9a40-90d44a65e4b3/bvlatuR/std/0x0/top@2"
+    },
+    "video": {
+      "distance": "https://tesla-cdn.thron.com/static/9H6YXX_hero_0.mp4-2000_8CKSBI.mp4?xseo=",
+      "autopilot": "https://tesla-cdn.thron.com/static/WCL9WK_autopilot.mp4-2000_QQHSUM.mp4?xseo="
+    },
+    "spec" : {
+      "제로백" : "3.5",
+      "적재공간": "446",
+      "주행가능거리": "425",
+      "최고속도": "261",
+      "모터": "AWD",
+      "충전시간":"15",
+      "충전소": "17,000",
+      "explain" : {
+        "모터": "듀얼 모터 AWD로 어떠한 기상 조건에서도 트랙션 및 토크를 즉시 제어",
+        "제로백": "0-100 km/h 도달 시간이 2.5초에 불과하여 지구 상에서 가장 빠른 가속을 자랑하는 세단입니다.",
+        "최고속도": "향상된 핸들링 및 공기역학을 통해 최고 속도 261km/h 달성",
+        "주행가능거리" : "1회 충전으로 487 km 이상 충전 주행 가능",
+        "충전시간" : "수퍼차저로 15분 내에 최대 171km 충전",
+        "충전소": "전 세계의 통행량이 많은 경로에"
+      }
+
+    },
+    "secure": {
+      "pointer": {
+        "front": "충격 보호",
+        "right": "견고한 차체 구조",
+        "left": "매우 낮은 전복 위험"
+      }
+    },
+    "performance":
+      {
+        "배터리": "Long Range",
+        "가속도": "0-100km/h 2.5초",
+        "주행가능거리(연비)": "480 km (4.2km/kWh)",
+        "드라이브": "AWD",
+        "좌석수": "성인 5인",
+        "휠": ["19인치", "21인치"],
+        "중량": "2.241 kg",
+        "적재공간": "425 L",
+        "디스플레이": "디지털 계기판 + 15인치 터치스크린",
+        "제품 보증": "기본차량 - 4년 또는 80,000 km (선도래 기준)<br/> 배터리 및 구동 장치: 선도래 기준으로 8년 또는 240,000 km까지 보증"
+      },
+    "longRange":
+      {
+        "배터리": "Long Range",
+        "가속도": "0-100km/h 3.8초",
+        "주행가능거리(연비)": "487 km (4.3 km/kWh)",
+        "드라이브": "AWD",
+        "좌석수": "성인 5인",
+        "휠": ["19인치", "21인치"],
+        "중량": "2,215 kg",
+        "적재공간": "425 L",
+        "디스플레이": "디지털 계기판 + 15인치 터치스크린",
+        "제품 보증": "기본차량 - 4년 또는 80,000 km (선도래 기준)<br/> 배터리 및 구동 장치: 선도래 기준으로 8년 또는 240,000 km까지 보증"
+      }
+  } 
+}

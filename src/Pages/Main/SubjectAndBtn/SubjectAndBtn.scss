@@ -1,5 +1,10 @@
+@import '../../../Styles/common.scss';
 .SubjectAndBtn {
   animation: 200ms ease-in-out;
+  position: absolute;
+  top: 53px;
+  @include column;
+  width: 100%;
 }
 .subjectAndBtn {
   height: 72px;

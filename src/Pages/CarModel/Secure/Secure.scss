@@ -1,0 +1,96 @@
+@import '../../../Styles/common.scss';
+
+.Secure {
+  width: 100vw;
+  height: 100vh;
+  @include center(center);
+
+  .main {
+    width: 100%;
+    height: 100%;
+    background-color: #F4F4F4;
+  }
+
+  .mainImgContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mainSpecs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .SpecItem {
+    display: block;
+    position: absolute;
+    border-left: 3px solid black;
+    &:first-of-type {
+      display: block;
+      position: absolute;
+      top: 17%;
+      left: 25%;
+      height: 35%;
+      border-left:3px solid black;
+    }
+    &:nth-of-type(2) {
+    top: 11%;
+    left: 46%;
+    max-width: 18%;
+    height: 20%;
+    }
+    &:last-of-type {
+    top: 58%;
+    left: 50%;
+    max-width: 18%;
+    height: 20%;
+    }
+  &::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 100%;
+    border: 2px solid black;
+    bottom: 0;
+    left: -6px;
+  }
+  &:last-of-type::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border: 2px solid black;
+    border-radius: 50%;
+    top: 0;
+    left: -6px;
+  }
+  &:last-child::before{
+    display: none;
+  }
+
+  &:last-child {
+    .spectItemText {
+      line-height: 27;
+    }
+  }
+}
+
+  .spectItemText {
+    margin-left: 10px;
+    font-size: 1.4rem;
+  }
+
+  .itemShock{
+    top: 7%;
+    left: 46%;
+    max-width: 18%;
+    height: 19%;
+  }
+}

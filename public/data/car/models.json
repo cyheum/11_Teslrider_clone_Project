@@ -1,0 +1,156 @@
+{
+  "ModelFooter":
+  {
+    "performance": 
+      {
+        "headerName": "퍼포먼스",
+        "headerContent": "가장 빠른 가속",
+        "aside": "Model S는 퍼포먼스와 안전성 측면에서 업계의 표준이 되고 있습니다. Tesla의 순수 전기 파워트레인은 어떤 기상 조건에서도 비교가 불가능한 퍼포먼스를 자랑하며 듀얼 모터 상시 사륜 구동(AWD), 루디크러스 가속을 제공합니다."
+      },
+    "autopilot":
+      {
+        "headerName": "오토파일럿",
+        "headerContent": "운전의 미래",
+        "aside":"오토파일럿의 첨단 안전 및 편의 기술은 주행 시에 가장 부담스러울 수 있는 부분을 돕도록 설계되었습니다."
+      },
+    "interior":
+    {
+      "headerName": "인테리어",
+      "headerContent": "운전자 중심의 디자인",
+      "aside":"Model S에는 동급 최고의 적재 공간, 성인 최대 5명이 착석할 수 있는 시트 및 거대한 17인치 터치스크린이 장착되어 있습니다. 고급 음향 엔지니어링으로 녹음 스튜디오에 필적할 사운드 다이내믹을 제공하며 글래스 루프는 모든 탑승자에게 넓은 실내 경험을 제공합니다."
+    },
+    "exterior":
+    {
+      "headerName": "외부",
+      "headerContent": "효율성을 위한 설계",
+      "aside":"Model S는 속도와 견고성을 중심으로 설계되어 놀라운 공기역학, 루디크러스 퍼포먼스 및 타협하지 않는 아름다움을 자랑합니다. 차량에 접근 시 자동 도어핸들이 나타나며 도어가 닫히면 들어갑니다."
+    }
+  },
+
+  "aside":
+  {
+    "distance":
+    {
+      "title": "주행 가능 거리",
+      "subTitle": "자유로운 장거리 여행",
+      "contentText": "업계 최고 수준의 주행 가능 거리와 편리한 충전 옵션을 자랑하는 Model S와 함께 전 세계 어디든 원하는 곳으로 떠날 수 있습니다."
+    },
+    "secure":
+    {
+      "title": "안전",
+      "subTitle": "높은 충격 보호",
+      "contentText": "개발 단계부터 전기차로 고안된 Model S는 견고한 구조와 차체 바닥의 배터리 팩으로 탁월한 충격 보호를 제공합니다."
+      
+    }
+  },
+  "autopilot": {
+    "overflow": "left",
+    "spec": {
+      "wide": "360°",
+      "distance": "160m",
+      "sensor": "울트라소닉 센서",
+      "explain": {
+      "wide": "후방, 측방 및 전방 카메라가 최고의 가시성 제공",
+      "distance": "전방 레이더가 원거리 물체에 대한 장거리 탐지 제공",
+      "sensor": "주변 차량 감지를 통한 잠재적 충돌 방지 및 주차 보조"
+      }
+    }
+  },
+  "interior": {
+    "overflow": "right",
+    "spec": {
+      "display": "17인치",
+      "d": "160m",
+      "load": "804리터",
+      "explain": {
+      "display": "지속적으로 향상되는 거대한 터치스크린 디스플레이",
+      "update": "OTA(Over-The-Air) 소프트웨어 업데이트를 통한 새로운 기능, 성능 및 퍼포먼스 도입",
+      "load": "동급 최고의 적재 공간으로 일반적인 SUV 차량보다 많은 적재 공간 제공"
+      }
+    },
+    "background":{
+      "type" : "img",
+      "img" : "https://tesla-cdn.thron.com/delivery/public/image/tesla/2558f32f-6c76-40b7-a66b-5d6d3c21ae99/bvlatuR/std/0x0/hero@2_1"
+    }
+  },
+  "exterior":{
+    "spec":{
+      "컬러": "시그니처 컬러",
+      "저항": "0.23",
+      "천장": "루프백 호환",
+      "explain" : {
+        "컬러": "시그니처 멀티레이어 페인트로 Model S 커스터마이즈",
+        "저항": "동급 차량 중 가장 낮은 공기저항계수를 자랑하는 가장 공기역학적인 차",
+        "천장": "광활한 글래스 루프로 더 넓은 헤드룸과 자외선 차단 제공"
+      }
+    },
+    "img" : "https://tesla-cdn.thron.com/delivery/public/image/tesla/f55ee333-601a-48e5-9103-4abbeb4d99eb/bvlatuR/std/0x0/hero-high-viewport"
+  },
+  "car" :
+  {
+    "model" : "model S",
+    "img": {
+      "main" : "https://tesla-cdn.thron.com/delivery/public/image/tesla/35d15221-0a5f-4dce-b484-a4db67b81dd2/bvlatuR/std/0x0/model-s@2x",
+      "secure" : "https://www.tesla.com/themes/custom/tesla_frontend/components/images/safety-model-s-hero.png",
+      "specs" : "https://www.tesla.com/sites/default/files/modelsx-new/sx-specs/MS-specs-desktop.jpg",
+      "order" : "https://tesla-cdn.thron.com/delivery/public/image/tesla/ea5293bf-a57a-4e55-a68e-aa9eb41638ad/bvlatuR/std/0x0/models@2",
+      "performance": "https://tesla-cdn.thron.com/delivery/public/image/tesla/c566e836-ea95-462a-99c0-cb8af3553a30/bvlatuR/std/0x0/model-s-performance",
+      "spec": "https://www.tesla.com/sites/default/files/modelsx-new/sx-specs/MS-specs-desktop.jpg"
+    },
+    "video": {
+      "distance": "https://tesla-cdn.thron.com/static/119ZLJ_range.mp4-2000_TSMBHB.mp4?xseo=",
+      "autopilot": "https://tesla-cdn.thron.com/static/WCL9WK_autopilot.mp4-2000_QQHSUM.mp4?xseo="
+    },
+    "spec" : {
+      "제로백" : "2.5",
+      "적재공간": "804",
+      "주행가능거리": "487",
+      "최고속도": "261",
+      "모터": "AWD",
+      "충전시간":"15",
+      "충전소": "17,000",
+      "explain" : {
+        "모터": "듀얼 모터 AWD로 어떠한 기상 조건에서도 트랙션 및 토크를 즉시 제어",
+        "제로백": "0-100 km/h 도달 시간이 2.5초에 불과하여 지구 상에서 가장 빠른 가속을 자랑하는 세단입니다.",
+        "최고속도": "향상된 핸들링 및 공기역학을 통해 최고 속도 261km/h 달성",
+        "주행가능거리" : "1회 충전으로 487 km 이상 충전 주행 가능",
+        "충전시간" : "수퍼차저로 15분 내에 최대 171km 충전",
+        "충전소": "전 세계의 통행량이 많은 경로에"
+      }
+
+    },
+    "secure": {
+      "pointer": {
+        "front": "전방 충돌 방지",
+        "right": "측면 충격 보호",
+        "left": "매우 낮은 전복 위험"
+      }
+    },
+    "performance":
+      {
+        "배터리": "Long Range",
+        "가속도": "0-100km/h 2.5초",
+        "주행가능거리(연비)": "480 km (4.2km/kWh)",
+        "드라이브": "AWD",
+        "좌석수": "성인 5인",
+        "휠": ["19인치", "21인치"],
+        "중량": "2.241 kg",
+        "적재공간": "804 리터",
+        "디스플레이": "디지털 계기판 + 17인치 터치스크린",
+        "제품 보증": "기본차량 - 4년 또는 80,000 km (선도래 기준)<br/> 배터리 및 구동 장치: 선도래 기준으로 8년 또는 240,000 km까지 보증"
+      },
+    "longRange":
+      {
+        "배터리": "Long Range",
+        "가속도": "0-100km/h 3.8초",
+        "주행가능거리(연비)": "487 km (4.3 km/kWh)",
+        "드라이브": "AWD",
+        "좌석수": "성인 5인",
+        "휠": ["19인치", "21인치"],
+        "중량": "2,215 kg",
+        "적재공간": "804 리터",
+        "디스플레이": "디지털 계기판 + 17인치 터치스크린",
+        "제품 보증": "기본차량 - 4년 또는 80,000 km (선도래 기준)<br/> 배터리 및 구동 장치: 선도래 기준으로 8년 또는 240,000 km까지 보증"
+      }
+  } 
+}

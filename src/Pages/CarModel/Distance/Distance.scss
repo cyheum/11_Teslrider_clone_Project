@@ -1,0 +1,31 @@
+@import '../../../Styles/common.scss';
+
+.Distance {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+
+  .distanceMain {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .videoWrap {
+    width: 100%;
+    height: 100%;
+  }
+
+  video {
+    width: 100%;
+  }
+  
+  .distanceMainContainer {
+    position: relative;
+  }
+
+  .spectSumWrap {
+    position: absolute;
+    width: 100%;
+  }
+}
