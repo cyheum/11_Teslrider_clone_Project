@@ -3,15 +3,14 @@ import "./Footer.scss";
 
 export default class Footer extends Component {
   render() {
+    if (!this.props.totalData.data.carImgPrice) return <div />;
     const {
-      totalData: {
-        data: {
-          carImgPrice: {
-            price: { total_price, fuel_cost_reduction_price },
-          },
+      data: {
+        carImgPrice: {
+          price: { fuel_cost_reduction_price, total_price },
         },
       },
-    } = this.props;
+    } = this.props.totalData;
     return (
       <footer className="Footer">
         <div className="wrapTotalPrice">
@@ -23,11 +22,11 @@ export default class Footer extends Component {
           </select>
           <div className="totalPrice">
             <div className="wrapPrice">
-              {`₩${parseInt(fuel_cost_reduction_price).toLocaleString()}`}
+              {`₩${fuel_cost_reduction_price.toLocaleString()}`}
               <div>연료비 절감 후</div>
             </div>
             <div className="wrapPrice">
-              {`₩${parseInt(total_price).toLocaleString()}`}
+              {`₩${total_price.toLocaleString()}`}
               <div>연료비 절감 전</div>
             </div>
             <span>예상 결제 가격</span>

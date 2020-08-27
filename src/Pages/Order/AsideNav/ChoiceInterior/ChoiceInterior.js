@@ -4,12 +4,17 @@ import "./ChoiceInterior.scss";
 export default class ChoiceInterior extends Component {
   render() {
     const {
-      clickHandlerChangeStyle,
+      data: { icons },
+      interiorPushedAt,
+    } = this.props.totalData;
+    if (!icons || !interiorPushedAt) return <div />;
+    const {
+      handleClickChangeCarBtn,
       totalData: {
-        interiorPushedAt,
         batteryIsPushedAt,
+        batteryIsPushedIndex,
+        interiorPushedIndex,
         data: {
-          icons,
           icons: { battery_value, interior_icon },
         },
       },
@@ -18,39 +23,40 @@ export default class ChoiceInterior extends Component {
     const newInterior_icon =
       battery_value[batteryIsPushedAt] === "Long Range"
         ? interior_icon.slice(0, 3)
-        : interior_icon(3);
+        : interior_icon.slice(3);
     return (
       <div className="ChoiceInterior">
         <div className="choiceContainer">
           <div className="headText">프리미엄 인테리어 선택하기</div>
           <div className="wrapChoiceStyleButton">
-            {icons &&
-              newInterior_icon.map((style, index) => {
-                const keyName = Object.keys(style);
-                return (
-                  <div
-                    className={
-                      interiorPushedAt === keyName
-                        ? "choiceStyleButton pushed"
-                        : "choiceStyleButton normal"
+            {newInterior_icon.map((style, index) => {
+              const keyName = Object.keys(style)[0];
+              return (
+                <div
+                  className={
+                    interiorPushedAt === keyName
+                      ? "choiceStyleButton pushed"
+                      : "choiceStyleButton normal"
+                  }
+                  key={index}
+                >
+                  <img
+                    onClick={() =>
+                      handleClickChangeCarBtn(keyName, index, "interior")
                     }
-                    key={index}
-                  >
-                    <img
-                      onClick={() => clickHandlerChangeStyle(keyName)}
-                      alt="stylebuttonImg"
-                      src={style[keyName]}
-                    />
-                  </div>
-                );
-              })}
+                    alt="stylebuttonImg"
+                    src={style[keyName]}
+                  />
+                </div>
+              );
+            })}
           </div>
           <div className="StyleDescription">
-            <span>{title[interiorPushedAt]}</span>
-            <span>{price[interiorPushedAt]}</span>
+            <span>{title[interiorPushedIndex]}</span>
+            <span>{price[interiorPushedIndex]}</span>
           </div>
           <div className="descriptionText">
-            {name[batteryIsPushedAt][interiorPushedAt]}
+            {name[batteryIsPushedIndex][interiorPushedIndex]}
           </div>
         </div>
         <div className="subTitle">기본사항:</div>
@@ -81,10 +87,10 @@ export default class ChoiceInterior extends Component {
 
 const interiorDetail = {
   title: ["All Black", "Black/White", "Cream"],
-  name: {
-    0: ["애쉬 우드 데코", "다크 우드 데코", "오크 우드 데코"],
-    1: ["카본 파이버 데코", "카본 파이버 데코", "오크 우드 데코"],
-  },
+  name: [
+    ["애쉬 우드 데코", "다크 우드 데코", "오크 우드 데코"],
+    ["카본 파이버 데코", "카본 파이버 데코", "오크 우드 데코"],
+  ],
   price: ["포함", "₩1,929,000", "₩1,929,000"],
 };
 

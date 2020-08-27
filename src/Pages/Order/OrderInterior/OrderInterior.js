@@ -11,10 +11,10 @@ export default class OrderInterior extends Component {
   }
 
   componentDidMount() {
-    this.delay();
+    this.animationDelay();
   }
 
-  delay = () => {
+  animationDelay = () => {
     setTimeout(() => {
       this.setState(() => ({ activeClass: "appearComponent" }));
     }, 100);

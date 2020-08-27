@@ -17,7 +17,7 @@ export default class Battery extends Component {
     this.countNum("distance", 487, 1);
     this.countNum("speed", 250, 1);
     this.countNum("arrivalTime", 3.8, 0.1);
-    this.delay();
+    this.animationDelay();
   }
 
   countNum = (name, limit, incNum) => {
@@ -40,7 +40,7 @@ export default class Battery extends Component {
     });
   };
 
-  delay = () => {
+  animationDelay = () => {
     setTimeout(() => {
       this.setState(() => ({ activeClass: "appearComponent" }));
     }, 100);

@@ -9,36 +9,64 @@ import OrderAutopilot from "./OrderAutopilot/OrderAutopilot";
 import Payment from "./Payment/Payment";
 import "./Order.scss";
 
-const orderComponentList = {
-  0: Battery,
-  1: Paint,
-  2: OrderInterior,
-  3: OrderAutopilot,
-  4: Payment,
-};
+const orderComponentList = [
+  Battery,
+  Paint,
+  OrderInterior,
+  OrderAutopilot,
+  Payment,
+];
 
 class Order extends Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
-      modelPushedAt: "Model_S",
+      modelPushedAt: this.props.match.params.model,
       activeComponent: 0,
-      batteryIsPushedAt: 9,
-      isColorBtnPushedAt: 16,
-      isWheelBtnPushedAt: 15,
-      interiorPushedAt: 8,
+      batteryIsPushedAt: "",
+      isColorBtnPushedAt: "",
+      isWheelBtnPushedAt: "",
+      interiorPushedAt: "",
+      batteryIsPushedIndex: 0,
+      ColorBtnPushedIndex: 0,
+      WheelBtnPushedIndex: 0,
+      interiorPushedIndex: 0,
       isAutopilotChecked: false,
       data: {},
     };
   }
 
-  passProp = (Comp) => {
-    return class extends React.Component {
-      render() {
-        return <Comp {...this.props} />;
-      }
-    };
+  componentDidMount() {
+    this.runFetchForIcons();
+  }
+
+  runFetchForIcons = () => {
+    const { data } = this.state;
+    fetch("http://10.58.0.46:8000/customizing/icons?model=Model_S")
+      .then((res) => res.json())
+      .then((res) =>
+        this.setState({ data: { ...data, icons: res } }, () =>
+          this.stateiInitializing()
+        )
+      );
+  };
+
+  stateiInitializing = () => {
+    const {
+      data: {
+        icons: { battery_value, color_icon, wheel_icon, interior_icon },
+      },
+    } = this.state;
+
+    this.setState(
+      {
+        batteryIsPushedAt: Object.keys(battery_value[0])[0],
+        isColorBtnPushedAt: Object.keys(color_icon[0])[0],
+        isWheelBtnPushedAt: Object.keys(wheel_icon[0])[0],
+        interiorPushedAt: Object.keys(interior_icon[0])[0],
+      },
+      () => this.runFetchForPrice()
+    );
   };
 
   runFetchForPrice = () => {
@@ -52,7 +80,7 @@ class Order extends Component {
       data,
     } = this.state;
 
-    fetch("http://10.58.4.178:8000/customizing/products", {
+    fetch("http://10.58.0.46:8000/customizing/products", {
       method: "POST",
       body: JSON.stringify({
         model: modelPushedAt,
@@ -67,21 +95,6 @@ class Order extends Component {
       .then((res) => this.setState({ data: { ...data, carImgPrice: res } }));
   };
 
-  runFetchForIcons = () => {
-    const { data } = this.state;
-    fetch("http://10.58.4.178:8000/customizing/icons?model=Model_S")
-      .then((res) => res.json())
-      .then((res) =>
-        this.setState({ data: { ...data, icons: res } }, () =>
-          this.runFetchForPrice()
-        )
-      );
-  };
-
-  componentDidMount() {
-    this.runFetchForIcons();
-  }
-
   clickHandler = (componentIdx) => {
     if (this.state.activeComponent === componentIdx) return;
     this.setState({
@@ -89,38 +102,33 @@ class Order extends Component {
     });
   };
 
-  handleClickChangeCarBtn = (num) => {
+  handleClickChangeCarBtn = (num, idx, name) => {
     if (this.state.batteryIsPushedAt === num) return;
     this.setState(
       {
-        batteryIsPushedAt: num,
+        [`${name}PushedAt`]: num,
+        [`${name}PushedIndex`]: idx,
       },
       () => this.runFetchForPrice()
     );
   };
 
-  handleClickChangeBtn = (index, num) => {
+  handleClickChangeBtn = (index, num, pushIdx) => {
     const btnPushedAt = index ? "isWheelBtnPushedAt" : "isColorBtnPushedAt";
+    const btnPushedIndex = index
+      ? "WheelBtnPushedIndex"
+      : "ColorBtnPushedIndex";
     if (btnPushedAt === num) return;
     this.setState(
       {
         [btnPushedAt]: num,
+        [btnPushedIndex]: pushIdx,
       },
       () => this.runFetchForPrice()
     );
   };
 
-  clickHandlerChangeStyle = (num) => {
-    if (this.state.interiorPushedAt === num) return;
-    this.setState(
-      {
-        interiorPushedAt: num,
-      },
-      () => this.runFetchForPrice()
-    );
-  };
-
-  clickHandlerChangeAutopilotCheckedState = () => {
+  changeAutopilotBtnState = () => {
     this.setState(
       {
         isAutopilotChecked: !this.state.isAutopilotChecked,
@@ -129,9 +137,18 @@ class Order extends Component {
     );
   };
 
+  remakeCompo = (Comp) => {
+    return class extends React.Component {
+      render() {
+        return <Comp {...this.props} />;
+      }
+    };
+  };
+
   render() {
+    console.log(this.props.match.params);
     const { activeComponent } = this.state;
-    const NewProp = this.passProp(
+    const ActiveMain = this.remakeCompo(
       orderComponentList[this.state.activeComponent]
     );
     return (
@@ -142,21 +159,18 @@ class Order extends Component {
         />
         <section>
           <main>
-            <NewProp
-              totalData={this.state}
+            <ActiveMain
+              totalData={{ ...this.state }}
               changePropState={this.changePropState}
               handleClickChangeCarBtn={this.handleClickChangeCarBtn}
             />
             <AsideNav
-              totalData={this.state}
+              totalData={{ ...this.state }}
               handleClickChangeCarBtn={this.handleClickChangeCarBtn}
               handleClickChangeBtn={this.handleClickChangeBtn}
-              clickHandlerChangeStyle={this.clickHandlerChangeStyle}
-              clickHandlerChangeAutopilotCheckedState={
-                this.clickHandlerChangeAutopilotCheckedState
-              }
+              changeAutopilotBtnState={this.changeAutopilotBtnState}
             />
-            <Footer totalData={this.state} />
+            <Footer totalData={{ ...this.state }} />
           </main>
         </section>
       </article>

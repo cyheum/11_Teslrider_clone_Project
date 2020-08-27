@@ -9,7 +9,7 @@ export default class ChoiceAutopilot extends Component {
       lastDescription,
     } = description;
     const {
-      clickHandlerChangeAutopilotCheckedState,
+      changeAutopilotBtnState,
       totalData: { isAutopilotChecked },
     } = this.props;
     return (
@@ -43,7 +43,7 @@ export default class ChoiceAutopilot extends Component {
               ? "autopilotCheckBox checked"
               : "autopilotCheckBox normal"
           }
-          onClick={clickHandlerChangeAutopilotCheckedState}
+          onClick={changeAutopilotBtnState}
         >
           <div>
             <input type="checkbox" checked={isAutopilotChecked} />

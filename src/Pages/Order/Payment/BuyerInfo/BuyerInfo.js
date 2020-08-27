@@ -9,16 +9,14 @@ export default class BuyerInfo extends Component {
         onClick={() => clickHandlerChangeBuyer(index)}
       >
         <div
-          className={
-            isEnterprise !== index ? "checkBox normal" : "checkBox checked"
-          }
+          className={`checkBox ${
+            isEnterprise !== index ? "normal" : "checked"
+          }`}
         >
           <div
-            className={
-              isEnterprise !== index
-                ? "circleInCheckBox hidden"
-                : "circleInCheckBox normal"
-            }
+            className={`circleInCheckBox ${
+              isEnterprise !== index ? "hidden" : "normal"
+            }`}
           />
         </div>
         {title}

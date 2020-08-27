@@ -4,10 +4,16 @@ import "./ChoiceCar.scss";
 export default class ChoiceCar extends Component {
   render() {
     const {
+      batteryIsPushedAt,
+      data: { icons },
+    } = this.props.totalData;
+    if (!icons || !batteryIsPushedAt) return <div />;
+    const {
       handleClickChangeCarBtn,
       totalData: {
-        batteryIsPushedAt,
-        data: { icons },
+        data: {
+          icons: { battery_value },
+        },
       },
     } = this.props;
     return (
@@ -18,24 +24,25 @@ export default class ChoiceCar extends Component {
           프리미엄 인테리어 및 사운드 시스템이 포함됩니다.
         </div>
         <div className="wrapButton">
-          {icons &&
-            icons.battery_value.map((el, idx) => {
-              const keyName = Object.keys(el);
-              return (
-                <button
-                  key={keyName}
-                  className={
-                    batteryIsPushedAt === keyName
-                      ? "choiceCarBtn pushed"
-                      : "choiceCarBtn normal"
-                  }
-                  onClick={() => handleClickChangeCarBtn(keyName)}
-                >
-                  <span>{el[keyName]}</span>
-                  <span>{price[idx]}</span>
-                </button>
-              );
-            })}
+          {battery_value.map((el, idx) => {
+            const keyName = Object.keys(el)[0];
+            return (
+              <button
+                key={keyName}
+                className={
+                  batteryIsPushedAt === keyName
+                    ? "choiceCarBtn pushed"
+                    : "choiceCarBtn normal"
+                }
+                onClick={() =>
+                  handleClickChangeCarBtn(keyName, idx, "batteryIs")
+                }
+              >
+                <span>{el[keyName]}</span>
+                <span>{Price[idx]}</span>
+              </button>
+            );
+          })}
         </div>
         <div className="descriptionText">
           <span>Tesla AWD</span>에 탑재된 두 개의 독립 모터는 향상된 효율성과
@@ -49,4 +56,4 @@ export default class ChoiceCar extends Component {
   }
 }
 
-const price = ["₩107,990,000", "₩132,990,000"];
+const Price = ["₩107,990,000", "₩132,990,000"];

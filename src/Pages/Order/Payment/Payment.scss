@@ -63,11 +63,12 @@
             border-radius: 50%;
             border: 1px solid black;
             margin: 0 20px 2px 0;
-            transition: box-shadow 500ms;
+            opacity: 0.5;
+            transition: box-shadow opacity 500ms;
 
             &.checked {
+              opacity: 1;
               box-shadow: 0 0 0 1px black inset;
-              transition: box-shadow 500ms;
             }
 
             .circleInCheckBox {
@@ -79,7 +80,6 @@
 
               &.hidden {
                 opacity: 0;
-                transition: opacity 200ms;
               }
             }
           }
@@ -130,7 +130,6 @@
 
         &:hover {
           color: black;
-          transition: color 1s;
         }
 
         .agreeCheckBox {

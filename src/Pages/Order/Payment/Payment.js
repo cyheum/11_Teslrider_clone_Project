@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import "./Payment.scss";
 import InputUserInfo from "./InputUserInfo/InputUserInfo";
 import AgreeCheckBox from "./AgreeCheckBox/AgreeCheckBox";
 import InputUserExpirationCardInfo from "./InputUserExpirationCardInfo/InputUserExpirationCardInfo";
 import InputUserAddress from "./InputUserAddress/InputUserAddress";
 import InputUserDetailAddressInfo from "./InputUserDetailAddressInfo/InputUserDetailAddressInfo";
 import BuyerInfo from "./BuyerInfo/BuyerInfo";
+import "./Payment.scss";
 
 export default class Payment extends Component {
   state = {
@@ -121,7 +121,7 @@ export default class Payment extends Component {
           </div>
           <div className="agreeBtnContainer">
             <div className="wrapAgreeCheckBox">
-              <label className="wrapAgreeCheckBox" id="finalCheckBox">
+              <label className="wrapAgreeCheckBox" for="finalCheckBox">
                 <input
                   type="checkbox"
                   className="agreeCheckBox"

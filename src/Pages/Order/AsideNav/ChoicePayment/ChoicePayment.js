@@ -4,44 +4,47 @@ import "./ChoicePayment.scss";
 export default class ChoicePayment extends Component {
   constructor(props) {
     super(props);
-    const {
-      modelPushedAt,
-      batteryIsPushedAt,
-      isWheelBtnPushedAt,
-      isColorBtnPushedAt,
-      interiorPushedAt,
-      isAutopilotChecked,
-      data: {
-        icons: { battery_value },
-      },
-    } = this.props.totalData;
-    this.state = {
-      userCustomData: [
-        {
-          title: `${carList[modelPushedAt].model} ${battery_value[batteryIsPushedAt]}`,
-          content: carList[modelPushedAt].batteryPrice[batteryIsPushedAt],
-        },
-        {
-          title: carList[modelPushedAt].color[isColorBtnPushedAt],
-          content: carList[modelPushedAt].colorPrice[isColorBtnPushedAt],
-        },
-        {
-          title: carList[modelPushedAt].wheel[isWheelBtnPushedAt],
-          content: carList[modelPushedAt].wheelPrice[isWheelBtnPushedAt],
-        },
-        {
-          title: `${carList[modelPushedAt].interior[interiorPushedAt]} 프리미엄 인테리어 및 ${carList[modelPushedAt].interiorName[batteryIsPushedAt][interiorPushedAt]}`,
-          content: carList[modelPushedAt].interiorPrice[interiorPushedAt],
-        },
-        { title: "오토파일럿", content: "포함" },
-        isAutopilotChecked
-          ? { title: "완전 자율 주행 기능", content: "₩9,043,000" }
-          : {},
-      ],
-      detailBtnPushed: false,
-      activePaymentMethod: 0,
-      totalCarImg: {},
-    };
+    if (this.props.totalData.batteryIsPushedAt) {
+      const {
+        modelPushedAt,
+        batteryIsPushedAt,
+        isAutopilotChecked,
+        batteryIsPushedIndex,
+        ColorBtnPushedIndex,
+        WheelBtnPushedIndex,
+        interiorPushedIndex,
+        data: { icons },
+      } = props.totalData;
+      this.state = {
+        userCustomData: [
+          {
+            title: `${carList[modelPushedAt].model} ${
+              icons && icons.battery_value[batteryIsPushedAt]
+            }`,
+            content: carList[modelPushedAt].batteryPrice[batteryIsPushedIndex],
+          },
+          {
+            title: carList[modelPushedAt].color[ColorBtnPushedIndex],
+            content: carList[modelPushedAt].colorPrice[ColorBtnPushedIndex],
+          },
+          {
+            title: carList[modelPushedAt].wheel[WheelBtnPushedIndex],
+            content: carList[modelPushedAt].wheelPrice[WheelBtnPushedIndex],
+          },
+          {
+            title: `${carList[modelPushedAt].interior[interiorPushedIndex]} 프리미엄 인테리어 및 ${carList[modelPushedAt].interiorName[batteryIsPushedIndex][interiorPushedIndex]}`,
+            content: carList[modelPushedAt].interiorPrice[interiorPushedIndex],
+          },
+          { title: "오토파일럿", content: "포함" },
+          isAutopilotChecked
+            ? { title: "완전 자율 주행 기능", content: "₩9,043,000" }
+            : {},
+        ],
+        detailBtnPushed: false,
+        activePaymentMethod: 0,
+        totalCarImg: {},
+      };
+    }
   }
 
   clickHandlerChangeDetailBtn = () => {
@@ -57,10 +60,13 @@ export default class ChoicePayment extends Component {
   };
 
   render() {
+    const {
+      data: { carImgPrice },
+    } = this.props.totalData;
+    if (!carImgPrice) return <div />;
     const { userCustomData, detailBtnPushed, activePaymentMethod } = this.state;
     const {
       data: {
-        carImgPrice,
         carImgPrice: {
           price: { total_price, fuel_cost_reduction_price },
           image,
@@ -70,7 +76,7 @@ export default class ChoicePayment extends Component {
     return (
       <div className="ChoicePayment">
         <div className="wrapUserCustomCar">
-          <img alt="userCustomCar" src={carImgPrice && image.car} />
+          <img alt="userCustomCar" src={image.car} />
           <div>귀하의 Model S</div>
         </div>
         <div className="subTitle">요약</div>
@@ -144,13 +150,11 @@ export default class ChoicePayment extends Component {
           </ul>
           <div className="afterSavingTotalPrice">
             <div>예상 전체 절감 비용 반영 후 가격</div>
-            <div>{`₩${parseInt(
-              fuel_cost_reduction_price
-            ).toLocaleString()}`}</div>
+            <div>{`₩${fuel_cost_reduction_price.toLocaleString()}`}</div>
           </div>
           <div className="afterSavingTotalPrice">
             <div>구매 가격</div>
-            <div>{`₩${parseInt(total_price).toLocaleString()}`}</div>
+            <div>{`₩${total_price.toLocaleString()}`}</div>
           </div>
           <div>세금 및 수수료 제외</div>
           <div className="feesContainer">
@@ -170,38 +174,34 @@ const carList = {
   Model_S: {
     model: "Model S",
     battery: ["Long Range", "Performance"],
-    batteryPrice: { 9: "₩107,990,000", 10: "₩132,990,000" },
-    color: {
-      16: "Pearl White Multi-Coat",
-      17: "Solid Black",
-      18: "Midnight Silver Metallic",
-      19: "Deep Blue Metallic",
-      20: "Red Multi-Coat",
-    },
-    colorPrice: {
-      16: "포함",
-      17: "₩1,929,000",
-      18: "₩1,929,000",
-      19: "₩1,929,000",
-      20: "₩3,279,000",
-    },
-    wheel: {
-      15: "19인치 실버 휠",
-      16: "21인치 소닉 카본 트윈 터빈 휠",
-      17: "19인치 실버 휠",
-      18: "21인치 소닉 카본 트윈 터빈 휠",
-    },
-    wheelPrice: { 15: "포함", 16: "₩4,672,000", 17: "포함", 18: "₩4,672,000" },
-    interior: { 8: "All black", 9: "Black & White", 10: "Cream" },
-    interiorName: {
-      9: { 8: "애쉬 우드 데코", 9: "다크 우드 데코", 10: "오크 우드 데코" },
-      10: {
-        8: "카본 파이버 데코",
-        9: "카본 파이버 데코",
-        10: "오크 우드 데코",
-      },
-    },
-    interiorPrice: { 8: "포함", 9: "₩1,929,000", 10: "₩1,929,000" },
+    batteryPrice: ["₩107,990,000", "₩132,990,000"],
+    color: [
+      "Pearl White Multi-Coat",
+      "Solid Black",
+      "Midnight Silver Metallic",
+      "Deep Blue Metallic",
+      "Red Multi-Coat",
+    ],
+    colorPrice: [
+      "포함",
+      "₩1,929,000",
+      "₩1,929,000",
+      "₩1,929,000",
+      "₩3,279,000",
+    ],
+    wheel: [
+      "19인치 실버 휠",
+      "21인치 소닉 카본 트윈 터빈 휠",
+      "19인치 실버 휠",
+      "21인치 소닉 카본 트윈 터빈 휠",
+    ],
+    wheelPrice: ["포함", "₩4,672,000", "포함", "₩4,672,000"],
+    interior: ["All black", "Black & White", "Cream"],
+    interiorName: [
+      ["애쉬 우드 데코", "다크 우드 데코", "오크 우드 데코"],
+      ["카본 파이버 데코", "카본 파이버 데코", "오크 우드 데코"],
+    ],
+    interiorPrice: ["포함", "₩1,929,000", "₩1,929,000"],
   },
 };
 

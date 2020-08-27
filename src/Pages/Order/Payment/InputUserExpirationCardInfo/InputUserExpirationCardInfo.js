@@ -9,7 +9,9 @@ export default class InputUserExpirationCardInfo extends Component {
         <div className="selectBoxWrap">
           <select name="cars" id="cars">
             {option.map((el) => (
-              <option value={el}>{el}</option>
+              <option key={el} value={el}>
+                {el}
+              </option>
             ))}
           </select>
         </div>
