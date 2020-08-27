@@ -28,56 +28,57 @@ class SignUpScreen extends Component {
   }
 
   accountInfo = (e) => {
+    const { name, value } = e.target;
     this.setState({
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
   handlePassword = () => {
+    const { inputType, visible } = this.state;
     this.setState({
-      inputType: !this.state.inputType,
-      visible: !this.state.visible,
+      inputType: !inputType,
+      visible: !visible,
     });
   };
 
   basicCondition = () => {
+    const { isChecked } = this.state;
     this.setState({
-      isChecked: !this.state.isChecked,
+      isChecked: !isChecked,
     });
   };
 
   createAccount = (e) => {
+    const { last_name, first_name, email, password, isChecked } = this.state;
     e.preventDefault();
 
-    if (!this.state.last_name)
-      return alert("성에는 글자만 포함될 수 있습니다.");
-    if (!this.state.first_name)
-      return alert("이름에는 글자만 포함될 수 있습니다.");
-    if (!this.state.email)
-      return alert("유효한 이메일 주소를 입력해야 합니다.");
-    if (!this.state.email.includes("@"))
+    if (!last_name) return alert("성에는 글자만 포함될 수 있습니다.");
+    if (!first_name) return alert("이름에는 글자만 포함될 수 있습니다.");
+    if (!email) return alert("유효한 이메일 주소를 입력해야 합니다.");
+    if (!email.includes("@"))
       return alert("이메일 주소에 '@'를 포함해 주세요.");
-    if (!this.state.password) return alert("비밀번호가 필요합니다.");
+    if (!password) return alert("비밀번호가 필요합니다.");
     if (
       !(
-        this.state.password.length >= 8 &&
-        this.state.password.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)
+        password.length >= 8 &&
+        password.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)
       )
     ) {
       return alert(
         "최소 8자 이상의 유효한 비밀번호를 입력하시기 바랍니다. 비밀번호에는 최소 1개의 숫자와 1개의 문자가 포함되어야 합니다."
       );
     }
-    if (this.state.isChecked === false)
+    if (isChecked === false)
       return alert("계속하려면 개인 정보 공지 및 이용 약관에 동의해야 합니다.");
     else {
       fetch(`${API}/user/signup`, {
         method: "POST",
         body: JSON.stringify({
-          email: this.state.email,
-          password: this.state.password,
-          first_name: this.state.first_name,
-          last_name: this.state.last_name,
+          email: email,
+          password: password,
+          first_name: first_name,
+          last_name: last_name,
         }),
       })
         .then((res) => res.json())
@@ -86,8 +87,8 @@ class SignUpScreen extends Component {
             fetch(`${API}/user/signin`, {
               method: "POST",
               body: JSON.stringify({
-                email: this.state.email,
-                password: this.state.password,
+                email: email,
+                password: password,
               }),
             })
               .then((res) => res.json())

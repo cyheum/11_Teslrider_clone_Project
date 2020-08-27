@@ -2,12 +2,9 @@ import React, { Component } from "react";
 
 class LoginPageLoginBtn extends Component {
   render() {
+    const { login } = this.props;
     return (
-      <button
-        onClick={this.props.login}
-        className="LoginPageLoginBtn"
-        type="submit"
-      >
+      <button onClick={login} className="LoginPageLoginBtn" type="submit">
         로그인
       </button>
     );

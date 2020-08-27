@@ -25,24 +25,25 @@ class LoginScreen extends Component {
   };
 
   handlePassword = () => {
+    const { inputType, visible } = this.state;
     this.setState({
-      inputType: !this.state.inputType,
-      visible: !this.state.visible,
+      inputType: !inputType,
+      visible: !visible,
     });
   };
 
   tryLogin = (e) => {
+    const { email, password } = this.state;
     e.preventDefault();
 
-    if (!this.state.email)
-      return alert("유효한 이메일 주소를 입력해야 합니다.");
-    if (!this.state.email.includes("@"))
+    if (!email) return alert("유효한 이메일 주소를 입력해야 합니다.");
+    if (!email.includes("@"))
       return alert("이메일 주소에 '@'를 포함해 주세요.");
-    if (!this.state.password) return alert("비밀번호가 필요합니다.");
+    if (!password) return alert("비밀번호가 필요합니다.");
     if (
       !(
-        this.state.password.length >= 8 &&
-        this.state.password.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)
+        password.length >= 8 &&
+        password.match(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)
       )
     ) {
       return alert(
@@ -52,8 +53,8 @@ class LoginScreen extends Component {
       fetch(`${API}/user/signin`, {
         method: "POST",
         body: JSON.stringify({
-          email: this.state.email,
-          password: this.state.password,
+          email: email,
+          password: password,
         }),
       })
         .then((res) => res.json())

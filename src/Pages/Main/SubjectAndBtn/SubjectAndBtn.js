@@ -4,10 +4,11 @@ import "./SubjectAndBtn.scss";
 
 class SubjectAndBtn extends Component {
   render() {
+    const { title, storeBtn } = this.props;
     return (
       <div className="SubjectAndBtn">
         <div className="subjectAndBtn">
-          <h1 className="mainModelNames">{this.props.title}</h1>
+          <h1 className="mainModelNames">{title}</h1>
         </div>
         <div className="mainOrderBtnLine">
           <div className="mainOrderBtnContainer">
@@ -15,7 +16,7 @@ class SubjectAndBtn extends Component {
               지금 주문하기
             </a>
           </div>
-          {this.props.storeBtn === false ? null : <MainStoreBtnContainer />}
+          {storeBtn === false ? null : <MainStoreBtnContainer />}
         </div>
       </div>
     );

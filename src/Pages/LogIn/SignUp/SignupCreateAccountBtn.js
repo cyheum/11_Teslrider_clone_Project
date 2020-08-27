@@ -3,12 +3,9 @@ import "./SignupCreateAccountBtn.scss";
 
 class SignupCreateAccountBtn extends Component {
   render() {
+    const { signup } = this.props;
     return (
-      <button
-        onClick={this.props.signup}
-        className="SignupCreateAccountBtn"
-        type="submit"
-      >
+      <button onClick={signup} className="SignupCreateAccountBtn" type="submit">
         계정 만들기
       </button>
     );
