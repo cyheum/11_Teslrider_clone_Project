@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./Paint.scss";
+import "./OrderInterior.scss";
 
-export default class Paint extends Component {
+export default class OrderInterior extends Component {
   constructor() {
     super();
 
@@ -9,6 +9,7 @@ export default class Paint extends Component {
       activeClass: "",
     };
   }
+
   componentDidMount() {
     this.animationDelay();
   }
@@ -24,12 +25,12 @@ export default class Paint extends Component {
       data: { carImgPrice },
     } = this.props.totalData;
     return (
-      <div className="Paint">
-        <div>
+      <div className="OrderInterior">
+        <div className="wrapInsideCarImg">
           <img
-            className={`carImg ${this.state.activeClass}`}
-            alt="carImg"
-            src={carImgPrice && carImgPrice.image.car}
+            className={`insideCarImg ${this.state.activeClass}`}
+            alt="insideCarImg"
+            src={carImgPrice && carImgPrice.image.interior}
           />
         </div>
       </div>

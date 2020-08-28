@@ -12,44 +12,52 @@ export default class Battery extends Component {
       activeClass: "",
     };
   }
+
   componentDidMount() {
-    this.countNum("distance", 487);
-    this.countNum("speed", 250);
-    this.countNum("arrivalTime", 4);
-    this.delay();
+    this.countNum("distance", 487, 1);
+    this.countNum("speed", 250, 1);
+    this.countNum("arrivalTime", 3.8, 0.1);
+    this.animationDelay();
   }
 
-  delay = () => {
+  countNum = (name, limit, incNum) => {
+    let increase = setInterval(() => {
+      if (limit % 1 !== 0) {
+        this.setState({
+          [name]: (this.state[name] * 10 + incNum * 10) / 10,
+        });
+        if (this.state[name] > (limit * 10 - incNum * 10) / 10) {
+          clearInterval(increase);
+        }
+      } else {
+        this.setState({
+          [name]: this.state[name] + incNum,
+        });
+        if (this.state[name] > limit - incNum) {
+          clearInterval(increase);
+        }
+      }
+    });
+  };
+
+  animationDelay = () => {
     setTimeout(() => {
       this.setState(() => ({ activeClass: "appearComponent" }));
     }, 100);
   };
 
-  countNum = (name, limit) => {
-    let increase = setInterval(() => {
-      this.setState({
-        [name]: this.state[name] + 1,
-      });
-      if (this.state[name] > limit - 1) {
-        clearInterval(increase);
-      }
-    }, 1);
-  };
-
   render() {
     const { distance, speed, arrivalTime, activeClass } = this.state;
-    const { batteryIsPushedAt } = this.props.totalData;
+    const {
+      data: { carImgPrice },
+    } = this.props.totalData;
     return (
       <div className="Battery">
         <div>
           <img
             className={`carImg ${activeClass}`}
             alt="carImg"
-            src={
-              batteryIsPushedAt === 0
-                ? "https://static-assets.tesla.com/configurator/compositor?&options=$WTAS,$PPSW,$MTS03&view=STUD_3QTR_V2&model=ms&size=1441&bkba_opt=1&version=v0028d202008130539&version=v0028d202008130539}"
-                : "https://static-assets.tesla.com/configurator/compositor?&options=$WTAS,$PPSW,$MTS06&view=STUD_3QTR_V2&model=ms&size=1441&bkba_opt=1&version=v0028d202008200649&version=v0028d202008200649"
-            }
+            src={carImgPrice && carImgPrice.image.car}
           />
         </div>
         <div className="carDescription">

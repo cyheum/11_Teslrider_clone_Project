@@ -1,17 +1,19 @@
 import React, { Component } from "react";
-import "./Payment.scss";
 import InputUserInfo from "./InputUserInfo/InputUserInfo";
 import AgreeCheckBox from "./AgreeCheckBox/AgreeCheckBox";
 import InputUserExpirationCardInfo from "./InputUserExpirationCardInfo/InputUserExpirationCardInfo";
 import InputUserAddress from "./InputUserAddress/InputUserAddress";
 import InputUserDetailAddressInfo from "./InputUserDetailAddressInfo/InputUserDetailAddressInfo";
+import BuyerInfo from "./BuyerInfo/BuyerInfo";
+import "./Payment.scss";
 
 export default class Payment extends Component {
   state = {
-    isEnterprise: 1,
+    isEnterprise: 0,
   };
 
   clickHandlerChangeBuyer = (index) => {
+    if (this.state.isEnterprise === index) return;
     this.setState({
       isEnterprise: index,
     });
@@ -19,10 +21,11 @@ export default class Payment extends Component {
 
   render() {
     const {
-      userInfoTitle,
+      buyerInfo,
+      infoTitleList,
       agreeList,
       creditCardInfo: { cardNameNum, expiration },
-      userAddressInfo: { mainAddress, detailAddress },
+      userAddressInfo: { mainAddress, detailAddress, userCountry },
     } = paymentData;
     const { isEnterprise } = this.state;
     return (
@@ -35,54 +38,39 @@ export default class Payment extends Component {
           <div className="checkBoxContainer">
             <div className="titleAboutUserInfo">계정 세부 사항 입력</div>
             <div className="checkBoxList">
-              <div
-                className="wrapCheckBox"
-                onClick={() => this.clickHandlerChangeBuyer(1)}
-              >
-                <div
-                  className={
-                    isEnterprise ? "checkBox checked" : "checkBox normal"
-                  }
-                >
-                  <div
-                    className={
-                      isEnterprise
-                        ? "circleInCheckBox normal"
-                        : "circleInCheckBox hidden"
-                    }
+              {buyerInfo.map((title, idx) => {
+                return (
+                  <BuyerInfo
+                    key={title}
+                    title={title}
+                    index={idx}
+                    isEnterprise={isEnterprise}
+                    clickHandlerChangeBuyer={this.clickHandlerChangeBuyer}
                   />
-                </div>
-                개인
-              </div>
-              <div
-                className="wrapCheckBox"
-                onClick={() => this.clickHandlerChangeBuyer(0)}
-              >
-                <div
-                  className={
-                    isEnterprise ? "checkBox normal" : "checkBox checked"
-                  }
-                >
-                  <div
-                    className={
-                      isEnterprise
-                        ? "circleInCheckBox hidden"
-                        : "circleInCheckBox normal"
-                    }
-                  />
-                </div>
-                기업
-              </div>
+                );
+              })}
             </div>
           </div>
           <div className="wrapInputUserInfo">
-            {userInfoTitle.map((title, index) => {
-              return <InputUserInfo key={index} title={title} />;
+            {infoTitleList[isEnterprise].map((title, index) => {
+              return (
+                <InputUserInfo
+                  key={index}
+                  title={title}
+                  isEnterprise={isEnterprise}
+                />
+              );
             })}
           </div>
           <div className="agreeBtnContainer">
             {agreeList.map((text, index) => {
-              return <AgreeCheckBox key={index} text={text} />;
+              return (
+                <AgreeCheckBox
+                  key={index}
+                  index={`agreeCheckBox${index}`}
+                  text={text}
+                />
+              );
             })}
           </div>
           <div className="paymentInfoTitle">
@@ -103,8 +91,10 @@ export default class Payment extends Component {
               );
             })}
             <div className="wrapUserExpirationCardInfo">
-              {expiration.map((title) => {
-                return <InputUserExpirationCardInfo key={title} />;
+              {expiration.map((select, idx) => {
+                return (
+                  <InputUserExpirationCardInfo key={idx} select={select} />
+                );
               })}
             </div>
           </div>
@@ -117,15 +107,29 @@ export default class Payment extends Component {
               {detailAddress.map((title) => {
                 return <InputUserDetailAddressInfo key={title} title={title} />;
               })}
+              <div className="inputUserExpirationCardInfoContainer">
+                <div>국가</div>
+                <div className="selectBoxWrap">
+                  <select name="cars" id="cars">
+                    {userCountry.map((el) => (
+                      <option value={el}>{el}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
           <div className="agreeBtnContainer">
             <div className="wrapAgreeCheckBox">
-              <div className="agreeCheckBox"></div>
-              <div>
+              <label className="wrapAgreeCheckBox" for="finalCheckBox">
+                <input
+                  type="checkbox"
+                  className="agreeCheckBox"
+                  id="finalCheckBox"
+                />
                 Tesla가 서비스 지불 조건에 따라 향후 거래를 위해 결제 수단
                 정보를 저장할 수 있도록 허용합니다.
-              </div>
+              </label>
             </div>
           </div>
         </div>
@@ -135,12 +139,17 @@ export default class Payment extends Component {
 }
 
 const paymentData = {
-  userInfoTitle: [
-    "이메일 주소",
-    "이름 (영문)",
-    "성명 (한글)",
-    "전화번호",
-    "성(영문)",
+  buyerInfo: ["개인", "기업"],
+  infoTitleList: [
+    ["이메일 주소", "이름 (영문)", "성명 (한글)", "전화번호", "성(영문)"],
+    [
+      "이메일 주소",
+      "이름 (영문)",
+      "성명 (한글)",
+      "전화번호",
+      "성(영문)",
+      "회사명",
+    ],
   ],
   agreeList: [
     "Tesla의 개인정보처리방침 에 따른 개인정보 수집 이용 및 국내외 사업자에 대한 개인정보 제공에 동의 합니다.",
@@ -149,10 +158,34 @@ const paymentData = {
   ],
   creditCardInfo: {
     cardNameNum: ["카드상의 이름", "카드 번호"],
-    expiration: ["만료 월", "만료 연도"],
+    expiration: [
+      { title: "만료 월", option: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
+      {
+        title: "만료 연도",
+        option: [
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025,
+          2026,
+          2027,
+          2028,
+          2029,
+          2030,
+          2031,
+          2032,
+          2033,
+          2034,
+          2035,
+        ],
+      },
+    ],
   },
   userAddressInfo: {
     mainAddress: ["청구지 주소1", "청구지 주소2"],
-    detailAddress: ["구/군/시", "우편번호", "국가"],
+    detailAddress: ["구/군/시", "우편번호"],
+    userCountry: ["South Korea", "U.S.A", "U.K"],
   },
 };
