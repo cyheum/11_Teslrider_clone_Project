@@ -44,8 +44,12 @@ class CommonNav extends Component {
         </div>
         <div>
           <ul className="carList">
+            <a className="listTag" href="/car/models">
             <li onClick={this.goToModelS}>MODEL S</li>
-            <li>MODEL 3</li>
+            </a>
+            <a className="listTag" href="/car/model3">
+              <li>MODEL 3</li>
+            </a>
             <li>MODEL X</li>
             <li>MODEL Y</li>
             <li>CYBERTRUCK</li>

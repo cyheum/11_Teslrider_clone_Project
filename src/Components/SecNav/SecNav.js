@@ -18,6 +18,7 @@ componentDidUpdate (_, prevState) {
     this.setState ({
       scroll: scrollY
     })
+    if (this.props.model){
     if ( innerHeight * 8 <=  scrollY && this.props.model ==="model3") {
       this.setState ({ logoColor: false })
     } else if (innerHeight * 8 <= scrollY ) {
@@ -32,6 +33,7 @@ componentDidUpdate (_, prevState) {
     this.setState ({ logoColor: true })
    }
   }
+}
 }
 
   goToTop = () => {

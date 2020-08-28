@@ -7,7 +7,7 @@ import "./LogInNav.scss";
 class LogInNav extends Component {
   render() {
     return (
-      <div className="SecNav">
+      <div className="SecNav loginNavBlack">
         <nav className="navContainer">
           <div className="teslaLogoContainer">
             <Link to="/">

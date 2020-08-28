@@ -63,7 +63,7 @@ export default class ExpectPayment extends Component {
                   className={`modalLeftNavActiveLine ${
                     !navBtnPushedAt
                       ? "first"
-                      : navBtnPushedAt
+                      : navBtnPushedAt === 1
                       ? "second"
                       : "third"
                   }`}

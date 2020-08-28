@@ -45,7 +45,7 @@ class Order extends Component {
 
   runFetchForIcons = () => {
     const { data } = this.state;
-    fetch("http://10.58.2.168:8000/customizing/icons?model=Model_S")
+    fetch("http://18.222.175.48:8000/customizing/icons?model=Model_S")
       .then((res) => res.json())
       .then((res) =>
         this.setState({ data: { ...data, icons: res } }, () =>
@@ -83,7 +83,7 @@ class Order extends Component {
       data,
     } = this.state;
 
-    fetch("http://10.58.2.168:8000/customizing/products", {
+    fetch("http://18.222.175.48:8000/customizing/products", {
       method: "POST",
       body: JSON.stringify({
         model: modelPushedAt,

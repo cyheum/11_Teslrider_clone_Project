@@ -95,7 +95,7 @@ class SignUpScreen extends Component {
               .then((res) => {
                 if (res.access_token) {
                   localStorage.setItem("access_token", res.access_token);
-                  this.props.history.push("/");
+                  this.props.history.push("/main");
                 }
               });
           }

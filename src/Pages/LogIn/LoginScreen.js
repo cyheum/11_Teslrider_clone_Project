@@ -61,7 +61,7 @@ class LoginScreen extends Component {
         .then((res) => {
           if (res.access_token) {
             localStorage.setItem("access_token", res.access_token);
-            this.props.history.push("/");
+            this.props.history.push("/main");
           } else {
             alert("입력하신 이메일 주소 및 비밀번호가 등록되어 있지 않습니다.");
           }
