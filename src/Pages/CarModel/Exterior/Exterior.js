@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Explantation from '../Components/Explantation/Explantation';
-import ModelFooter from '../Components/ModelFooter';
+import ModelFooter from '../Components/ModelFooter/ModelFooter';
 import './Exterior.scss';
 
 class Exterior extends Component {
@@ -34,11 +34,15 @@ class Exterior extends Component {
         <div className="exteriorContainer">
           <main className="main" style={this.backgroundImg()}>
             <div className="mainImg">
-              <Explantation model={this.props.model}/>
+              {this.props.exterior &&
+                <Explantation model={this.props.model}/>
+              }
             </div>
 
           </main>
-          <ModelFooter dataname="exterior" model={this.props.model}/>
+            {this.props.exterior &&
+              <ModelFooter dataname="exterior" model={this.props.model}/>
+            }
         </div>
       </div>
     );

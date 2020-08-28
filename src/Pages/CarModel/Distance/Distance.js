@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DistanceSum from '../Components/DistanceSum/DistanceSum';
-import Aside from '../Components/Aside';
+import Aside from '../Components/Aside/Aside';
 import './Distance.scss';
 
 class Distance extends Component {
@@ -29,13 +29,17 @@ class Distance extends Component {
           <div className="videoWrap">
             <video loop autoPlay src={this.state.video} muted/>
           </div>
+          {this.props.distance &&
           <div className="distanceMainContainer">
             <div className="spectSumWrap">
               <DistanceSum model={this.props.model}/>
             </div>
           </div>
+          }
         </div>
+        {this.props.distance &&
         <Aside dataname={"distance"} model={this.props.model} where="distance"/>
+        }
       </div>
     );
   }

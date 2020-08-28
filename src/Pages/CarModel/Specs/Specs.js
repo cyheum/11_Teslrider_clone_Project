@@ -10,18 +10,28 @@
         keyName: "performance",
         backImg: "",
         color: 0,
+        content: {}
       }
     }
 
     componentDidMount() {
-      // fetch("http://10.58.5.236:8000/car/specification?type=Model_3")
       fetch(`/data/car/${this.props.model}.json`)
       .then((res) => res.json())
       .then((res) => this.setState({
         data : res.car,
         backImg: res.car.img.spec
       }))
-  }
+      fetch(`http://18.222.175.48:8000/car/specification?type=${this.URL(this.props.model)}`)
+      .then((res) => res.json())
+      .then((res) => this.setState({
+        content: res}))
+    }
+
+    URL = (url) => {
+      url.split();
+      const result = `${url[0].toUpperCase()}odel_${url[url.length-1].toUpperCase()}`
+      return result
+    };
   
   handleType = (e, idx) => {
     this.setState({
@@ -41,6 +51,13 @@
       </label>
     ))
   }
+  
+  title = (title) => {
+    return title = title[0].toUpperCase()
+    + title.substring(1, title.length - 1)
+    +" "
+    + title[title.length -1].toUpperCase()
+  }
 
   backgroundImg = () => {
     return {
@@ -49,22 +66,24 @@
   }
 
   render() {
-    const { keyName, data } = this.state;
+    const { keyName, data, content } = this.state;
     return (
       <div className="Specs" id="specs">
+        {this.props.specs &&
         <div className="specContainer">
           <div className="specImg">
             <div className="modelImg" style={this.backgroundImg()} / >
           </div>
           <div className="specInfo">
             <div className="infoWrap">
-              <div className="infoHeader">{this.props.model} 제원</div>
-              <div className="inforMain">
-                <div className="labelWrap">
-                  {this.makeLabel()}
+              <div className="infoHeader">{this.title(this.props.model)} 제원</div>
+              
+                <div className="inforMain">
+                  <div className="labelWrap">
+                    {this.makeLabel()}
+                  </div>
+                  {this.state.data.performance && this.state.content.model && <InfoContent content={content} data={data} keyName={keyName}/>} 
                 </div>
-                {this.state.data.performance && <InfoContent data={data} keyName={keyName}/>} 
-              </div>
               <div className="inforFooter">
                 <div className="more">
                   <div className="iconWrap">
@@ -76,6 +95,7 @@
             </div>
           </div>
         </div>
+        }
       </div>
     );
   }
@@ -83,6 +103,6 @@
 
 const LABEL = [
   {label: "퍼포먼스", className: "performance"},
-  {label: "LONG RANGE", className: "longRange"},
+  {label: "LONG RANGE", className: "long range"},
 ]
 export default Specs;

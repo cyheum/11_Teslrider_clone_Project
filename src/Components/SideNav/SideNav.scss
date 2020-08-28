@@ -41,16 +41,18 @@
     }
 
     .sideNavLabel {
-      display: inline;
+      display: block;
     }
+  }
+
+  .invert {
+    filter: invert(100);
   }
 
   .sideNavLabel {
     display: none;
     margin-left: 8px;
     font-size:1.2rem;
-    font-weight: 400;
-  } & :first-child{
-    font-weight: 600;
+    font-weight: bolder
   }
 }

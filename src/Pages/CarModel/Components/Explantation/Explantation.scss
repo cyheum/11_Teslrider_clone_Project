@@ -20,6 +20,16 @@
     padding-right: 20px;
   }
 
+  .items:first-of-type {
+    animation: fadein .4s ease-in-out;
+  }
+  .items:nth-of-type(2) {
+    animation: fadeinReverse .8s ease-in-out;
+  }
+  .items:last-of-type {
+    animation: fadein 1.2s ease-in-out;
+  }
+
   .itemWrap {
     width: 100%;
   }

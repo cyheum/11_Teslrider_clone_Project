@@ -13,7 +13,8 @@ class Main extends Component {
       loading: 0,
       data : {},
       backImg : "",
-      backColor: false
+      backColor: false,
+      scrollTop : 0
     };
   }
 
@@ -121,13 +122,13 @@ class Main extends Component {
             </li>
             <li className="mainSpecsItem SpecBtn itemBorder">
               <div className="specItemBtn">
-                <Link className="specBtnLink" to="/order">지금 주문하기</Link>
+                <Link className="specBtnLink" to="/order/Model_S">지금 주문하기</Link>
               </div>
             </li>           
           </ul>
         </div>
         <div className="mainFooter">
-          <button className="footerBtn" onClick={this.toMove}></button>
+          <button className="ㅈooterBtn" onClick={this.toMove}></button>
         </div>
       </div>
     );

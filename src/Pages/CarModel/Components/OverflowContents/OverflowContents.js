@@ -24,7 +24,7 @@ class OverflowContents extends Component {
     const { dataname } = this.props;
     if(is){
       return <div className="overflowItemsHeader">
-      <div className="overflowItemsHeaderLast"></div>
+      <div className="overflowItemsHeaderLast" />
       <span>{dataname === "autopilot" ? spec?.sensor : spec?.load}</span>
       </div>
     }else {
