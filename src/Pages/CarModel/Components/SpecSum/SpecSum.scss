@@ -1,0 +1,135 @@
+@import '../../../../Styles/common.scss';
+
+.SpecSum{
+  color: white;
+  position: absolute;
+  @include center(center);
+  width: 100%;
+  height: 213px;
+  bottom: 0;
+
+  .specSumContainer {
+    @include center(center);
+    width: 1030px;
+    height: 84px;
+    margin: 6vh 164px 72px;
+    padding: 0 30px;
+  }
+
+  .specSumContents {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+  & .specSumContents:nth-child(1){
+      animation: fadein .7s ease-in-out; 
+    }
+    .specSumContents:nth-child(2){
+      animation: fadein 1.4s ease-in-out; 
+    }
+    .specSumContents:nth-child(3){
+      animation: fadein 2s ease-in-out; 
+    }
+  }
+
+  .border {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+  }
+
+  .contentsHeder {
+    display: inline-block;
+    margin: 8px 0;
+    font-size: 2.8rem;
+  }
+
+  .contentsText {
+    font-size: 1.2rem;
+  }
+
+  .dialAnimate {
+    @include center(center);
+  }
+
+  .digits {
+    display: flex;
+  }
+  
+  .digisitsNum {
+    font-size: 2.8rem;
+    font-weight: 500;
+  }
+
+  .calloutTitleText {
+    font-size: 2.8rem;
+    font-weight: 500;
+  }
+
+  .DialIcon {
+  position: relative;
+  width: 40px;
+  height: 25px;
+  overflow: hidden;
+  margin-right: 4px;
+  filter: invert(100);
+
+  .dialInnerCircle{
+    position: absolute;
+    max-width: 28px;
+    width: 40px;
+    height: 14px;
+    left: 0;
+    bottom: 5px;
+    overflow: hidden;
+    fill: #191b1d;
+    left: calc(50% - 14px);
+    opacity: .2;
+    &.inactive {
+      svg{
+        transform-origin: center bottom;
+        transform: rotate(-180deg);
+        transition: transform 1.733s cubic-bezier(.77,0,.175,1);
+      }
+    }
+    &.active {
+      svg {
+        transform-origin: center bottom;
+        transform: rotate(0deg);
+        transition: transform 1.733s cubic-bezier(.77,0,.175,1);
+      }
+    }
+  }
+
+  .dialInnerParameter{
+    position: absolute;
+    width: 4px;
+    max-width: 4px;
+    height: 16px;
+    left: calc(50% - 2px);
+    bottom: 4px;
+    z-index: 10;
+  }
+  .start {
+    svg{
+      transform-origin: center bottom;
+      transform: rotate(-90deg);
+      transition: transform 1.733s cubic-bezier(.77,0,.175,1);
+    }
+  }
+
+  .done {
+    svg {
+      transform-origin: center bottom;
+      transform: rotate(90deg);
+      transition: transform 1.733s cubic-bezier(.77,0,.175,1);
+    }
+  }
+
+    .dialInnerParameter {
+      position: absolute;
+      bottom: 4px;
+      left: calc(50% - 2px);
+      max-width: 4px;
+      z-index: 2;
+    }
+  }
+}

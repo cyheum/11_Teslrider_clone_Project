@@ -7,6 +7,7 @@ import Paint from "./Paint/Paint";
 import OrderInterior from "./OrderInterior/OrderInterior";
 import OrderAutopilot from "./OrderAutopilot/OrderAutopilot";
 import Payment from "./Payment/Payment";
+import ExpectPayment from "./ExpectPayment/ExpectPayment";
 import "./Order.scss";
 
 const orderComponentList = [
@@ -33,6 +34,8 @@ class Order extends Component {
       interiorPushedIndex: 0,
       isAutopilotChecked: false,
       data: {},
+      expectPaymentClicked: false,
+      totalPrice: "",
     };
   }
 
@@ -145,9 +148,14 @@ class Order extends Component {
     };
   };
 
+  clickHdrChangeEptPaymentState = () => {
+    this.setState({
+      expectPaymentClicked: !this.state.expectPaymentClicked,
+    });
+  };
+
   render() {
-    console.log(this.props.match.params);
-    const { activeComponent } = this.state;
+    const { activeComponent, expectPaymentClicked, totalPrice } = this.state;
     const ActiveMain = this.remakeCompo(
       orderComponentList[this.state.activeComponent]
     );
@@ -160,17 +168,28 @@ class Order extends Component {
         <section>
           <main>
             <ActiveMain
-              totalData={{ ...this.state }}
+              totalData={this.state}
               changePropState={this.changePropState}
               handleClickChangeCarBtn={this.handleClickChangeCarBtn}
             />
             <AsideNav
-              totalData={{ ...this.state }}
+              totalData={this.state}
               handleClickChangeCarBtn={this.handleClickChangeCarBtn}
               handleClickChangeBtn={this.handleClickChangeBtn}
               changeAutopilotBtnState={this.changeAutopilotBtnState}
             />
-            <Footer totalData={{ ...this.state }} />
+            {expectPaymentClicked && (
+              <ExpectPayment
+                clickHdrChangeEptPaymentState={
+                  this.clickHdrChangeEptPaymentState
+                }
+              />
+            )}
+            <Footer
+              totalData={this.state}
+              activeComponent={activeComponent}
+              clickHdrChangeEptPaymentState={this.clickHdrChangeEptPaymentState}
+            />
           </main>
         </section>
       </article>

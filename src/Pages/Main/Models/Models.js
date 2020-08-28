@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CommonNav from "../CommonNav/CommonNav";
+import CommonNav from "../../../Components/CommonNav/CommonNav";
 import SubjectAndBtn from "../SubjectAndBtn/SubjectAndBtn";
 import MainViewBtnsContainer from "./MainViewBtnsContainer";
 import "./Models.scss";

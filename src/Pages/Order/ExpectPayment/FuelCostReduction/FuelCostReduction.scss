@@ -1,0 +1,56 @@
+@import "../../../../Styles/common.scss";
+
+.FuelCostReduction {
+  padding: 80px 100px;
+  width: 100%;
+
+  .title {
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+  }
+
+  .distanceFuelContainer {
+    display: flex;
+    margin: 20px 0;
+
+    .distanceFuel {
+      width: 100%;
+
+      .inputBoxTitle {
+        margin: 0 10px 10px;
+        font-size: 1.5rem;
+        color: $gray;
+      }
+
+      .wrapInputBox {
+        position: relative;
+
+        input {
+          width: 95%;
+          padding: 10px 15px;
+          border: 1px solid $borderGray;
+          border-radius: 30px;
+          font-size: 1.5rem;
+          transition: box-shadow 500ms;
+
+          &:focus {
+            box-shadow: 0 0 0 1px $gray inset;
+          }
+        }
+
+        span {
+          position: absolute;
+          right: 30px;
+          top: 12px;
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+
+  .description {
+    color: $gray;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+}

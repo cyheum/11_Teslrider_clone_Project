@@ -1,0 +1,78 @@
+@import '../../../../Styles/common.scss';
+
+.Explantation {
+  .explain {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    width: 968px;
+    margin: 6vh auto 72px;
+    padding-left:30px;
+    padding-right: 30px;
+  }
+
+  .items {
+    display: flex;
+    flex-flow: column nowrap;
+    align-self: flex-end;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .itemWrap {
+    width: 100%;
+  }
+
+  .itemBorder {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+
+  .itemHeader {
+    min-height: 48px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 5px;
+
+    .itemImg {
+      width: 100%;
+      max-width: 41px;
+      height: 40px;
+      background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/98e609d8-22a4-44fd-a182-8bc2277d8095/bvlatuR/std/0x0/signature-colors)no-repeat center / contain;
+    }
+
+    .itemText {
+    padding: 0 5px;
+    text-align: left;
+    font-size: 1.4rem;
+    }
+
+  }
+  .itemContents {
+    max-width: 75ch;
+    line-height: 18px;
+    font-size: 1.2rem;
+    white-space: nowrap;
+  }
+
+  .itemHeaderTitle {
+    font-size: 2.8rem;
+    font-weight: bolder;
+  }
+
+  .itemScase{
+    width: 100%;
+    max-width: 22px;
+    height: 40px;
+    background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/22c1d18a-5897-478f-935c-5dd275a69664/bvlatuR/std/0x0/cd_2)no-repeat center / contain;
+  }
+
+  .itemRooftop {
+    width: 100%;
+    max-width: 56px;
+    height: 40px;
+    background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/793f32cd-9d65-4f88-9053-1d62c59b3600/bvlatuR/std/0x0/MS_roof)no-repeat center / contain;
+  }
+}
