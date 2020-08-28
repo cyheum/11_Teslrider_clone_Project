@@ -4,6 +4,7 @@ import Main from "./Pages/Main/Main";
 import CarModel from "./Pages/CarModel/CarModel";
 import LogIn from "./Pages/LogIn/LogIn";
 import Order from "./Pages/Order/Order";
+import SignUp from "./Pages/LogIn/SignUp/SignUp";
 
 class Routes extends React.Component {
   render() {
@@ -14,6 +15,7 @@ class Routes extends React.Component {
           <Route exact path="/login" component={LogIn} />
           <Route exact path="/car/:model" component={CarModel} />
           <Route exact path="/order/:model" component={Order} />
+          <Route exact path="/signup" component={SignUp} />
         </Switch>
       </Router>
     );

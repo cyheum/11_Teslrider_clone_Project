@@ -1,0 +1,15 @@
+.SignupCreateAccountBtn {
+  width: 100%;
+  height: 40px;
+  margin: 3px 0 12px 0;
+  border: none;
+  border-radius: 50px;
+  background-color: #3e6be0;
+  color: white;
+  font-size: 12px;
+
+  &:hover {
+    background-color: #3557b1;
+    transition: 0.5s;
+  }
+}
