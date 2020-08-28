@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import OverflowContents from '../Components/OverflowContents';
-import ModelFooter from '../Components/ModelFooter';
+import OverflowContents from '../Components/OverflowContents/OverflowContents';
+import ModelFooter from '../Components/ModelFooter/ModelFooter';
 import './CarInterior.scss';
 
 class CarInterior extends Component {
@@ -40,9 +40,13 @@ class CarInterior extends Component {
       <div className="CarInterior" id="interior">
         <div className="interiorMain">
           {this.state.data.interior != null ? this.background(this.state.data) : ""}
-          <OverflowContents dataname="interior" model={this.props.model}/>
+          {this.props.interior &&
+           <OverflowContents dataname="interior" model={this.props.model}/>
+          }
         </div>
-        <ModelFooter dataname="interior" model={this.props.model}/>
+        {this.props.interior &&
+          <ModelFooter dataname="interior" model={this.props.model}/>
+        }
       </div>
     );
   }

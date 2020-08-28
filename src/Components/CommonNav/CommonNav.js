@@ -38,17 +38,17 @@ class CommonNav extends Component {
       <nav className="CommonNav">
         {subMenuDisplay && <SubMenu handleSubMenu={handleSubMenu} />}
         <div className="teslaLogoContainer">
-          <Link to="/">
+          <Link to="/main">
             <TeslaLogoImg />
           </Link>
         </div>
         <div>
           <ul className="carList">
-            <a className="listTag" href="/car/models">
-            <li onClick={this.goToModelS}>MODEL S</li>
+            <a href={"/car/models"} className="link">
+              <li onClick={this.goToModelS}>MODEL S</li>
             </a>
-            <a className="listTag" href="/car/model3">
-              <li>MODEL 3</li>
+          <a href={"/car/model3"} className="link">
+            <li>MODEL 3</li>
             </a>
             <li>MODEL X</li>
             <li>MODEL Y</li>

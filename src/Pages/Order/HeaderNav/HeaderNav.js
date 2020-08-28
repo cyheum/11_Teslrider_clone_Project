@@ -8,6 +8,7 @@ export default class HeaderNav extends Component {
     const { changeComponent, activeComponent } = this.props;
     return (
       <nav className="HeaderNav">
+        <a href="/main">
         <div className="wrapLogo">
           <Link to="/main">
             <img
@@ -17,6 +18,7 @@ export default class HeaderNav extends Component {
             />
           </Link>
         </div>
+        </a>
         <ol>
           {titleName.map((name, index) => (
             <NavContent

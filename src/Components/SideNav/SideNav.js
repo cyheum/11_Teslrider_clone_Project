@@ -5,6 +5,31 @@ class SideNav extends Component {
   constructor(props){
     super(props);
     this.state = {
+      logoColor: true,
+      scroll: 0
+    }
+  }
+
+  componentDidUpdate (_, prevState) {
+    const { innerHeight, scrollY } = window
+    if (prevState.scroll !== scrollY) {
+      this.setState ({
+        scroll: scrollY
+      })
+  
+      if ( innerHeight * 8 <=  scrollY && this.props.model ==="model3") {
+        this.setState ({ logoColor: true })
+      } else if (innerHeight * 8 <= scrollY ) {
+        this.setState ({ logoColor: false })
+      } else if ( innerHeight * 7 <=  scrollY ) {
+        this.setState ({ logoColor: true })
+      } else if ( innerHeight * 6 <= scrollY ) {
+        this.setState ({ logoColor: false })
+      } else if ( innerHeight * 5 <= scrollY ) {
+        this.setState ({ logoColor: true })
+      } else if ( innerHeight * 1 <=  scrollY) {
+        this.setState ({ logoColor: false })
+      }
     }
   }
 
@@ -13,7 +38,7 @@ class SideNav extends Component {
         <a href={`#${val.id}`} key={idx}>
           <li className="sideNavItem">
             <div className="sideNavTab" />
-            <div className="sideNavLabel">{val.text}</div>
+            <div className={`sideNavLabel ${this.state.logoColor ? "invert" : ""}`}>{val.text}</div>
           </li>
         </a>
     )

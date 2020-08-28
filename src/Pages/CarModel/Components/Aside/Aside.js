@@ -37,7 +37,7 @@ class Aside extends Component {
                 자세히 알아보기
               </div>
               <div className="lowright">
-                <Link to="/order" className="orderBtn">
+                <Link to="/order/Model_S" className="orderBtn">
                   <div className="orderBtnText">지금 주문하기</div>
                 </Link>
               </div>

@@ -1,4 +1,4 @@
-@import '../../../Styles/common.scss';
+@import '../../../../Styles/common.scss';
 
 .ModelFooter {
   @include center(center);
@@ -21,10 +21,12 @@
   }
 
   .headerName {
+    animation: fadeinReverse .7s ease-in-out;
     font-size: 1.7rem;
   }
 
   .headerContent {
+    animation: fadeinReverse 1s ease-in-out;
     font-size: 2.8rem;
   }
 

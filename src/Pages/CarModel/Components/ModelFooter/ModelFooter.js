@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './ModelFooter.scss';
 
-
 class ModelFooter extends Component {
   constructor(props){
     super(props);
@@ -35,7 +34,7 @@ class ModelFooter extends Component {
                 자세히 알아보기
               </div>
               <div className="order">
-                <Link to="/order" className="orderBtn">
+                <Link to="/order/Model_S" className="orderBtn">
                   <div className="orderBtnText">지금 주문하기</div>
                 </Link>
               </div>

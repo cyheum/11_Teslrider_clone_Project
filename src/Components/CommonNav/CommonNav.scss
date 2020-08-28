@@ -22,10 +22,22 @@
     }
   }
 
+  .submenuListContaner li span {
+    cursor: pointer;
+  }
+
+  .submenuIconContainer span {
+    cursor: pointer;
+  }
+  
   .carList {
     display: flex;
     color: white;
 
+    .link {
+      color: white;
+    }
+    
     li {
       margin: 0 10px;
       font-size: 16px;
@@ -41,6 +53,7 @@
   .navLoginContainer {
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     .navLoginBtn {
       margin: 0 10px;

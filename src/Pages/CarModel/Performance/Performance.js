@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SpecSum from '../Components/SpecSum/SpecSum';
-import ModelFooter from '../Components/ModelFooter';
+import ModelFooter from '../Components/ModelFooter/ModelFooter';
 import './Performance.scss';
 
 class Performance extends Component {
@@ -31,10 +31,14 @@ class Performance extends Component {
     return (
       <div className="Performance" id="performance">
         <div className="performanceContainer">
+          {this.props.performance &&
+          <>
           <div className="performanceMain" style={this.backgroundImg()}>
             <SpecSum model={model}/>
           </div>
           <ModelFooter dataname={"performance"} model={model}/>
+          </>
+          }
         </div>
       </div>
     );  
