@@ -10,7 +10,7 @@ class LogInNav extends Component {
       <div className="SecNav">
         <nav className="navContainer">
           <div className="teslaLogoContainer">
-            <Link to="/">
+            <Link to="/main">
               <TeslaLogoImgBlack />
             </Link>
           </div>

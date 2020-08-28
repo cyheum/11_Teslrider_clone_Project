@@ -24,6 +24,7 @@
   }
 
   .SpecItem {
+    animation: scale-up-ver-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
     display: block;
     position: absolute;
     border-left: 3px solid black;

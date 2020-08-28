@@ -13,7 +13,8 @@ class Main extends Component {
       loading: 0,
       data : {},
       backImg : "",
-      backColor: false
+      backColor: false,
+      scrollTop : 0
     };
   }
 

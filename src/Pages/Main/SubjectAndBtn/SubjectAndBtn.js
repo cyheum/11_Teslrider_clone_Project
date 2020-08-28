@@ -10,7 +10,7 @@ class SubjectAndBtn extends Component {
         </div>
         <div className="mainOrderBtnLine">
           <div className="mainOrderBtnContainer">
-            <a className="mainOrderbtn" href="/" title="Model 3 주문하기">
+            <a className="mainOrderbtn" href="/order" title="Model 3 주문하기">
               지금 주문하기
             </a>
           </div>

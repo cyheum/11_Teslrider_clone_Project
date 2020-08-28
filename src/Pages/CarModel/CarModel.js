@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {withRouter} from "react-router-dom";
 import CommonNav from '../../Components/CommonNav/CommonNav';
-import SecNav from '../Main/SecNav/SecNav';
 import Main from './Main/Main';
+import SecNav from '../../Components/SecNav/SecNav';
 import Secure from './Secure/Secure';
 import Performance from './Performance/Performance';
 import Distance from './Distance/Distance';
@@ -23,17 +23,47 @@ class CarModel extends Component {
       secNavDisplay: false,
       currentPosY: 0,
       scroll: false,
-      model : this.props.match.params.model
+      model : this.props.match.params.model,
+      secure: false,
+      performance: false,
+      distance: false,
+      carAuto: false,
+      interior: false,
+      exterior: false,
+      specs: false
     };
   }
   
   componentDidMount() {
     document.addEventListener("scroll", () => {
-      if (window.scrollY >= 770) {
-        this.setState({ secNavDisplay: true });
-      } else {
-        this.setState({ secNavDisplay: false });
+      const scrollY = window.scrollY;
+      if (scrollY >= 770) {
+        this.setState({ secure: true })
       }
+      if (scrollY >= 1440) {
+        this.setState({ performance: true })
+      }
+      if (scrollY >= 2310) {
+        this.setState({ distance: true })
+      }
+      if (scrollY >= 3080) {
+        this.setState({ carAuto: true })
+      }
+      if (scrollY >= 3850) {
+        this.setState({ interior: true })
+      }
+      if (scrollY >= 5390) {
+        this.setState({ exterior: true })
+      }
+      if (scrollY >= 6000) {
+        this.setState({ specs: true })
+      }
+
+        if (scrollY >= 770) {
+        this.setState({ secNavDisplay: true});
+        } else {
+          this.setState({ secNavDisplay: false});
+        }
     });
     window.addEventListener('keydown', this.handleScroll);
   }
@@ -56,19 +86,20 @@ class CarModel extends Component {
   
   render() {
     const { model, secNavDisplay } = this.state;
+    const { secure, performance, distance, carAuto, interior, exterior, specs, order} = this.state;
     return (
       <div className="models">
         <CommonNav />
         <Main model={model}/>
-        {secNavDisplay && <SecNav model={model} />}
-        <Secure model={model}/>
-        <Performance model={model}/>
-        <Distance model={model}/>
-        <CarAutopilot model={model}/>
-        <Interior model={model}/>
-        <Exterior model={model}/>
-        <Specs model={model}/>
-        <Order model={model}/>
+        {secNavDisplay && <SecNav model={model}/>}
+        <Secure model={model}  secure={secure}/>
+        <Performance model={model} performance={performance}/>
+        <Distance model={model} distance={distance}/>
+        <CarAutopilot model={model} carAuto={carAuto}/>
+        <Interior model={model} interior={interior}/>
+        <Exterior model={model} exterior={exterior}/>
+        <Specs model={model} specs={specs}/>
+        <Order model={model} />
         <SideNav model={model}/>
         <CommonFooter model={model}/>
       </div>

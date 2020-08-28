@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import OverflowContents from '../Components/OverflowContents';
-import ModelFooter from '../Components/ModelFooter';
+import OverflowContents from '../Components/OverflowContents/OverflowContents';
+import ModelFooter from '../Components/ModelFooter/ModelFooter';
 import './CarAutopilot.scss';
 
 class CarAutopilot extends Component {
@@ -31,9 +31,13 @@ class CarAutopilot extends Component {
           <div className="videoWrap">
             <video loop muted autoPlay src={this.state.video} />
           </div>
-          <OverflowContents dataname="autopilot"  model={model}/>
+          {this.props.carAuto &&
+            <OverflowContents dataname="autopilot"  model={model}/>
+          }
         </div>
-        <ModelFooter dataname="autopilot" model={model}/>
+        {this.props.carAuto &&
+          <ModelFooter dataname="autopilot" model={model}/>
+        }
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Aside from '../Components/Aside';
+import Aside from '../Components/Aside/Aside';
 import './Secure.scss';
 
 class Secure extends Component {
@@ -38,7 +38,9 @@ class Secure extends Component {
 
   render() {
     return (
-    <div className="Secure" id="secure">
+      <div className="Secure" id="secure">
+        {this.props.secure &&
+        <>
         <Aside dataname={"secure"} model={this.props.model} where="secure" />
         <main className="main">
           <div className="mainImgContainer" style={this.backgroundImg()}>
@@ -47,6 +49,8 @@ class Secure extends Component {
             </ul>
           </div>
         </main>
+        </>
+        }
       </div>
     );
   }
