@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./SecNav.scss";
-import TeslaLogoImg from "../ImgAndVideo/TeslaLogoImg";
-import GoToTopBtn from "../ImgAndVideo/GoToTopBtn";
+import TeslaLogoImg from "../../Pages/Main/ImgAndVideo/TeslaLogoImg";
+import GoToTopBtn from "../../Pages/Main/ImgAndVideo/GoToTopBtn";
 
 class SecNav extends Component {
   constructor(props){
@@ -35,7 +35,10 @@ componentDidUpdate (_, prevState) {
 }
 
   goToTop = () => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   render() {

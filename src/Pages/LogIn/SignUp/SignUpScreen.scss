@@ -1,0 +1,157 @@
+.SignupScreen {
+  height: 93%;
+  display: flex;
+  justify-content: center;
+
+  .signupContainer {
+    width: 700px;
+    padding: 0 24px 90px 24px;
+
+    .titleSignup {
+      padding: 32px 0 8px 0;
+      line-height: 45px;
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+    .inputContainer {
+      .nameSection {
+        margin-top: 20px;
+      }
+
+      .accountInfo {
+        margin-top: 15px;
+      }
+
+      .nameSection,
+      .accountInfo {
+        display: flex;
+        justify-content: space-between;
+
+        .NameContainer,
+        .PasswordContainer {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 17px;
+
+          label {
+            margin: 0 20px 4px 20px;
+            display: flex;
+
+            .loginTooltipIcon {
+              padding-bottom: 2px;
+              margin-left: 10px;
+            }
+
+            span {
+              font-size: 14px;
+              font-weight: 500;
+              color: rgb(92, 94, 98);
+            }
+          }
+
+          .pwInputContainer {
+            position: relative;
+
+            .showPwContainer {
+              height: 100%;
+              width: 13%;
+              position: absolute;
+              top: 0;
+              right: 0;
+              display: flex;
+              align-items: center;
+
+              .showPw {
+                cursor: pointer;
+                font-size: 14px;
+                color: rgb(92, 94, 98);
+              }
+            }
+          }
+
+          input {
+            width: 315px;
+            height: 40px;
+            border: none;
+            background-color: #f4f4f4;
+            border-radius: 50px;
+            padding-left: 20px;
+
+            &:focus {
+              outline: 0;
+              box-shadow: 0 0 1px #808080;
+              transition-duration: 200ms;
+            }
+
+            &[type="text"] {
+              letter-spacing: 0.04em;
+            }
+
+            &[type="text"],
+            &[type="password"] {
+              font-size: 15px;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+
+      .CheckAgreeContainer {
+        display: flex;
+        margin: 20px 12px;
+
+        .checkboxContainer {
+          width: 22px;
+          height: 22px;
+
+          input {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .agreeContainer {
+          display: flex;
+          align-items: center;
+          margin-left: 12px;
+          padding: 2px 0;
+
+          .userAgree {
+            font-size: 12px;
+          }
+        }
+      }
+
+      .signupBtnContainer {
+        width: 320px;
+        margin: 120px auto 0 auto;
+
+        .LineContainer {
+          width: 100%;
+          margin: 40px 0;
+          display: flex;
+          justify-content: center;
+
+          .or {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: rgb(92, 94, 98);
+          }
+
+          .or::before,
+          .or::after {
+            content: "";
+            width: 40%;
+            height: 1px;
+            margin: 0 8px;
+            background-color: rgba(92, 94, 98, 0.1);
+          }
+        }
+      }
+    }
+  }
+}
