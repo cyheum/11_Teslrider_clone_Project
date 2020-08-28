@@ -3,6 +3,7 @@ import "./Footer.scss";
 
 export default class Footer extends Component {
   render() {
+    const { clickHdrChangeEptPaymentState, activeComponent } = this.props;
     return (
       <footer className="Footer">
         <div className="wrapTotalPrice">
@@ -16,11 +17,18 @@ export default class Footer extends Component {
               ₩101,190,000
               <div>연료비 절감 전</div>
             </div>
-            <span>예상 결제 가격</span>
+            <span
+              className="expectPaymentBtn"
+              onClick={clickHdrChangeEptPaymentState}
+            >
+              예상 결제 가격
+            </span>
           </div>
         </div>
         <div className="wrapNextBtn">
-          <button className="nextBtn">다음</button>
+          <button className="nextBtn" disabled={activeComponent === 4}>
+            {activeComponent === 4 ? "결제하기" : "다음"}
+          </button>
         </div>
       </footer>
     );

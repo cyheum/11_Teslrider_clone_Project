@@ -1,0 +1,49 @@
+@import "../../../../../Styles/common.scss";
+
+.CashPayment {
+  height: auto;
+  width: 100%;
+  padding: 15px 30px 30px;
+  margin-top: 30px;
+  border-radius: 6px;
+  background-color: #efefef;
+
+  .totalPriceContainer {
+    @include center(space-between);
+    padding: 10px 0;
+    border-bottom: 1px solid $borderGray;
+
+    .priceTitle {
+      font-size: 1.4rem;
+    }
+
+    .priceNum {
+      font-size: 2.4rem;
+    }
+  }
+  .reductionPriceWrap {
+    padding: 20px 0 10px;
+    border-bottom: 1px solid $borderGray;
+
+    .reductionPriceContainer {
+      @include center(space-between);
+      padding-bottom: 10px;
+
+      .reductionPriceTitle {
+        font-size: 1.3rem;
+
+        &.black {
+          color: black;
+        }
+
+        &.gray {
+          color: $gray;
+        }
+      }
+
+      .reductionPriceNum {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
