@@ -19,6 +19,10 @@ class CommonNav extends Component {
     });
   };
 
+  goToModelS = () => {
+    this.props.history.push("/car/models");
+  };
+
   componentDidMount = () => {
     if (localStorage.getItem("access_token")) {
       this.setState({
@@ -40,7 +44,7 @@ class CommonNav extends Component {
         </div>
         <div>
           <ul className="carList">
-            <li>MODEL S</li>
+            <li onClick={this.goToModelS}>MODEL S</li>
             <li>MODEL 3</li>
             <li>MODEL X</li>
             <li>MODEL Y</li>

@@ -53,8 +53,8 @@ class LoginScreen extends Component {
       fetch(`${API}/user/signin`, {
         method: "POST",
         body: JSON.stringify({
-          email: email,
-          password: password,
+          email,
+          password,
         }),
       })
         .then((res) => res.json())

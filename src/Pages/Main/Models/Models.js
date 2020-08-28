@@ -2,61 +2,22 @@ import React, { Component } from "react";
 import CommonNav from "../../../Components/CommonNav/CommonNav";
 import SubjectAndBtn from "../SubjectAndBtn/SubjectAndBtn";
 import FooterBtn from "../Footerbtn/FooterBtn";
+import modelsData from "./modelsData";
 import "./Models.scss";
 
 class Models extends Component {
   constructor() {
     super();
-    this.state = {
-      title: "Model 3",
-      backgroundPosition: "50%",
-      storeBtn: false,
-      btnColorS: "",
-      btnBorderColorS: "",
-      btnColor3: "white",
-      btnBorderColor3: "white",
-      btnColorX: "",
-      btnBorderColorX: "",
-    };
+    this.state = modelsData.model3;
   }
 
   viewChangeEffect = (e) => {
     if (e.target.className === "model3") {
-      this.setState({
-        title: "Model 3",
-        backgroundPosition: "50%",
-        storeBtn: false,
-        btnColorS: "",
-        btnBorderColorS: "",
-        btnColor3: "white",
-        btnBorderColor3: "white",
-        btnColorX: "",
-        btnBorderColorX: "",
-      });
+      this.setState(modelsData.model3);
     } else if (e.target.className === "modelS") {
-      this.setState({
-        title: "Model S",
-        backgroundPosition: "0%",
-        storeBtn: true,
-        btnColorS: "white",
-        btnBorderColorS: "white",
-        btnColor3: "",
-        btnBorderColor3: "",
-        btnColorX: "",
-        btnBorderColorX: "",
-      });
+      this.setState(modelsData.modelS);
     } else {
-      this.setState({
-        title: "Model X",
-        backgroundPosition: "100%",
-        storeBtn: true,
-        btnColorS: "",
-        btnBorderColorS: "",
-        btnColor3: "",
-        btnBorderColor3: "",
-        btnColorX: "white",
-        btnBorderColorX: "white",
-      });
+      this.setState(modelsData.modelX);
     }
   };
 

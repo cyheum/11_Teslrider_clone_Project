@@ -1,0 +1,105 @@
+@import '../../../Styles/common.scss';
+
+.Aside {
+  width: 400px;
+  height: 100%;
+  padding-right: 40px;
+  padding-left: 24px;
+  flex-shrink: 0;
+
+  .container {
+    height: 100%;
+  }
+
+  .header {
+    padding-top: 16px;
+  }
+
+  header {
+    margin-top: 34px;
+  }
+
+  .smallHeader {
+    font-size: 1.7rem;
+  }
+
+  .bigHeader {
+    font-size: 2.8rem;
+  }
+
+  .contents {
+    position: relative;
+    height: 89%;
+    padding-top: 16px;
+
+    .contentText {
+      padding-bottom: 14px;
+      font-size: 1.4rem;
+    }
+
+    .lowBtn {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      bottom: 50px;
+      width: 100%;
+    }
+
+    .lowLeft {
+      @include center(center);
+    }
+
+    .lowLeftBtnWrap {
+      margin-right: 10px;
+      border: 3px solid black;
+      border-radius: 50%;
+    }
+
+    .lowLeftBtnWrap:hover {
+      transition: background-color .4s;
+      background-color: black;
+
+      .lowLeftBtn {
+        transition: color .4s;
+        filter: invert(100%);
+      }
+    }
+
+    .lowLeftBtn {
+      height: 35px;
+      width: 35px;
+      background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid Meet' width='100' height='100'%3e%3cpath d='M54.7 30.7h-9.6v14.4H30.7v9.6h14.4v14.5l9.6-.1V54.7h14.4l.1-9.6H54.7'/%3e%3c/svg%3e") no-repeat center / 100%;
+      cursor: pointer;
+    }
+
+    .lowright {
+      margin-left: 13px;
+    }
+
+    .orderBtn {
+      @include center(center);
+      height: 42px;
+      color: black;
+      border: 3px solid #171a20;
+      border-radius: 100px;
+      min-width: auto;
+      padding: 10px 32px;
+      white-space: nowrap;
+      margin: 8px;
+    }
+
+    .orderBtn:hover {
+      transition: background-color .4s;
+      background-color: black;
+      
+      .orderBtnText {
+        transition: color .4s;
+        color: white;
+      }
+    }
+
+    .orderBtnText {
+      font-size: 1.2rem;
+    }
+  }
+}

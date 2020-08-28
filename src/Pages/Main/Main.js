@@ -15,11 +15,9 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener("scroll", () => {
+    window.addEventListener("scroll", () => {
       if (window.scrollY >= 770) {
-        this.setState({ secNavDisplay: true });
-      } else {
-        this.setState({ secNavDisplay: false });
+        this.setState({ secNavDisplay: !this.state.secNavDisplay });
       }
     });
   }

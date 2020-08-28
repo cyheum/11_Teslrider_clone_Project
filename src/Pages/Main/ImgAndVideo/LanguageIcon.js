@@ -6,6 +6,7 @@ class LanguageIcon extends Component {
     return (
       <img
         className="LanguageIcon"
+        alt="logo"
         src="https://auth.tesla.com/images/icons/globe.png"
       />
     );

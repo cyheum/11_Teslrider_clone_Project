@@ -5,6 +5,8 @@
   justify-content: space-between;
   align-items: center;
   z-index: 20;
+  position: absolute;
+  width: 100%;
 
   .teslaLogoContainer {
     width: 100px;
@@ -22,6 +24,11 @@
     color: white;
 
     li {
+      margin: 0 10px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .link {
       margin: 0 10px;
       font-size: 16px;
       font-weight: 600;
