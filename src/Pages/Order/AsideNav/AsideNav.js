@@ -27,8 +27,7 @@ export default class AsideNav extends Component {
     const {
       handleClickChangeCarBtn,
       handleClickChangeBtn,
-      clickHandlerChangeStyle,
-      clickHandlerChangeAutopilotCheckedState,
+      changeAutopilotBtnState,
       totalData,
       totalData: { activeComponent },
     } = this.props;
@@ -39,10 +38,7 @@ export default class AsideNav extends Component {
           <NewProp
             handleClickChangeCarBtn={handleClickChangeCarBtn}
             handleClickChangeBtn={handleClickChangeBtn}
-            clickHandlerChangeStyle={clickHandlerChangeStyle}
-            clickHandlerChangeAutopilotCheckedState={
-              clickHandlerChangeAutopilotCheckedState
-            }
+            changeAutopilotBtnState={changeAutopilotBtnState}
             totalData={totalData}
           />
         </div>

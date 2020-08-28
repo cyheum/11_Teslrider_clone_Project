@@ -33,7 +33,7 @@ class CarModel extends Component {
       specs: false
     };
   }
-  
+
   componentDidMount() {
     document.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
@@ -65,25 +65,31 @@ class CarModel extends Component {
           this.setState({ secNavDisplay: false});
         }
     });
-    window.addEventListener('keydown', this.handleScroll);
+    window.addEventListener("keydown", this.handleScroll);
   }
 
-  handleScroll = e => {
-    let scrollY = window.scrollY
+  handleScroll = (e) => {
+    let scrollY = window.scrollY;
     if (this.state.scroll && scrollY < this.state.currentPosY) return;
     this.setState({ scroll: false });
     if (e.keyCode === 90) {
-    // if (this.prev > scrollY && scrollY < this.state.currentPosY) {
-      this.setState({ scroll: true, currentPosY: this.state.currentPosY - 943},
-        () => window.scrollTo({ top: this.state.currentPosY, behavior: "smooth" }));
-      } else if ( e.keyCode === 88) {
-    // } else if (this.prev < scrollY && scrollY > this.state.currentPosY) {
-      this.setState({ scroll: true, currentPosY: this.state.currentPosY + 943},
-        () => window.scrollTo({ top: this.state.currentPosY, behavior: "smooth" }));
+      // if (this.prev > scrollY && scrollY < this.state.currentPosY) {
+      this.setState(
+        { scroll: true, currentPosY: this.state.currentPosY - 943 },
+        () =>
+          window.scrollTo({ top: this.state.currentPosY, behavior: "smooth" })
+      );
+    } else if (e.keyCode === 88) {
+      // } else if (this.prev < scrollY && scrollY > this.state.currentPosY) {
+      this.setState(
+        { scroll: true, currentPosY: this.state.currentPosY + 943 },
+        () =>
+          window.scrollTo({ top: this.state.currentPosY, behavior: "smooth" })
+      );
     }
     this.prev = scrollY;
-  }
-  
+  };
+
   render() {
     const { model, secNavDisplay } = this.state;
     const { secure, performance, distance, carAuto, interior, exterior, specs, order} = this.state;

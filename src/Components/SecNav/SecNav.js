@@ -12,31 +12,33 @@ class SecNav extends Component {
     }
   }
 
-  componentDidUpdate (_, prevState) {
-    const { innerHeight, scrollY } = window
-    if (prevState.scroll !== scrollY) {
-      this.setState ({
-        scroll: scrollY
-      })
-
-      if ( innerHeight * 8 <=  scrollY && this.props.model ==="model3") {
-        this.setState ({ logoColor: false })
-      } else if ( innerHeight * 8 <= scrollY ) {
-        this.setState ({ logoColor: true })
-      } else if ( innerHeight * 7 <=  scrollY ) {
-        this.setState ({ logoColor: false })
-      } else if ( innerHeight * 6 <= scrollY ) {
-        this.setState ({ logoColor: true })
-      } else if ( innerHeight * 5 <= scrollY ) {
-        this.setState ({ logoColor: false })
-      } else if ( innerHeight * 1 <=  scrollY ) {
-        this.setState ({ logoColor: true })
-      }
-    }
+componentDidUpdate (_, prevState) {
+  const { innerHeight, scrollY } = window
+  if (prevState.scroll !== scrollY) {
+    this.setState ({
+      scroll: scrollY
+    })
+    if ( innerHeight * 8 <=  scrollY && this.props.model ==="model3") {
+      this.setState ({ logoColor: false })
+    } else if (innerHeight * 8 <= scrollY ) {
+      this.setState ({ logoColor: true })
+    } else if ( innerHeight * 7 <=  scrollY ) {
+      this.setState ({ logoColor: false })
+    } else if ( innerHeight * 6 <= scrollY ) {
+      this.setState ({ logoColor: true })
+    } else if ( innerHeight * 5 <= scrollY ) {
+      this.setState ({ logoColor: false })
+   } else if ( innerHeight * 1 <=  scrollY) {
+    this.setState ({ logoColor: true })
    }
+  }
+}
 
   goToTop = () => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   render() {

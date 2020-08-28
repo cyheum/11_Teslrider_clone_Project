@@ -4,10 +4,6 @@
   padding: 30px 50px 50px;
   height: 100%;
 
-  * {
-    font-size: 1.4rem;
-  }
-
   .choiceContainer {
     padding: 10px 0;
 
@@ -62,6 +58,7 @@
     color: $gray;
     line-height: 180%;
     margin: 10px 0;
+    font-size: 1.4rem;
 
     ul {
       padding-left: 15px;

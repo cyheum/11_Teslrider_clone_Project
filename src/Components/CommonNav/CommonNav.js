@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import SubMenu from "../../Pages/Main/SubMenu/SubMenu";
 import TeslaLogoImg from "../../Pages/Main/ImgAndVideo/TeslaLogoImg";
 import "./CommonNav.scss";
@@ -9,32 +9,46 @@ class CommonNav extends Component {
     super();
     this.state = {
       subMenuDisplay: false,
+      isLoggedIn: false,
     };
   }
 
-  handleSubMenu = (e) => {
+  handleSubMenu = () => {
     this.setState({
       subMenuDisplay: !this.state.subMenuDisplay,
     });
   };
 
+  goToModelS = () => {
+    this.props.history.push("/car/models");
+  };
+
+  componentDidMount = () => {
+    if (localStorage.getItem("access_token")) {
+      this.setState({
+        isLoggedIn: true,
+      });
+    }
+  };
+
   render() {
     const { handleSubMenu } = this;
+    const { subMenuDisplay, isLoggedIn } = this.state;
     return (
       <nav className="CommonNav">
-        {this.state.subMenuDisplay && <SubMenu handleSubMenu={handleSubMenu} />}
+        {subMenuDisplay && <SubMenu handleSubMenu={handleSubMenu} />}
         <div className="teslaLogoContainer">
-          <a href={"/main"} >
-          <TeslaLogoImg />
-          </a>
+          <Link to="/main">
+            <TeslaLogoImg />
+          </Link>
         </div>
         <div>
           <ul className="carList">
             <a href={"/car/models"} className="link">
-              <li>MODEL S</li>
+              <li onClick={this.goToModelS}>MODEL S</li>
             </a>
-            <a href={"/car/model3"} className="link">
-              <li>MODEL 3</li>
+          <a href={"/car/model3"} className="link">
+            <li>MODEL 3</li>
             </a>
             <li>MODEL X</li>
             <li>MODEL Y</li>
@@ -43,9 +57,13 @@ class CommonNav extends Component {
           </ul>
         </div>
         <div className="navLoginContainer">
-          <Link to="/login">
-            <div className="navLoginBtn">로그인</div>
-          </Link>
+          {isLoggedIn ? (
+            <div className="navLoginBtn">TESLA 계정</div>
+          ) : (
+            <Link to="/login">
+              <div className="navLoginBtn">로그인</div>
+            </Link>
+          )}
           <i className="fas fa-bars fa-2x" onClick={handleSubMenu} />
         </div>
       </nav>
@@ -53,4 +71,4 @@ class CommonNav extends Component {
   }
 }
 
-export default CommonNav;
+export default withRouter(CommonNav);

@@ -12,27 +12,49 @@ export default class ChoiceColor extends Component {
 
   render() {
     const {
+      batteryIsPushedAt,
+      data: { icons },
+    } = this.props.totalData;
+    if (!icons || !batteryIsPushedAt) return <div />;
+    const {
       handleClickChangeBtn,
-      totalData: { isColorBtnPushedAt, isWheelBtnPushedAt },
+      totalData: {
+        ColorBtnPushedIndex,
+        WheelBtnPushedIndex,
+        data: {
+          icons: { battery_value, color_icon, wheel_icon },
+        },
+      },
     } = this.props;
+    const colorWheels = [color_icon, wheel_icon];
     return (
       <div className="ChoiceColor">
-        {aboutChoiceData.map((el, index) => {
-          const { choiceBtn, title, description, price } = el;
+        {colorWheels.map((el, index) => {
+          if (index) {
+            battery_value[batteryIsPushedAt] === "Long Range"
+              ? el.splice(0, 2)
+              : el.splice(2);
+          }
+          const btnPushedIndex = index
+            ? WheelBtnPushedIndex
+            : ColorBtnPushedIndex;
           return (
             <div className="choiceContainer" key={index}>
-              <div className="headText">{title}</div>
+              <div className="headText">{aboutChoiceData[index].title}</div>
               <div className="wrapChoiceColorButton">
-                {choiceBtn.map((style, btnIdx) => {
+                {el.map((style, btnIdx) => {
+                  const keyName = Object.keys(style)[0];
                   return (
                     <div
-                      className={this.setButtonClassName(index, btnIdx)}
+                      className={this.setButtonClassName(index, keyName)}
                       key={btnIdx}
                     >
                       <img
-                        onClick={() => handleClickChangeBtn(index, btnIdx)}
+                        onClick={() =>
+                          handleClickChangeBtn(index, keyName, btnIdx)
+                        }
                         alt="colorbuttonImg"
-                        src={style}
+                        src={style[keyName]}
                       />
                     </div>
                   );
@@ -40,15 +62,9 @@ export default class ChoiceColor extends Component {
               </div>
               <div className="colorDescription">
                 <span>
-                  {index
-                    ? description[isWheelBtnPushedAt]
-                    : description[isColorBtnPushedAt]}
+                  {aboutChoiceData[index].description[btnPushedIndex]}
                 </span>
-                <span>
-                  {index
-                    ? price[isWheelBtnPushedAt]
-                    : price[isColorBtnPushedAt]}
-                </span>
+                <span>{aboutChoiceData[index].price[btnPushedIndex]}</span>
               </div>
             </div>
           );
@@ -60,13 +76,6 @@ export default class ChoiceColor extends Component {
 
 const aboutChoiceData = [
   {
-    choiceBtn: [
-      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_ppsw.png?&version=v0028d202008130539",
-      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_pbsb.png?&version=v0028d202008130539",
-      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_pmng.png?&version=v0028d202008130539",
-      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_ppsb.png?&version=v0028d202008130539",
-      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODEL3/UI/ui_swat_col_ppmr.png?&version=v0028d202008130539",
-    ],
     title: "색상 선택하기",
     description: [
       "Pearl White Multi-Coat",
@@ -78,10 +87,6 @@ const aboutChoiceData = [
     price: ["포함", "₩1,929,000", "₩1,929,000", "₩1,929,000", "₩3,279,000"],
   },
   {
-    choiceBtn: [
-      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_swat_whl_wtas.png?&version=v0028d202008130539",
-      "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_swat_whl_wttc.png?&version=v0028d202008130539",
-    ],
     title: "휠 선택하기",
     description: ["19인치 실버 휠", "21인치 소닉 카본 트윈 터빈 휠"],
     price: ["포함", "₩4,672,000"],

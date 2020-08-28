@@ -4,40 +4,59 @@ import "./ChoiceInterior.scss";
 export default class ChoiceInterior extends Component {
   render() {
     const {
-      clickHandlerChangeStyle,
-      totalData: { interiorPushedAt, batteryIsPushedAt },
+      data: { icons },
+      interiorPushedAt,
+    } = this.props.totalData;
+    if (!icons || !interiorPushedAt) return <div />;
+    const {
+      handleClickChangeCarBtn,
+      totalData: {
+        batteryIsPushedAt,
+        batteryIsPushedIndex,
+        interiorPushedIndex,
+        data: {
+          icons: { battery_value, interior_icon },
+        },
+      },
     } = this.props;
     const { title, name, price } = interiorDetail;
+    const newInterior_icon =
+      battery_value[batteryIsPushedAt] === "Long Range"
+        ? interior_icon.slice(0, 3)
+        : interior_icon.slice(3);
     return (
       <div className="ChoiceInterior">
         <div className="choiceContainer">
           <div className="headText">프리미엄 인테리어 선택하기</div>
           <div className="wrapChoiceStyleButton">
-            {styleBtn[batteryIsPushedAt].map((style, index) => {
+            {newInterior_icon.map((style, index) => {
+              const keyName = Object.keys(style)[0];
               return (
                 <div
                   className={
-                    interiorPushedAt === index
+                    interiorPushedAt === keyName
                       ? "choiceStyleButton pushed"
                       : "choiceStyleButton normal"
                   }
                   key={index}
                 >
                   <img
-                    onClick={() => clickHandlerChangeStyle(index)}
+                    onClick={() =>
+                      handleClickChangeCarBtn(keyName, index, "interior")
+                    }
                     alt="stylebuttonImg"
-                    src={style}
+                    src={style[keyName]}
                   />
                 </div>
               );
             })}
           </div>
           <div className="StyleDescription">
-            <span>{title[interiorPushedAt]}</span>
-            <span>{price[interiorPushedAt]}</span>
+            <span>{title[interiorPushedIndex]}</span>
+            <span>{price[interiorPushedIndex]}</span>
           </div>
           <div className="descriptionText">
-            {name[batteryIsPushedAt][interiorPushedAt]}
+            {name[batteryIsPushedIndex][interiorPushedIndex]}
           </div>
         </div>
         <div className="subTitle">기본사항:</div>
@@ -66,25 +85,12 @@ export default class ChoiceInterior extends Component {
   }
 }
 
-const styleBtn = {
-  0: [
-    "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_black.png?&version=v0028d202008130539",
-    "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_white_cf.png?&version=v0028d202008130539",
-    "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_cream.png?&version=v0028d202008130539",
-  ],
-  1: [
-    "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_black_cf.png?&version=v0028d202008200649",
-    "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_white_cf.png?&version=v0028d202008200649",
-    "https://static-assets.tesla.com/share/tesla_design_studio_assets/MODELS/UI/ui_bundle_cream.png?&version=v0028d202008200649",
-  ],
-};
-
 const interiorDetail = {
   title: ["All Black", "Black/White", "Cream"],
-  name: {
-    0: ["애쉬 우드 데코", "다크 우드 데코", "오크 우드 데코"],
-    1: ["카본 파이버 데코", "카본 파이버 데코", "오크 우드 데코"],
-  },
+  name: [
+    ["애쉬 우드 데코", "다크 우드 데코", "오크 우드 데코"],
+    ["카본 파이버 데코", "카본 파이버 데코", "오크 우드 데코"],
+  ],
   price: ["포함", "₩1,929,000", "₩1,929,000"],
 };
 

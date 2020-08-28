@@ -1,12 +1,12 @@
 @import "../../../Styles/common.scss";
 
-.Interior {
+.OrderInterior {
   @include center(center);
   height: calc(100vh - 166px);
   width: 100%;
   overflow: hidden;
 
-  div {
+  .wrapInsideCarImg {
     width: 100%;
 
     .insideCarImg {
