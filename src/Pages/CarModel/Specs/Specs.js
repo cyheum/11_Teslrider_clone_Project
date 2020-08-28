@@ -10,7 +10,7 @@
         keyName: "performance",
         backImg: "",
         color: 0,
-        test: {}
+        content: {}
       }
     }
 
@@ -21,11 +21,17 @@
         data : res.car,
         backImg: res.car.img.spec
       }))
-      fetch('/data/car/test.json')
+      fetch(`http://18.222.175.48:8000/car/specification?type=${this.URL(this.props.model)}`)
       .then((res) => res.json())
       .then((res) => this.setState({
-        test: res.car}))
-  }
+        content: res}))
+    }
+
+    URL = (url) => {
+      url.split();
+      const result = `${url[0].toUpperCase()}odel_${url[url.length-1].toUpperCase()}`
+      return result
+    };
   
   handleType = (e, idx) => {
     this.setState({
@@ -60,7 +66,7 @@
   }
 
   render() {
-    const { keyName, data, test } = this.state;
+    const { keyName, data, content } = this.state;
     return (
       <div className="Specs" id="specs">
         {this.props.specs &&
@@ -76,7 +82,7 @@
                   <div className="labelWrap">
                     {this.makeLabel()}
                   </div>
-                  {this.state.data.performance && this.state.test.model && <InfoContent test={test} data={data} keyName={keyName}/>} 
+                  {this.state.data.performance && this.state.content.model && <InfoContent content={content} data={data} keyName={keyName}/>} 
                 </div>
               <div className="inforFooter">
                 <div className="more">
@@ -97,6 +103,6 @@
 
 const LABEL = [
   {label: "퍼포먼스", className: "performance"},
-  {label: "LONG RANGE", className: "longRange"},
+  {label: "LONG RANGE", className: "long range"},
 ]
 export default Specs;
