@@ -3,15 +3,17 @@ import "./Footer.scss";
 
 export default class Footer extends Component {
   render() {
-    if (!this.props.totalData.data.carImgPrice) return <div />;
+    if (!this.props.totalData.carImgPrice.price) return <div />;
     const {
-      data: {
-        carImgPrice: {
-          price: { fuel_cost_reduction_price, total_price },
-        },
+      carImgPrice: {
+        price: { fuel_cost_reduction_price, total_price },
       },
     } = this.props.totalData;
-    const { clickHdrChangeEptPaymentState, activeComponent, clickHandlerNext } = this.props;
+    const {
+      clickHdrChangeEptPaymentState,
+      activeComponent,
+      clickHandlerNext,
+    } = this.props;
     return (
       <footer className="Footer">
         <div className="wrapTotalPrice">
@@ -39,7 +41,11 @@ export default class Footer extends Component {
           </div>
         </div>
         <div className="wrapNextBtn">
-          <button className="nextBtn" disabled={activeComponent === 4} onClick={clickHandlerNext}>
+          <button
+            className="nextBtn"
+            disabled={activeComponent === 4}
+            onClick={clickHandlerNext}
+          >
             {activeComponent === 4 ? "결제하기" : "다음"}
           </button>
         </div>

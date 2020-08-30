@@ -48,16 +48,14 @@ export default class Battery extends Component {
 
   render() {
     const { distance, speed, arrivalTime, activeClass } = this.state;
-    const {
-      data: { carImgPrice },
-    } = this.props.totalData;
+    const { carImgPrice } = this.props.totalData;
     return (
       <div className="Battery">
         <div>
           <img
             className={`carImg ${activeClass}`}
             alt="carImg"
-            src={carImgPrice && carImgPrice.image.car}
+            src={carImgPrice.image && carImgPrice.image.car}
           />
         </div>
         <div className="carDescription">

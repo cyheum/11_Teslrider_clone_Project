@@ -6,23 +6,15 @@ import ChoiceAutopilot from "./ChoiceAutopilot/ChoiceAutopilot";
 import ChoicePayment from "./ChoicePayment/ChoicePayment";
 import "./AsideNav.scss";
 
-const asideComponentList = {
-  0: ChoiceCar,
-  1: ChoiceColor,
-  2: ChoiceInterior,
-  3: ChoiceAutopilot,
-  4: ChoicePayment,
-};
+const asideComponentList = [
+  ChoiceCar,
+  ChoiceColor,
+  ChoiceInterior,
+  ChoiceAutopilot,
+  ChoicePayment,
+];
 
 export default class AsideNav extends Component {
-  passProp = (Comp) => {
-    return class extends React.Component {
-      render() {
-        return <Comp {...this.props} />;
-      }
-    };
-  };
-
   render() {
     const {
       handleClickChangeCarBtn,
@@ -31,11 +23,11 @@ export default class AsideNav extends Component {
       totalData,
       totalData: { activeComponent },
     } = this.props;
-    const NewProp = this.passProp(asideComponentList[activeComponent]);
+    const ActiveAsideNav = asideComponentList[activeComponent];
     return (
       <aside className="AsideNav">
         <div className="wrapDescription">
-          <NewProp
+          <ActiveAsideNav
             handleClickChangeCarBtn={handleClickChangeCarBtn}
             handleClickChangeBtn={handleClickChangeBtn}
             changeAutopilotBtnState={changeAutopilotBtnState}

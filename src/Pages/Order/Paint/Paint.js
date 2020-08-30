@@ -20,16 +20,14 @@ export default class Paint extends Component {
   };
 
   render() {
-    const {
-      data: { carImgPrice },
-    } = this.props.totalData;
+    const { carImgPrice } = this.props.totalData;
     return (
       <div className="Paint">
         <div>
           <img
             className={`carImg ${this.state.activeClass}`}
             alt="carImg"
-            src={carImgPrice && carImgPrice.image.car}
+            src={carImgPrice.image && carImgPrice.image.car}
           />
         </div>
       </div>

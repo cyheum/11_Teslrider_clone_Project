@@ -4,48 +4,59 @@ import "./ChoicePayment.scss";
 export default class ChoicePayment extends Component {
   constructor(props) {
     super(props);
-    if (this.props.totalData.batteryIsPushedAt) {
-      const {
-        modelPushedAt,
-        batteryIsPushedAt,
-        isAutopilotChecked,
-        batteryIsPushedIndex,
-        ColorBtnPushedIndex,
-        WheelBtnPushedIndex,
-        interiorPushedIndex,
-        data: { icons },
-      } = props.totalData;
+    {
       this.state = {
-        userCustomData: [
-          {
-            title: `${carList[modelPushedAt].model} ${
-              icons && icons.battery_value[batteryIsPushedAt]
-            }`,
-            content: carList[modelPushedAt].batteryPrice[batteryIsPushedIndex],
-          },
-          {
-            title: carList[modelPushedAt].color[ColorBtnPushedIndex],
-            content: carList[modelPushedAt].colorPrice[ColorBtnPushedIndex],
-          },
-          {
-            title: carList[modelPushedAt].wheel[WheelBtnPushedIndex],
-            content: carList[modelPushedAt].wheelPrice[WheelBtnPushedIndex],
-          },
-          {
-            title: `${carList[modelPushedAt].interior[interiorPushedIndex]} 프리미엄 인테리어 및 ${carList[modelPushedAt].interiorName[batteryIsPushedIndex][interiorPushedIndex]}`,
-            content: carList[modelPushedAt].interiorPrice[interiorPushedIndex],
-          },
-          { title: "오토파일럿", content: "포함" },
-          isAutopilotChecked
-            ? { title: "완전 자율 주행 기능", content: "₩9,043,000" }
-            : {},
-        ],
+        userCustomData: [],
         detailBtnPushed: false,
         activePaymentMethod: 0,
         totalCarImg: {},
       };
     }
   }
+
+  componentDidMount() {
+    this.updatePaymentState();
+  }
+
+  updatePaymentState = () => {
+    if (!this.props.totalData.batteryIsPushedAt) return <div />;
+    const {
+      modelPushedAt,
+      batteryIsPushedAt,
+      batteryIsPushedIndex,
+      colorBtnPushedIndex,
+      wheelBtnPushedIndex,
+      interiorPushedIndex,
+      isAutopilotChecked,
+      icons,
+    } = this.props.totalData;
+    this.setState({
+      userCustomData: [
+        {
+          title: `${carList[modelPushedAt].model} ${
+            icons && icons.battery_value[batteryIsPushedAt]
+          }`,
+          content: carList[modelPushedAt].batteryPrice[batteryIsPushedIndex],
+        },
+        {
+          title: carList[modelPushedAt].color[colorBtnPushedIndex],
+          content: carList[modelPushedAt].colorPrice[colorBtnPushedIndex],
+        },
+        {
+          title: carList[modelPushedAt].wheel[wheelBtnPushedIndex],
+          content: carList[modelPushedAt].wheelPrice[wheelBtnPushedIndex],
+        },
+        {
+          title: `${carList[modelPushedAt].interior[interiorPushedIndex]} 프리미엄 인테리어 및 ${carList[modelPushedAt].interiorName[batteryIsPushedIndex][interiorPushedIndex]}`,
+          content: carList[modelPushedAt].interiorPrice[interiorPushedIndex],
+        },
+        { title: "오토파일럿", content: "포함" },
+        isAutopilotChecked
+          ? { title: "완전 자율 주행 기능", content: "₩9,043,000" }
+          : {},
+      ],
+    });
+  };
 
   clickHandlerChangeDetailBtn = () => {
     this.setState({
@@ -60,17 +71,13 @@ export default class ChoicePayment extends Component {
   };
 
   render() {
-    const {
-      data: { carImgPrice },
-    } = this.props.totalData;
-    if (!carImgPrice) return <div />;
+    const { carImgPrice } = this.props.totalData;
+    if (!carImgPrice.price) return <div />;
     const { userCustomData, detailBtnPushed, activePaymentMethod } = this.state;
     const {
-      data: {
-        carImgPrice: {
-          price: { total_price, fuel_cost_reduction_price },
-          image,
-        },
+      carImgPrice: {
+        price: { total_price, fuel_cost_reduction_price },
+        image,
       },
     } = this.props.totalData;
     return (
@@ -102,7 +109,7 @@ export default class ChoicePayment extends Component {
         >
           <div className="totalPrice">
             <div>구매가격</div>
-            <div>{`₩${parseInt(total_price).toLocaleString()}`}</div>
+            <div>{`₩${total_price.toLocaleString()}`}</div>
           </div>
           <div className="savingPrice">
             <div>향후 5년 간 예상 연료비 절감</div>
@@ -110,9 +117,7 @@ export default class ChoicePayment extends Component {
           </div>
           <div className="afterSavingTotalPrice">
             <div>예상 전체 절감 비용 반영 후 가격</div>
-            <div>{`₩${parseInt(
-              fuel_cost_reduction_price
-            ).toLocaleString()}`}</div>
+            <div>{`₩${fuel_cost_reduction_price.toLocaleString()}`}</div>
           </div>
           <div className="savingPriceDescription">
             모든 절감 비용은 구매 이후 경험하게 됩니다.

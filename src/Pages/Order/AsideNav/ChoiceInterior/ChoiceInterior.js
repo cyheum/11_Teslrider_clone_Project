@@ -3,10 +3,7 @@ import "./ChoiceInterior.scss";
 
 export default class ChoiceInterior extends Component {
   render() {
-    const {
-      data: { icons },
-      interiorPushedAt,
-    } = this.props.totalData;
+    const { icons, interiorPushedAt } = this.props.totalData;
     if (!icons || !interiorPushedAt) return <div />;
     const {
       handleClickChangeCarBtn,
@@ -14,9 +11,7 @@ export default class ChoiceInterior extends Component {
         batteryIsPushedAt,
         batteryIsPushedIndex,
         interiorPushedIndex,
-        data: {
-          icons: { battery_value, interior_icon },
-        },
+        icons: { battery_value, interior_icon },
       },
     } = this.props;
     const { title, name, price } = interiorDetail;
@@ -33,11 +28,9 @@ export default class ChoiceInterior extends Component {
               const keyName = Object.keys(style)[0];
               return (
                 <div
-                  className={
-                    interiorPushedAt === keyName
-                      ? "choiceStyleButton pushed"
-                      : "choiceStyleButton normal"
-                  }
+                  className={`choiceStyleButton ${
+                    interiorPushedAt === keyName ? "pushed" : "normal"
+                  }`}
                   key={index}
                 >
                   <img

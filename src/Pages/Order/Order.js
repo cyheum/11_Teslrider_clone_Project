@@ -25,17 +25,17 @@ class Order extends Component {
       modelPushedAt: this.props.match.params.model,
       activeComponent: 0,
       batteryIsPushedAt: "",
-      isColorBtnPushedAt: "",
-      isWheelBtnPushedAt: "",
+      colorBtnPushedAt: "",
+      wheelBtnPushedAt: "",
       interiorPushedAt: "",
       batteryIsPushedIndex: 0,
-      ColorBtnPushedIndex: 0,
-      WheelBtnPushedIndex: 0,
+      colorBtnPushedIndex: 0,
+      wheelBtnPushedIndex: 0,
       interiorPushedIndex: 0,
       isAutopilotChecked: false,
-      data: {},
+      carImgPrice: {},
+      icons: {},
       expectPaymentClicked: false,
-      totalPrice: "",
     };
   }
 
@@ -44,28 +44,23 @@ class Order extends Component {
   }
 
   runFetchForIcons = () => {
-    const { data } = this.state;
     fetch("http://18.222.175.48:8000/customizing/icons?model=Model_S")
       .then((res) => res.json())
       .then((res) =>
-        this.setState({ data: { ...data, icons: res } }, () =>
-          this.stateiInitializing()
-        )
+        this.setState({ icons: res }, () => this.stateInitializing())
       );
   };
 
-  stateiInitializing = () => {
+  stateInitializing = () => {
     const {
-      data: {
-        icons: { battery_value, color_icon, wheel_icon, interior_icon },
-      },
+      icons: { battery_value, color_icon, wheel_icon, interior_icon },
     } = this.state;
 
     this.setState(
       {
         batteryIsPushedAt: Object.keys(battery_value[0])[0],
-        isColorBtnPushedAt: Object.keys(color_icon[0])[0],
-        isWheelBtnPushedAt: Object.keys(wheel_icon[0])[0],
+        colorBtnPushedAt: Object.keys(color_icon[0])[0],
+        wheelBtnPushedAt: Object.keys(wheel_icon[0])[0],
         interiorPushedAt: Object.keys(interior_icon[0])[0],
       },
       () => this.runFetchForPrice()
@@ -76,11 +71,10 @@ class Order extends Component {
     const {
       modelPushedAt,
       batteryIsPushedAt,
-      isColorBtnPushedAt,
-      isWheelBtnPushedAt,
+      colorBtnPushedAt,
+      wheelBtnPushedAt,
       interiorPushedAt,
       isAutopilotChecked,
-      data,
     } = this.state;
 
     fetch("http://18.222.175.48:8000/customizing/products", {
@@ -88,14 +82,14 @@ class Order extends Component {
       body: JSON.stringify({
         model: modelPushedAt,
         battery_id: batteryIsPushedAt,
-        color_id: isColorBtnPushedAt,
-        wheel_id: isWheelBtnPushedAt,
+        color_id: colorBtnPushedAt,
+        wheel_id: wheelBtnPushedAt,
         interior_id: interiorPushedAt,
-        auto_pilot: isAutopilotChecked ? 1 : 0,
+        auto_pilot: isAutopilotChecked,
       }),
     })
       .then((res) => res.json())
-      .then((res) => this.setState({ data: { ...data, carImgPrice: res } }));
+      .then((res) => this.setState({ carImgPrice: res }));
   };
 
   clickHandler = (componentIdx) => {
@@ -117,10 +111,10 @@ class Order extends Component {
   };
 
   handleClickChangeBtn = (index, num, pushIdx) => {
-    const btnPushedAt = index ? "isWheelBtnPushedAt" : "isColorBtnPushedAt";
+    const btnPushedAt = index ? "wheelBtnPushedAt" : "colorBtnPushedAt";
     const btnPushedIndex = index
-      ? "WheelBtnPushedIndex"
-      : "ColorBtnPushedIndex";
+      ? "wheelBtnPushedIndex"
+      : "colorBtnPushedIndex";
     if (btnPushedAt === num) return;
     this.setState(
       {
@@ -141,19 +135,10 @@ class Order extends Component {
   };
 
   clickHandlerNext = () => {
-    console.log("HI")
-    if(this.state.activeComponent===5) return;
+    if (this.state.activeComponent === 5) return;
     this.setState({
-      activeComponent: this.state.activeComponent + 1
-    })
-  }
-
-  remakeCompo = (Comp) => {
-    return class extends React.Component {
-      render() {
-        return <Comp {...this.props} />;
-      }
-    };
+      activeComponent: this.state.activeComponent + 1,
+    });
   };
 
   clickHdrChangeEptPaymentState = () => {
@@ -163,10 +148,8 @@ class Order extends Component {
   };
 
   render() {
-    const { activeComponent, expectPaymentClicked, totalPrice } = this.state;
-    const ActiveMain = this.remakeCompo(
-      orderComponentList[this.state.activeComponent]
-    );
+    const { activeComponent, expectPaymentClicked } = this.state;
+    const ActiveMain = orderComponentList[this.state.activeComponent];
     return (
       <article className="Order">
         <HeaderNav
@@ -176,12 +159,12 @@ class Order extends Component {
         <section>
           <main>
             <ActiveMain
-              totalData={this.state}
+              totalData={{ ...this.state }}
               changePropState={this.changePropState}
               handleClickChangeCarBtn={this.handleClickChangeCarBtn}
             />
             <AsideNav
-              totalData={this.state}
+              totalData={{ ...this.state }}
               handleClickChangeCarBtn={this.handleClickChangeCarBtn}
               handleClickChangeBtn={this.handleClickChangeBtn}
               changeAutopilotBtnState={this.changeAutopilotBtnState}
@@ -191,11 +174,11 @@ class Order extends Component {
                 clickHdrChangeEptPaymentState={
                   this.clickHdrChangeEptPaymentState
                 }
-                totalData={this.state.data.carImgPrice}
+                totalData={this.state.carImgPrice}
               />
             )}
             <Footer
-              totalData={this.state}
+              totalData={{ ...this.state }}
               clickHandlerNext={this.clickHandlerNext}
               activeComponent={activeComponent}
               clickHdrChangeEptPaymentState={this.clickHdrChangeEptPaymentState}

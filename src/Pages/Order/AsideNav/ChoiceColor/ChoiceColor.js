@@ -3,47 +3,43 @@ import "./ChoiceColor.scss";
 
 export default class ChoiceColor extends Component {
   setButtonClassName = (index, btnIdx) => {
-    const { isColorBtnPushedAt, isWheelBtnPushedAt } = this.props.totalData;
+    const { colorBtnPushedAt, wheelBtnPushedAt } = this.props.totalData;
     const isPushed =
-      (index && isWheelBtnPushedAt === btnIdx) ||
-      (!index && isColorBtnPushedAt === btnIdx);
+      (index && wheelBtnPushedAt === btnIdx) ||
+      (!index && colorBtnPushedAt === btnIdx);
     return `choiceColorButton ${isPushed ? "pushed" : "normal"}`;
   };
 
   render() {
-    const {
-      batteryIsPushedAt,
-      data: { icons },
-    } = this.props.totalData;
+    const { batteryIsPushedAt, icons } = this.props.totalData;
     if (!icons || !batteryIsPushedAt) return <div />;
     const {
       handleClickChangeBtn,
-      totalData: {
-        ColorBtnPushedIndex,
-        WheelBtnPushedIndex,
-        data: {
-          icons: { battery_value, color_icon, wheel_icon },
-        },
-      },
+      totalData: { colorBtnPushedIndex, wheelBtnPushedIndex },
     } = this.props;
+    const { battery_value, color_icon, wheel_icon } = icons;
     const colorWheels = [color_icon, wheel_icon];
+
     return (
       <div className="ChoiceColor">
         {colorWheels.map((el, index) => {
+          let newEl = {};
           if (index) {
-            battery_value[batteryIsPushedAt] === "Long Range"
-              ? el.splice(0, 2)
-              : el.splice(2);
+            newEl =
+              battery_value[batteryIsPushedAt] === "Long Range"
+                ? el.slice(0, 2)
+                : el.slice(2);
           }
           const btnPushedIndex = index
-            ? WheelBtnPushedIndex
-            : ColorBtnPushedIndex;
+            ? wheelBtnPushedIndex
+            : colorBtnPushedIndex;
           return (
             <div className="choiceContainer" key={index}>
               <div className="headText">{aboutChoiceData[index].title}</div>
               <div className="wrapChoiceColorButton">
-                {el.map((style, btnIdx) => {
+                {newEl.map((style, btnIdx) => {
                   const keyName = Object.keys(style)[0];
+                  const btnName = index ? "wheelBtn" : "colorBtn";
                   return (
                     <div
                       className={this.setButtonClassName(index, keyName)}
@@ -51,7 +47,7 @@ export default class ChoiceColor extends Component {
                     >
                       <img
                         onClick={() =>
-                          handleClickChangeBtn(index, keyName, btnIdx)
+                          handleClickChangeBtn(keyName, btnIdx, btnName)
                         }
                         alt="colorbuttonImg"
                         src={style[keyName]}

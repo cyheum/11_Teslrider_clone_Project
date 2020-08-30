@@ -3,19 +3,10 @@ import "./ChoiceCar.scss";
 
 export default class ChoiceCar extends Component {
   render() {
-    const {
-      batteryIsPushedAt,
-      data: { icons },
-    } = this.props.totalData;
+    const { batteryIsPushedAt, icons } = this.props.totalData;
     if (!icons || !batteryIsPushedAt) return <div />;
-    const {
-      handleClickChangeCarBtn,
-      totalData: {
-        data: {
-          icons: { battery_value },
-        },
-      },
-    } = this.props;
+    const { handleClickChangeCarBtn } = this.props;
+    const { battery_value } = icons;
     return (
       <div className="ChoiceCar">
         <div className="headText">차량 선택하기</div>
@@ -29,11 +20,9 @@ export default class ChoiceCar extends Component {
             return (
               <button
                 key={keyName}
-                className={
-                  batteryIsPushedAt === keyName
-                    ? "choiceCarBtn pushed"
-                    : "choiceCarBtn normal"
-                }
+                className={`choiceCarBtn ${
+                  batteryIsPushedAt === keyName ? "pushed" : "normal"
+                }`}
                 onClick={() =>
                   handleClickChangeCarBtn(keyName, idx, "batteryIs")
                 }

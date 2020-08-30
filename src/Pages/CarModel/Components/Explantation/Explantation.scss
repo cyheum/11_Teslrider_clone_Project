@@ -1,4 +1,4 @@
-@import '../../../../Styles/common.scss';
+@import "../../../../Styles/common.scss";
 
 .Explantation {
   .explain {
@@ -7,7 +7,7 @@
     align-items: stretch;
     width: 968px;
     margin: 6vh auto 72px;
-    padding-left:30px;
+    padding-left: 30px;
     padding-right: 30px;
   }
 
@@ -21,10 +21,10 @@
   }
 
   .items:first-of-type {
-    animation: fadein .4s ease-in-out;
+    animation: fadein 0.4s ease-in-out;
   }
   .items:nth-of-type(2) {
-    animation: fadeinReverse .8s ease-in-out;
+    animation: fadeinReverse 0.8s ease-in-out;
   }
   .items:last-of-type {
     animation: fadein 1.2s ease-in-out;
@@ -50,15 +50,15 @@
       width: 100%;
       max-width: 41px;
       height: 40px;
-      background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/98e609d8-22a4-44fd-a182-8bc2277d8095/bvlatuR/std/0x0/signature-colors)no-repeat center / contain;
+      background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/98e609d8-22a4-44fd-a182-8bc2277d8095/bvlatuR/std/0x0/signature-colors)
+        no-repeat center / contain;
     }
 
     .itemText {
-    padding: 0 5px;
-    text-align: left;
-    font-size: 1.4rem;
+      padding: 0 5px;
+      text-align: left;
+      font-size: 1.4rem;
     }
-
   }
   .itemContents {
     max-width: 75ch;
@@ -72,17 +72,19 @@
     font-weight: bolder;
   }
 
-  .itemScase{
+  .itemScase {
     width: 100%;
     max-width: 22px;
     height: 40px;
-    background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/22c1d18a-5897-478f-935c-5dd275a69664/bvlatuR/std/0x0/cd_2)no-repeat center / contain;
+    background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/22c1d18a-5897-478f-935c-5dd275a69664/bvlatuR/std/0x0/cd_2)
+      no-repeat center / contain;
   }
 
   .itemRooftop {
     width: 100%;
     max-width: 56px;
     height: 40px;
-    background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/793f32cd-9d65-4f88-9053-1d62c59b3600/bvlatuR/std/0x0/MS_roof)no-repeat center / contain;
+    background: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/793f32cd-9d65-4f88-9053-1d62c59b3600/bvlatuR/std/0x0/MS_roof)
+      no-repeat center / contain;
   }
 }

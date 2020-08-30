@@ -21,16 +21,14 @@ export default class OrderInterior extends Component {
   };
 
   render() {
-    const {
-      data: { carImgPrice },
-    } = this.props.totalData;
+    const { carImgPrice } = this.props.totalData;
     return (
       <div className="OrderInterior">
         <div className="wrapInsideCarImg">
           <img
             className={`insideCarImg ${this.state.activeClass}`}
             alt="insideCarImg"
-            src={carImgPrice && carImgPrice.image.interior}
+            src={carImgPrice.image && carImgPrice.image.interior}
           />
         </div>
       </div>
