@@ -140,6 +140,14 @@ class Order extends Component {
     );
   };
 
+  clickHandlerNext = () => {
+    console.log("HI")
+    if(this.state.activeComponent===5) return;
+    this.setState({
+      activeComponent: this.state.activeComponent + 1
+    })
+  }
+
   remakeCompo = (Comp) => {
     return class extends React.Component {
       render() {
@@ -183,10 +191,12 @@ class Order extends Component {
                 clickHdrChangeEptPaymentState={
                   this.clickHdrChangeEptPaymentState
                 }
+                totalData={this.state.data.carImgPrice}
               />
             )}
             <Footer
               totalData={this.state}
+              clickHandlerNext={this.clickHandlerNext}
               activeComponent={activeComponent}
               clickHdrChangeEptPaymentState={this.clickHdrChangeEptPaymentState}
             />

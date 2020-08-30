@@ -35,7 +35,7 @@ export default class FinancingOption extends Component {
             );
           })}
         </ul>
-        <CashPayment />
+        <CashPayment price={this.props.price}/>
       </div>
     );
   }

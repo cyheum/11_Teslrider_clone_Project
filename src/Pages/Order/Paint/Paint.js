@@ -16,7 +16,7 @@ export default class Paint extends Component {
   animationDelay = () => {
     setTimeout(() => {
       this.setState(() => ({ activeClass: "appearComponent" }));
-    }, 100);
+    }, 400);
   };
 
   render() {

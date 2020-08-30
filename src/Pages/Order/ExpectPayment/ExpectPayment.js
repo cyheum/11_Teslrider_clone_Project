@@ -22,7 +22,7 @@ export default class ExpectPayment extends Component {
     const { clickHdrChangeEptPaymentState } = this.props;
     const { navBtnPushedAt } = this.state;
     const ActiveModalCompo = [
-      <FinancingOption />,
+      <FinancingOption price={this.props.totalData}/>,
       <FuelCostReduction />,
       <IncentiveSystem />,
     ];

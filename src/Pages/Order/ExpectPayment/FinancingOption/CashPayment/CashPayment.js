@@ -7,7 +7,7 @@ export default class CashPayment extends Component {
       <div className="CashPayment">
         <div className="totalPriceContainer">
           <div className="priceTitle">가격</div>
-          <div className="priceNum">₩107,990,000</div>
+          <div className="priceNum">{`₩${this.props.price.price.fuel_cost_reduction_price.toLocaleString()}`}</div>
         </div>
         <div className="reductionPriceWrap">
           {PriceData.map((data, idx) => {
@@ -18,7 +18,7 @@ export default class CashPayment extends Component {
                 >
                   {data.title}
                 </div>
-                <span className="reductionPriceNum">{data.price}</span>
+                <span className="reductionPriceNum">{`₩${this.props.price.price.total_price.toLocaleString()}`}</span>
               </div>
             );
           })}

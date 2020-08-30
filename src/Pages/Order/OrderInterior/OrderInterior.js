@@ -17,7 +17,7 @@ export default class OrderInterior extends Component {
   animationDelay = () => {
     setTimeout(() => {
       this.setState(() => ({ activeClass: "appearComponent" }));
-    }, 100);
+    }, 400);
   };
 
   render() {

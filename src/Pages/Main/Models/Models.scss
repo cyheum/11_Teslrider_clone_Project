@@ -11,6 +11,9 @@
   .container {
     height: 93%;
 
+    .mainViewBtns div li {
+      cursor: pointer;
+    }
     .mainViewBtnsContainer {
       width: 100%;
       height: 112px;

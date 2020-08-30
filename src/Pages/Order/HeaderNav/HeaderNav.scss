@@ -13,11 +13,11 @@
   .wrapLogo {
     @include center(flex-start);
     width: 28%;
-    min-width: 100px;
+    min-width: 280px;
 
     .logo {
       max-width: 100px;
-      margin-left: 10%;
+      margin-left: 40%;
       cursor: pointer;
     }
   }
